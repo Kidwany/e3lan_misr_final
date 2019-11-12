@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Crop Media   - @yield('title')</title>
+    <title>E3lan Misr  - @yield('title')</title>
 
     <!-- ======================= CSS ===================== -->
 

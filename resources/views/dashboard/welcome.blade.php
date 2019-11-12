@@ -75,7 +75,7 @@
                 <!-- small box -->
                 <div class="small-box bg-red">
                     <div class="inner">
-                        <h3>{{$members}}</h3>
+                        <h3>{{5}}</h3>
 
                         <p>Members</p>
                     </div>

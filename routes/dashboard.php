@@ -17,75 +17,75 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard'], function () {
 
 
     /* -- Return Home Page -- */
-    Route::get('/crop-media-admin', 'DashboardController@index');
+    Route::get('/e3lan-misr-admin', 'DashboardController@index');
 
     /* -- Return Slider Page -- */
-    Route::resource('/crop-media-admin/slider', 'SliderController');
+    Route::resource('/e3lan-misr-admin/slider', 'SliderController');
 
     /* -- Return Service Page -- */
-    Route::resource('/crop-media-admin/service', 'ServiceController');
-    Route::get('/crop-media-admin/service/{id}/create', 'ServiceController@createSubService');
-    Route::post('/crop-media-admin/sub-service/create', 'ServiceController@storeSub');
+    Route::resource('/e3lan-misr-admin/service', 'ServiceController');
+    Route::get('/e3lan-misr-admin/service/{id}/create', 'ServiceController@createSubService');
+    Route::post('/e3lan-misr-admin/sub-service/create', 'ServiceController@storeSub');
 
     /* -- Return Client Page -- */
-    Route::resource('/crop-media-admin/client', 'ClientController');
+    Route::resource('/e3lan-misr-admin/client', 'ClientController');
 
     /* -- Return Testimonial Page -- */
-    Route::resource('/crop-media-admin/testimonial', 'TestimonialController');
+    Route::resource('/e3lan-misr-admin/testimonial', 'TestimonialController');
 
     /* -- Return Team Page -- */
-    Route::resource('/crop-media-admin/team', 'TeamController');
+    Route::resource('/e3lan-misr-admin/team', 'TeamController');
 
     /* -- Return Appointment Page -- */
-    Route::resource('/crop-media-admin/appointment', 'AppointmentController');
+    Route::resource('/e3lan-misr-admin/appointment', 'AppointmentController');
 
     /* -- Return Video Page -- */
-    Route::resource('/crop-media-admin/video', 'VideoController');
+    Route::resource('/e3lan-misr-admin/video', 'VideoController');
 
 
     /* -- Return Video Page -- */
-    Route::resource('/crop-media-admin/blog', 'BlogController');
+    Route::resource('/e3lan-misr-admin/blog', 'BlogController');
 
     /* -- Return Album Page -- */
-    Route::resource('/crop-media-admin/album', 'AlbumController');
+    Route::resource('/e3lan-misr-admin/album', 'AlbumController');
 
     /* -- Return Gallery Page -- */
-    Route::resource('/crop-media-admin/gallery', 'GalleryController');
-    Route::get('/crop-media-admin/album/{id}/upload-to-gallery', 'AlbumController@uploadPage');
-    Route::post('/crop-media-admin/album/{id}/upload-to-gallery', 'AlbumController@upload');
+    Route::resource('/e3lan-misr-admin/gallery', 'GalleryController');
+    Route::get('/e3lan-misr-admin/album/{id}/upload-to-gallery', 'AlbumController@uploadPage');
+    Route::post('/e3lan-misr-admin/album/{id}/upload-to-gallery', 'AlbumController@upload');
 
     /* -- Return Message Page -- */
-    Route::resource('/crop-media-admin/message', 'MessageController');
+    Route::resource('/e3lan-misr-admin/message', 'MessageController');
 
     /* -- Return Feature Page -- */
-    Route::resource('/crop-media-admin/feature', 'FeatureController');
+    Route::resource('/e3lan-misr-admin/feature', 'FeatureController');
 
     /* -- Return Product Page -- */
-    Route::resource('/crop-media-admin/product', 'ProductController');
+    Route::resource('/e3lan-misr-admin/product', 'ProductController');
 
     /*--------  About   --------*/
-    Route::get('/crop-media-admin/about/edit', 'AboutController@edit');
-    Route::patch('/crop-media-admin/about/update', 'AboutController@update');
+    Route::get('/e3lan-misr-admin/about/edit', 'AboutController@edit');
+    Route::patch('/e3lan-misr-admin/about/update', 'AboutController@update');
 
     /*--------  Contact   --------*/
-    Route::get('/crop-media-admin/contact/edit', 'ContactController@edit');
-    Route::patch('/crop-media-admin/contact/update', 'ContactController@update');
+    Route::get('/e3lan-misr-admin/contact/edit', 'ContactController@edit');
+    Route::patch('/e3lan-misr-admin/contact/update', 'ContactController@update');
 
 
     /*--------  Setting   --------*/
-    Route::get('/crop-media-admin/setting/edit', 'SettingController@edit');
-    Route::patch('/crop-media-admin/setting/update', 'SettingController@update');
+    Route::get('/e3lan-misr-admin/setting/edit', 'SettingController@edit');
+    Route::patch('/e3lan-misr-admin/setting/update', 'SettingController@update');
 
 
     /* -- Return Gallery Page -- */
-    Route::resource('/crop-media-admin/gallery', 'GalleryController');
-    Route::post('/crop-media-admin/upload-to-gallery', 'GalleryController@uploadImagesToGallery');
+    Route::resource('/e3lan-misr-admin/gallery', 'GalleryController');
+    Route::post('/e3lan-misr-admin/upload-to-gallery', 'GalleryController@uploadImagesToGallery');
 
 
     /* -- Project -- */
-    Route::resource('/crop-media-admin/project', 'ProjectController');
-    Route::delete('/crop-media-admin/project/delete-image/{id}', 'ProjectController@deleteImage');
-    Route::get('/crop-media-admin/project/{id}/images', 'ProjectController@projectImages');
+    Route::resource('/e3lan-misr-admin/project', 'ProjectController');
+    Route::delete('/e3lan-misr-admin/project/delete-image/{id}', 'ProjectController@deleteImage');
+    Route::get('/e3lan-misr-admin/project/{id}/images', 'ProjectController@projectImages');
 
 });
 

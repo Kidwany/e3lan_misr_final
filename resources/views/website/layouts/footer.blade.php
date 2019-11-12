@@ -1,73 +1,69 @@
-<!-- start footer -->
-<footer class="footer-modern-dark bg-extra-dark-gray padding-five-tb xs-padding-30px-tb">
-    <div class="footer-widget-area padding-40px-bottom xs-padding-30px-bottom">
+<!--== Footer Start ==-->
+<footer class="footer dark-block">
+    <div class="footer-main">
         <div class="container">
-            <div class="row equalize xs-equalize-auto">
-                <!-- start slogan -->
-                <div
-                    class="col-md-4 col-sm-12 col-xs-12 xs-text-center sm-margin-three-bottom xs-margin-20px-bottom display-table">
-                    <div class="display-table-cell vertical-align-middle">
-                        <h6 class="text-light-gray width-70 md-width-100 no-margin-bottom">Crop Media Business
-                            Consultant Company</h6>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="widget widget-text">
+                        <div class="logo logo-footer"><a href="index.html"> <img class="logo logo-display" src="assets/images/logo/Light.png" style="max-height: 100px" alt=""></a> </div>
+                        <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
                     </div>
                 </div>
-                <!-- end slogan -->
-                <!-- start contact information -->
-                <div class="col-md-4 col-sm-6 col-xs-12 xs-text-center xs-margin-20px-bottom display-table">
-                    <div class="display-table-cell vertical-align-middle">
-							<span class="display-block text-light-gray">{!! $contact->address_en !!}</span>
-                        <a href="mailto:sales@domain.com" title="sales@domain.com" class="text-light-gray">{{$contact->mail}}</a>
-                        <span class="text-light-gray">{{$contact->phone}}</span>
+                <div class="col-sm-6 col-md-2">
+                    <div class="widget widget-links">
+                        <h5 class="widget-title">Useful Links</h5>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Gallery</a></li>
+                            <li><a href="#">Start Your Campaign</a></li>
+                        </ul>
                     </div>
                 </div>
-                <!-- end contact information -->
-                <!-- start social media -->
-                <div class="col-md-4 col-sm-6 col-xs-12 social-style-2 xs-text-center display-table">
-                    <div class="display-table-cell vertical-align-middle">
-                        <a href="{{url('/')}}"><img class="footer-logo" src="{{asset($setting->image->path)}}"
-                                                 data-rjs="{{asset($setting->image->path)}}" alt="crop"></a>
-                        <div class="social-icon-style-8">
-                            <ul class="text-extra-small margin-20px-top xs-no-margin-bottom text-uppercase no-padding no-margin-bottom list-style-none">
-                                @if($contact->facebook)
-                                    <li class="display-inline-block margin-10px-right">
-                                        <a class="text-light-gray" href="{{$contact->facebook}}" target="_blank" title="">Facebook</a>
-                                    </li>
-                                @endif
-                                @if($contact->twitter)
-                                        <li class="display-inline-block margin-10px-right">
-                                            <a class="text-light-gray" href="{{$contact->twitter}}" target="_blank" title="Twitter">Twitter</a>
-                                        </li>
-                                @endif
-                                @if($contact->instagram)
-                                        <li class="display-inline-block margin-10px-right">
-                                            <a class="text-light-gray" href="{{$contact->instagram}}" target="_blank" title="Instagram">Instagram</a>
-                                        </li>
-                                @endif
-                                @if($contact->linkedin)
-                                        <li class="display-inline-block margin-10px-right">
-                                            <a class="text-light-gray" href="{{$contact->linkedin}}" target="_blank" title="Linkedin">Linkedin</a>
-                                        </li>
-                                @endif
-
+                <div class="col-sm-6 col-md-3">
+                    <div class="widget widget-links">
+                        <h5 class="widget-title">Contact Us</h5>
+                        <div class="widget-links">
+                            <ul>
+                                <li>57 Rabaa Buildings, Nasr City Cairo, Egypt</li>
+                                <li>(+20) 0225698754</li>
+                                <li>sales@e3lan-misr.com</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <!-- end social media -->
+                <div class="col-sm-6 col-md-2">
+                    <div class="widget widget-links">
+                        <h5 class="widget-title">Our Services</h5>
+                        <ul>
+                            <li><a href="#">OOH Media</a></li>
+                            <li><a href="#">Production </a></li>
+                            <li><a href="#">Other Services</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
-        <!-- start copyright -->
-        <div class="footer-bottom border-top border-color-medium-dark-gray padding-40px-top xs-padding-30px-top">
+    <div class="footer-copyright">
+        <div class="container">
             <div class="row">
-                <div class="col-md-6 col-sm-6 col-xs-12 text-left text-small xs-text-center"></div>
-                <div class="col-md-6 col-sm-6 col-xs-12 text-right text-small xs-text-center">&copy; 2019 Crop Media
-                    is Proudly Powered by <a href="http://www.cropmedia.org" target="_blank" title="Crop Media">Crop
-                        Media</a></div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="copy-right text-left">© 2019 <i class="icon icofont icofont-heart-alt"></i> E3lan Misr. All rights reserved</div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <ul class="social-media">
+                        <li><a href="#" class="icofont icofont-social-facebook"></a></li>
+                        <li><a href="#" class="icofont icofont-social-twitter"></a></li>
+                        <li><a href="#" class="icofont icofont-social-behance"></a></li>
+                        <li><a href="#" class="icofont icofont-social-dribble"></a></li>
+                        <li><a href="#" class="icofont icofont-social-linkedin"></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <!-- end copyright -->
     </div>
 </footer>
-<!-- end footer -->
+<!--== Footer End ==-->

@@ -3,605 +3,547 @@
 
 @section('content')
 
-    <!-- start slider section -->
-    <section class="wow fadeIn example no-padding no-transition">
-        <article class="content">
-            <div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container"
-                 data-alias="classic4export" data-source="gallery"
-                 style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
-                <!-- start revolution slider 5.4.1 fullwidth mode -->
-                <div id="rev_slider_1078_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.1">
-                    <ul>
-                        <!-- slide  -->
-                        @if($slides)
-                            @foreach($slides as  $key => $slide)
-                                @if($key == 0)
-                                    <li data-index="rs-1" data-transition="fade" data-slotamount="default" data-hideafterloop="0"
-                                        data-hideslideonmobile="off" data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                                        data-masterspeed="200" data-thumb="{{asset($slide->image->path)}}" data-rotate="0" data-fstransition="fade"
-                                        data-fsmasterspeed="100" data-fsslotamount="0" data-saveperformance="off" data-title="" data-param1=""
-                                        data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8=""
-                                        data-param9="" data-param10="" data-description="">
-                                        <div class="opacity-extra-medium bg-black position-relative z-index-1"></div>
-                                        <!-- main image -->
-                                        <img src="{{asset($slide->image->path)}}" alt="Ocean" data-bgposition="center center" data-bgfit="cover"
-                                             data-bgrepeat="no-repeat" data-bgparallax="1" class="rev-slidebg">
-                                        <!-- layer nr. 3 -->
-                                        <div class="tp-caption NotGeneric-Title tp-resizeme" data-x="['center','center','center','center']"
-                                             data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                                             data-voffset="['-115','-110','-90','-90']" data-fontsize="['12','12','12','12']"
-                                             data-lineheight="['20','20','20','20']" data-width="none" data-height="none" data-whitespace="nowrap"
-                                             data-type="text" data-responsive_offset="on"
-                                             data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":300,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                             data-textAlign="['center','center','center','center']" data-paddingtop="[10,10,10,10]"
-                                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 7; white-space: nowrap; text-transform: uppercase; font-family:'Montserrat', sans-serif !important; font-weight: 500; letter-spacing:2px;">
-                                            {{$slide->{'slider_'. currentLang()}->sub_title }}</div>
-                                        <!-- layer nr. 4 -->
-                                        <div class="tp-caption NotGeneric-SubTitle tp-resizeme " data-x="['center','center','center','center']"
-                                             data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                                             data-voffset="['0','0','0','0']" data-fontsize="['70','70','60','50']"
-                                             data-lineheight="['75','75','60','60']" data-width="none" data-height="none" data-whitespace="nowrap"
-                                             data-type="text" data-responsive_offset="on"
-                                             data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":600,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                             data-textAlign="['center','center','center','center']" data-paddingtop="[10,10,10,10]"
-                                             data-paddingright="[0,0,0,0]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 8; white-space: nowrap; font-family:'Montserrat', sans-serif !important; font-weight: 600; letter-spacing: -1px;">
-                                            {!! $slide->{'slider_'. currentLang()}->title !!}
-                                        </div>
+    <!--== Hero Slider Start ==-->
+    <section class="remove-padding transition-none">
+        <div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classic4export" data-source="gallery" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">
+            <!-- START REVOLUTION SLIDER 5.4.1 fullwidth mode -->
+            <div id="rev_slider_1078_1" class="rev_slider fullwidthabanner" style="display:none;" data-version="5.4.1">
+                <ul>
+                    <li data-index="rs-3045" data-transition="zoomout" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="assets/images/slider/2.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/slider/2.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
 
-                                        <!-- layer nr. 5 -->
-                                        @if(!empty($slide->{'slider_'. currentLang()}->button))
-                                            <a href="portfolio-full-width-grid-overlay.html"
-                                               class="tp-caption btn btn-transparent-white btn-medium border-radius-4 z-index-5"
-                                               data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                               data-y="['middle','middle','middle','middle']" data-voffset="['130','130','110','110']"
-                                               data-fontsize="['12','14','14','14']" data-whitespace="nowrap"
-                                               data-visibility="['on', 'on', 'on', 'on']" data-type="text" data-color="['#FFFFFF']"
-                                               data-responsive_offset="on" data-responsive="on"
-                                               data-frames='[{"from":"y:150px;opacity:0;","speed":1500,"to":"o:1;","delay":900,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                               data-textAlign="['inherit', 'inherit', 'right', 'center']" data-paddingtop="[6,6,6,6]"
-                                               data-paddingright="[26,26,26,26]" data-paddingbottom="[6,6,6,6]" data-paddingleft="[26,26,26,26]"
-                                               data-basealign="slide">{{$slide->{'slider_'. currentLang()}->button}}</a>
-                                        @endif
+                        <!-- LAYER NR. 1 -->
+                        <div class="hero-text-wrap">
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme"
+                                 id="slide-3045-layer-1"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                 data-fontsize="['70','70','70','45']"
+                                 data-lineheight="['70','70','70','50']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
 
-                                        <!-- LAYER NR. 6 -->
-                                    </li>
-                                    @else
-                                        <li data-index="rs-{{$key+1}}" data-transition="fade" data-slotamount="3" data-hideafterloop="0"
-                                        data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="500"
-                                        data-thumb="{{asset($slide->image->path)}}" data-rotate="0" data-saveperformance="off" data-title=""
-                                        data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7=""
-                                        data-param8="" data-param9="" data-param10="" data-description="">
-                                        <div class="opacity-extra-medium bg-black position-relative z-index-1"></div>
-                                        <!-- main image -->
-                                        <img src="{{asset($slide->image->path)}}" alt="" data-bgposition="center center" data-bgfit="cover"
-                                             data-bgrepeat="no-repeat" data-bgparallax="1" class="rev-slidebg" data-no-retina>
-                                        <!-- layer nr. 3 -->
-                                        <div class="tp-caption NotGeneric-Title tp-resizeme" data-x="['center','center','center','center']"
-                                             data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                                             data-voffset="['-115','-110','-90','-90']" data-fontsize="['12','12','12','12']"
-                                             data-lineheight="['20','20','20','20']" data-width="none" data-height="none" data-whitespace="nowrap"
-                                             data-visibility="['on', 'on', 'on', 'on']" data-type="text" data-color="['#FFF']"
-                                             data-responsive_offset="on" data-responsive="on"
-                                             data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":300,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                             data-textAlign="['inherit', 'inherit', 'right', 'center']" data-paddingtop="[10,10,10,10]"
-                                             data-paddingright="[30,30,30,30]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[30,30,30,30]"
-                                             data-basealign="slide"
-                                             style="z-index: 7; white-space: nowrap; text-transform: uppercase; font-family:'Montserrat', sans-serif !important; font-weight: 500; letter-spacing:2px;">
-                                            Talented Team</div>
+                                 data-type="text"
+                                 data-responsive_offset="on"
 
-                                        <!-- layer nr. 4 -->
-                                        <div class="tp-caption NotGeneric-SubTitle tp-resizeme " data-x="['center','center','center','center']"
-                                             data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']"
-                                             data-voffset="['0','0','0','0']" data-fontsize="['70','70','60','50']"
-                                             data-lineheight="['75','75','60','60']" data-width="none" data-height="none" data-whitespace="nowrap"
-                                             data-visibility="['on', 'on', 'on', 'on']" data-type="button" data-color="['#FFF']"
-                                             data-responsive_offset="on" data-responsive="on"
-                                             data-frames='[{"from":"y:50px;opacity:0;","speed":1500,"to":"o:1;","delay":600,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                             data-textAlign="['center', 'center', 'center', 'center']" data-paddingtop="[10,10,10,10]"
-                                             data-paddingright="[30,30,30,30]" data-paddingbottom="[10,10,10,10]" data-paddingleft="[30,30,30,30]"
-                                             data-basealign="slide"
-                                             style="z-index: 8; white-space: nowrap; font-family:'Montserrat', sans-serif !important; font-weight: 600; letter-spacing: -1px;">
-                                            Business Consultant</div>
+                                 data-frames='[{"from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[10,10,10,10]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[10,10,10,10]"
+                                 data-paddingleft="[0,0,0,0]"
 
-                                            @if(!empty($slide->{'slider_'. currentLang()}->button))
-                                            <a href="portfolio-full-width-grid-overlay.html"
-                                               class="tp-caption btn btn-transparent-white btn-medium border-radius-4 z-index-5"
-                                               data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                               data-y="['middle','middle','middle','middle']" data-voffset="['130','130','110','110']"
-                                               data-fontsize="['12','14','14','14']" data-whitespace="nowrap"
-                                               data-visibility="['on', 'on', 'on', 'on']" data-type="text" data-color="['#FFFFFF']"
-                                               data-responsive_offset="on" data-responsive="on"
-                                               data-frames='[{"from":"y:150px;opacity:0;","speed":1500,"to":"o:1;","delay":900,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                               data-textAlign="['inherit', 'inherit', 'right', 'center']" data-paddingtop="[6,6,6,6]"
-                                               data-paddingright="[26,26,26,26]" data-paddingbottom="[6,6,6,6]" data-paddingleft="[26,26,26,26]"
-                                               data-basealign="slide">Explore Work</a>
-                                            @endif
+                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">Production & Advertising </div>
 
-                                        <!-- layer nr. 5 -->
-                                        <!--<a href="portfolio-full-width-grid-overlay.html" class="tp-caption btn btn-transparent-white btn-medium border-radius-4 z-index-5"
-                                       data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-                                       data-y="['middle','middle','middle','middle']" data-voffset="['130','130','110','110']"
-                                       data-fontsize="['12','14','14','14']"
-                                       data-whitespace="nowrap"
-                                       data-visibility="['on', 'on', 'on', 'on']"
-                                       data-type="text"
-                                       data-color="['#FFFFFF']"
-                                       data-responsive_offset="on"
-                                       data-responsive="on"
-                                       data-frames='[{"from":"y:150px;opacity:0;","speed":1500,"to":"o:1;","delay":900,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(0, 0, 0, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
-                                       data-textAlign="['inherit', 'inherit', 'right', 'center']"
-                                       data-paddingtop="[6,6,6,6]"
-                                       data-paddingright="[26,26,26,26]"
-                                       data-paddingbottom="[6,6,6,6]"
-                                       data-paddingleft="[26,26,26,26]"
-                                       data-basealign="slide">Explore Work</a>-->
-                                        <!-- layer nr. 6 -->
-                                    </li>
-                                @endif
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme"
+                                 id="slide-3045-layer-4"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['52','52','52','51']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
 
-                            @endforeach
-                        @endif
+                                 data-type="text"
+                                 data-responsive_offset="on"
 
-                    </ul>
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 6; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;letter-spacing: 0px;font-size:18px;">Production for any branding/advertising items (Landmarks – Mockups – Exhibitions’ Booths ) </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption NotGeneric-Icon   tp-resizeme"
+                                 id="slide-3045-layer-3"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['120','120','120','120']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 7; white-space: nowrap;text-transform:left;cursor:default;"><a class="btn btn-color btn-lg btn-default" tabindex="0">What We Do</a> </div>
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-index="rs-3046" data-transition="zoomout" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="assets/images/services/1.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off"  data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{assetPath('website/assets/images/services/1.jpg')}}"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="hero-text-wrap">
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme"
+                                 id="slide-3045-layer-1"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                 data-fontsize="['70','70','70','45']"
+                                 data-lineheight="['70','70','70','50']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[10,10,10,10]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[10,10,10,10]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">E3lan Misr Advertising!</div>
+
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme"
+                                 id="slide-3045-layer-2"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['52','52','52','51']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 6; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;letter-spacing: 0px;font-size:18px;">We may be strong as individuals but together we are invincible. </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption NotGeneric-Icon   tp-resizeme"
+                                 id="slide-3045-layer-3"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['120','120','120','120']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 7; white-space: nowrap;text-transform:left;cursor:default;"><a class="btn btn-color btn-lg btn-default" tabindex="0">Learn Now</a> </div>
+
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-index="rs-3047" data-transition="zoomout" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut" data-masterspeed="2000"  data-thumb="assets/images/slider/slide2.jpg"  data-rotate="0"  data-fstransition="fade" data-fsmasterspeed="1500" data-fsslotamount="7" data-saveperformance="off" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+                        <!-- MAIN IMAGE -->
+                        <img src="assets/images/slider/slide2.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg" data-no-retina>
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="hero-text-wrap">
+                            <div class="tp-caption NotGeneric-Title   tp-resizeme"
+                                 id="slide-3045-layer-1"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                 data-fontsize="['70','70','70','45']"
+                                 data-lineheight="['70','70','70','50']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"x:[105%];z:0;rX:45deg;rY:0deg;rZ:90deg;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1000,"split":"chars","splitdelay":0.05,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[10,10,10,10]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[10,10,10,10]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">Out Door Campaigns</div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption NotGeneric-SubTitle   tp-resizeme"
+                                 id="slide-3045-layer-4"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['52','52','52','51']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":2000,"to":"o:1;","delay":1500,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 6; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;letter-spacing: 0px;font-size:18px;">Only advertising would take a word most people run from and treat it as a good thing. </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption NotGeneric-Icon   tp-resizeme"
+                                 id="slide-3045-layer-3"
+                                 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                                 data-y="['middle','middle','middle','middle']" data-voffset="['120','120','120','120']"
+                                 data-width="none"
+                                 data-height="none"
+                                 data-whitespace="nowrap"
+
+                                 data-type="text"
+                                 data-responsive_offset="on"
+
+                                 data-frames='[{"from":"y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;","mask":"x:0px;y:[100%];s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":2000,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+                                 data-textAlign="['left','left','left','left']"
+                                 data-paddingtop="[0,0,0,0]"
+                                 data-paddingright="[0,0,0,0]"
+                                 data-paddingbottom="[0,0,0,0]"
+                                 data-paddingleft="[0,0,0,0]"
+
+                                 style="z-index: 7; white-space: nowrap;text-transform:left;cursor:default;"><a class="btn btn-light-outline btn-lg btn-default" tabindex="0">Start a Project</a> </div>
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <!-- SLIDE  -->
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!--== Services ==-->
+    <section class="white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 section-heading">
+                    <h5 class="default-color mb-0">Know More About</h5>
+                    <h2 class="mt-0">Our Services</h2>
+                </div>
+                <!--<div class="col-md-12 col-sm-12 mb-50">
+                    <img class="img-responsive" src="assets/images/gallery/service-img-big-01.jpg" alt="service" />
+                </div>-->
+                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.1s">
+                    <h4 class="mb-0">OOH Media</h4>
+                    <hr class="left-line default-bg">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.2s">
+                    <h4 class="mb-0">Production </h4>
+                    <hr class="left-line default-bg">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.3s">
+                    <h4 class="mb-0">Other Services</h4>
+                    <hr class="left-line default-bg">
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
                 </div>
             </div>
-            <!-- end revolution slider -->
-        </article>
+        </div>
     </section>
-    <!-- end slider section -->
-    <!-- start parallax section -->
-    <section class="parallax" data-stellar-background-ratio="0.6" style="background-image: url({{asset('website/images/home/pattern.jpg')}})">
-        <div class="opacity-medium bg-extra-dark-gray"></div>
-        <div class="container-fluid position-relative">
-            <div class="row equalize sm-equalize-auto">
-                <div class="col-md-6 col-sm-12 col-xs-12 display-table sm-margin-50px-bottom xs-margin-30px-bottom wow fadeIn">
-                    <div class="display-table-cell vertical-align-middle text-center">
-                        <img src="{{asset($about->aboutImage->path)}}" alt="" class="width-100">
+    <!--== Services ==-->
+
+    <!--== Who We Are Start ==-->
+    <!--<section class="white-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 section-heading">
+                    <h5 class="text-uppercase mt-0">About Our Agency</h5>
+                    <h3 class="roboto-font font-400"><span class="default-color font-700 text-uppercase">E3lan Misr</span>  is one of the biggest companies in the field of advertising & directional signboards ( outdoor) for hotels, resorts, restaurants, cruises, malls, institutes, academies & major consultation projects</h3>
+                </div>
+            </div>
+            <div class="row mt-50">
+                <div class="col-md-4">
+                    <div class="box-icon text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <i class="icofont-billboard font-50px default-color"></i>
+                        <div class="title-section">
+                            <h4 class="mt-0 font-600">Billboards</h4>
+                            <p class="font-400">Lorem ipsum dolor sit amet consectetur adipiscing elit sed in arcu est vivamus.</p>
+                        </div>
+                    </div>
+                    <div class="box-icon text-center mt-30 wow fadeInUp" data-wow-delay="0.2s">
+                        <i class="icon-megaphone font-50px default-color"></i>
+                        <div class="title-section">
+                            <h4 class="mt-0 font-600">Out Door Campaigns</h4>
+                            <p class="font-400">Lorem ipsum dolor sit amet consectetur adipiscing elit sed in arcu est vivamus.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-sm-12 col-xs-12 display-table wow fadeIn" data-wow-delay="0.2s">
-                    <div class="display-table-cell vertical-align-middle">
-                        <div class="width-75 md-width-100 padding-three-lr xs-no-padding-lr xs-no-padding-bottom">
-                            <h4 class="alt-font text-white font-weight-600">Crop Media Business Consultant Company </h4>
-                            <p>Crop Media is business consultant company that was born big with a crew that have 8 years
-                                of experience.</p>
-                            <ul class="no-padding list-style-4 margin-30px-bottom list-style-color">
-                                {!! $about->{'about_' . currentLang()}->description !!}
-                            </ul>
-                            <a href="{{url('about')}}"
-                               class="btn btn-white btn-small text-extra-small border-radius-4 margin-20px-tb sm-no-margin-bottom"><i
-                                    class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>GET
-                                TO KNOW US</a>
+                <div class="col-md-4 wow fadeInDown" data-wow-delay="0.3s">
+                    <img class="img-responsive iphone-x" src="assets/images/about/about.png" alt=""/>
+                </div>
+                <div class="col-md-4">
+                    <div class="box-icon text-center wow fadeInUp" data-wow-delay="0.4s">
+                        <i class="icon-tools-2 font-50px default-color"></i>
+                        <div class="title-section">
+                            <h4 class="mt-0 font-600">Branding</h4>
+                            <p class="font-400">Lorem ipsum dolor sit amet consectetur adipiscing elit sed in arcu est vivamus.</p>
+                        </div>
+                    </div>
+                    <div class="box-icon text-center mt-30 wow fadeInUp" data-wow-delay="0.5s">
+                        <i class="icon-beaker font-50px default-color"></i>
+                        <div class="title-section">
+                            <h4 class="mt-0 font-600">Production</h4>
+                            <p class="font-400">Lorem ipsum dolor sit amet consectetur adipiscing elit sed in arcu est vivamus.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- end parallax section -->
-    <!--<section class="wow fadeIn bg-extra-dark-gray" style="visibility: visible; animation-name: fadeIn;">
-    <div class="container">
-        <div class="row equalize sm-equalize-auto">
-            &lt;!&ndash; start feature box item &ndash;&gt;
-            <div class="col-md-4 col-sm-12 col-xs-12 sm-text-center sm-margin-five-bottom xs-margin-ten-bottom display-table last-paragraph-no-margin" style="height: 93px;">
-                <div class="display-table-cell vertical-align-middle">
-                    <span class="text-extra-large text-white alt-font margin-15px-bottom display-block width-85 sm-width-100">“Crop Media”, Core Values</span>
-                </div>
-            </div>
-            &lt;!&ndash; end feature box item &ndash;&gt;
-            &lt;!&ndash; start feature box item &ndash;&gt;
-            <div class="col-md-2 col-sm-3 col-xs-12 border-right border-color-medium-dark-gray text-center xs-margin-ten-bottom display-table wow zoomIn" style="visibility: visible; animation-name: zoomIn; height: 93px;">
-                <div class="display-table-cell vertical-align-middle">
-                    <img src="http://www.sa-spc.com/public/assertive/images/about/003-together.png" class="margin-20px-bottom" alt="" style="height: 50px" data-no-retina="">
-                    <span class="display-block text-medium text-extra-light-gray"> Efficiency </span>
-                </div>
-            </div>
-            &lt;!&ndash; end feature box item &ndash;&gt;
-            &lt;!&ndash; start feature box item &ndash;&gt;
-            <div class="col-md-2 col-sm-3 col-xs-12 border-right border-color-medium-dark-gray text-center xs-margin-ten-bottom display-table wow zoomIn" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: zoomIn; height: 93px;">
-                <div class="display-table-cell vertical-align-middle">
-                    <img src="http://www.sa-spc.com/public/assertive/images/about/002-creative.png" class="margin-20px-bottom" alt="" style="height: 50px" data-no-retina="">
-                    <span class="display-block text-medium text-extra-light-gray">	Persistence </span>
-                </div>
-            </div>
-            &lt;!&ndash; end feature box item &ndash;&gt;
-            &lt;!&ndash; start feature box item &ndash;&gt;
-            <div class="col-md-2 col-sm-3 col-xs-12 border-right border-color-medium-dark-gray text-center xs-margin-ten-bottom display-table wow zoomIn" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: zoomIn; height: 93px;">
-                <div class="display-table-cell vertical-align-middle">
-                    <img src="http://www.sa-spc.com/public/assertive/images/about/001-handshake.png" class="margin-20px-bottom" alt="" style="height: 50px" data-no-retina="">
-                    <span class="display-block text-medium text-extra-light-gray">	Creativity </span>
-                </div>
-            </div>
-            &lt;!&ndash; end feature box item &ndash;&gt;
-            &lt;!&ndash; start feature box item &ndash;&gt;
-            <div class="col-md-2 col-sm-3 col-xs-12 text-center display-table wow zoomIn" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: zoomIn; height: 93px;">
-                <div class="display-table-cell vertical-align-middle">
-                    <img src="http://www.sa-spc.com/public/assertive/images/about/004-dashboard.png" class="margin-20px-bottom" alt="" style="height: 50px" data-no-retina="">
-                    <span class="display-block text-medium text-extra-light-gray">	Dedication </span>
-                </div>
-            </div>
-        </div>
-        &lt;!&ndash; end feature box item &ndash;&gt;
-    </div>
-</section>-->
-    <!-- start services section -->
-    <!-- start video section -->
-    <section class="parallax" data-stellar-background-ratio="0"
-             style="background-image:url({{asset('website/images/home/parallax-bg6.jpg')}});">
-        <div class="opacity-full bg-extra-dark-gray"></div>
-        <div class="container position-relative">
-            <div class="row">
-                <div class="col-lg-9 col-md-10 col-sm-12 text-center center-col wow fadeIn last-paragraph-no-margin">
-                    <a class="popup-youtube" href="https://www.youtube.com/watch?v=nrJtHemSPW4"><img
-                            src="{{asset('website/images/home/icon-play-white.png')}}" class="width-10 xs-width-50px margin-30px-bottom" alt="" /></a>
-                    <h4 class="alt-font text-white">Crop Media has professional, dedicated and talented team who can do
-                        any thing you want</h4>
-                    <p class="width-75 margin-lr-auto text-medium-gray md-width-90 xs-width-100 xs-margin-30px-bottom">
-                        With years of experience in the Business consulting, Social media designs, Photography and
-                        Branding .</p>
-                    <a href="{{url('team')}}"
-                       class="btn btn-white btn-small text-extra-small border-radius-4 margin-45px-top xs-no-margin-top"><i
-                            class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i> Our
-                        Team</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- end video section -->
+    </section>-->
+    <!--== Who We Are End ==-->
 
-    <!-- start services section -->
-    <section class="wow fadeIn no-padding-bottom">
+    <!--== Video Start ==-->
+    <!--<section class="parallax-bg fixed-bg" data-parallax-bg-image="assets/images/video/parallax-bg-9.jpg" data-parallax-speed="0.8" data-parallax-direction="up">
+        <div class="parallax-overlay"></div>
         <div class="container">
-            <div class="row justify-content-center">
-                <div
-                    class="col-12 col-lg-12 col-md-12 margin-eight-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
-                    <h5 class="alt-font text-uppercase text-extra-dark-gray font-weight-700 mb-0">Our Services</h5>
-                </div>
-            </div>
-            <ul class="services-ul">
-                @if($services)
-                    @foreach($services as $service)
-                        <li>
-                            <a href="{{url('service' . '#' . str_slug($service->service_en->title))}}">
-                                <div class="feature-box margin-eight-bottom md-margin-40px-bottom">
-                                    <div class="content">
-                                        <i class="{{$service->icon_code}} text-medium-gray icon-large margin-25px-bottom sm-margin-15px-bottom"></i>
-                                        <div
-                                            class="text-medium alt-font text-capitalize text-extra-dark-gray margin-10px-bottom sm-margin-5px-bottom">
-                                            {{$service->service_en->title}}
-                                        </div>
-                                        <p class="width-85 margin-lr-auto sm-width-100">
-                                            {{$service->service_en->description}}
-                                        </p>
-                                    </div>
+            <div class="row">
+                <div class="col-md-12 text-center parallax-content">
+                    <div class="center-layout">
+                        <div class="v-align-middle">
+                            <a class="popup-youtube" href="https://www.youtube.com/watch?v=oekQQS4sVHc">
+                                <div class="play-button">
+                                    <i class="tr-icon ion-android-arrow-dropright"></i>
                                 </div>
                             </a>
-                        </li>
-                    @endforeach
-                @endif
+                            <h2 class="white-color">We create Production for any  <br> branding/advertising items</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>-->
+    <section style="background-image: url({{assetPath('website/assets/images/background/pattern-bg-dark.jpg')}});">
 
-
-            </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 parallax-content">
+                    <h3 class="white-color font-700">E3lan Misr for OOH Media Solutions, an agency .</h3>
+                    <h5 class="default-color mt-40">specified in outdoors’ advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt</h5>
+                    <p>It is worth noting that E3lan Misr have a distinctive reference list for many esteemed clients in various fields (Real Estate, Financial & Commercial, Oil & Petroleum, Food & Beverages, Electronics, Home Appliances, Media etc.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="video-box"> <img class="img-responsive" src="assets/images/video/images%20(6).jpg" alt="">
+                        <div class="video-box_overlay">
+                            <div class="center-layout">
+                                <div class="v-align-middle"> <a class="popup-youtube" href="https://www.youtube.com/watch?v=sU3FkzUKHXU">
+                                        <div class="play-button"><i class="tr-icon ion-android-arrow-dropright"></i></div>
+                                    </a> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-    <!-- end services section -->
+    <!--== Video End ==-->
 
-    <!-- start portfolio section -->
-    <section class="wow fadeIn padding-20px-bottom bg-light-gray">
+    <!--== Features ==-->
+    <section class="remove-padding white-bg">
         <div class="container-fluid">
-            <div class="row">
-                <div class="row justify-content-center">
-                    <div
-                        class="col-12 col-lg-12 col-md-12 margin-four-bottom md-margin-40px-bottom sm-margin-30px-bottom text-center last-paragraph-no-margin">
-                        <h5 class="alt-font text-uppercase text-extra-dark-gray font-weight-700 mb-0">Latest Projects
-                        </h5>
+            <div class="row row-flex">
+                <div class="col-md-4">
+                    <div class="col-inner spacer default-bg wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="text-center white-color">
+                            <i class="icofont icofont-billboard font-40px white-icon"></i>
+                            <h4 class="mt-40 font-600">Attractive Locations</h4>
+                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 hover-option4 margin-5px-bottom">
-                    <div class="swiper-multy-row-container overflow-hidden portfolio-slider">
-                        <div class="swiper-wrapper">
-                            @if($projects)
-                                @foreach($projects as $project)
-                                    <div class="swiper-slide grid-item">
-                                        <a href="{{url('project/' . $project->id)}}" class="project-card">
-                                            <div class="img-div">
-                                                <img src="{{asset($project->image->path)}}" alt=""
-                                                     style="height: 100%; object-fit: cover; object-position: center center" />
-                                            </div>
-                                            <div class="slider-text">
-                                            <span class="font-weight-600 line-height-normal alt-font text-white text-uppercase margin-5px-bottom display-block">
-                                                {{$project->{'project_' . currentLang()}->name }}
-                                            </span>
-                                                <p class="text-white text-uppercase text-extra-small">
-                                                    {{$project->relatedService->{'service_' . currentLang()}->title }}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            @endif
-
+                <div class="col-md-4">
+                    <div class="col-inner spacer dark-bg wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="text-center white-color">
+                            <i class="icofont icofont-idea font-40px white-icon"></i>
+                            <h4 class="mt-40 font-600">Creative Ideas</h4>
+                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
                         </div>
-                        <!-- start slider pagination -->
-                        <div class="swiper-portfolio-prev swiper-button-black-highlight"><i class="ti-arrow-left"></i>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-inner spacer secondary-bg wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="text-center white-color">
+                            <i class="icofont icofont-sand-clock font-40px white-icon"></i>
+                            <h4 class="mt-40 font-600">Time Commitment</h4>
+                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
                         </div>
-                        <div class="swiper-portfolio-next swiper-button-black-highlight"><i class="ti-arrow-right"></i>
-                        </div>
-                        <!-- end slider pagination -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end portfolio section -->
+    <!--== Features ==-->
 
-    <!-- start counter section -->
-    <section class="wow fadeIn">
+    <!--== Counter Start ==-->
+    <!--<section class="dark-bg pt-80 pb-80" style="background-image: url(assets/images/background/pattern-bg-dark.jpg);">
         <div class="container">
             <div class="row">
-                <!-- start counter item -->
-                <div
-                    class="col-md-3 col-sm-6 col-xs-12 sm-padding-twelve-left sm-margin-ten-bottom xs-margin-50px-bottom xs-padding-15px-left wow fadeInRight">
-                    <div class="feature-box-5 position-relative">
-                        <i class="icon-desktop text-medium-gray icon-extra-medium top-6"></i>
-                        <div class="feature-content">
-                            <h6
-                                class="display-block text-extra-dark-gray font-weight-600 alt-font no-margin-bottom timer xs-margin-5px-bottom"
-                                data-speed="2000" data-to="350">350</h6>
-                            <span class="text-small text-uppercase position-relative top-minus4">Happy Clients</span>
-                        </div>
+                <div class="col-md-3 col-sm-6 xs-mb-20 sm-mb-20">
+                    <div class="wow fadeInRight counter-type-2 relative" data-wow-delay="0.1s">
+                        <i class="icon-hourglass default-color font-50px"></i>
+                        <h3 class="display-block mt-0 mb-0 line-height-26"><span class="counter font-700 white-color">120</span></h3>
+                        <h5 class="mt-0 font-600 white-color">Happy Clients</h5>
                     </div>
                 </div>
-                <!-- end counter item -->
-                <!-- start counter item -->
-                <div
-                    class="col-md-3 col-sm-6 col-xs-12 sm-padding-twelve-left sm-margin-ten-bottom xs-margin-50px-bottom xs-padding-15px-left wow fadeInRight"
-                    data-wow-delay="0.2s">
-                    <div class="feature-box-5 position-relative">
-                        <i class="icon-camera text-medium-gray icon-extra-medium top-6"></i>
-                        <div class="feature-content">
-                            <h6
-                                class="display-block text-extra-dark-gray font-weight-600 alt-font no-margin-bottom timer xs-margin-5px-bottom"
-                                data-speed="2000" data-to="780">780</h6>
-                            <span class="text-small text-uppercase position-relative top-minus4">Photo Capture</span>
-                        </div>
+                <div class="col-md-3 col-sm-6 xs-mb-20 sm-mb-20">
+                    <div class="wow fadeInRight counter-type-2 relative" data-wow-delay="0.2s">
+                        <i class="icon-lightbulb default-color font-50px"></i>
+                        <h3 class="display-block mt-0 mb-0 line-height-26"><span class="counter font-700 white-color">15</span></h3>
+                        <h5 class="mt-0 font-600 white-color">Year Experience</h5>
                     </div>
                 </div>
-                <!-- end counter item -->
-                <!-- start counter item -->
-                <div
-                    class="col-md-3 col-sm-6 col-xs-12 sm-padding-twelve-left xs-margin-50px-bottom xs-padding-15px-left wow fadeInRight"
-                    data-wow-delay="0.4s">
-                    <div class="feature-box-5 position-relative">
-                        <i class="icon-laptop text-medium-gray icon-extra-medium top-6"></i>
-                        <div class="feature-content">
-                            <h6
-                                class="display-block text-extra-dark-gray font-weight-600 alt-font no-margin-bottom timer xs-margin-5px-bottom"
-                                data-speed="2000" data-to="850">850</h6>
-                            <span class="text-small text-uppercase position-relative top-minus4">Work Completed</span>
-                        </div>
+                <div class="col-md-3 col-sm-6 xs-mb-20 sm-mb-20">
+                    <div class="wow fadeInRight counter-type-2 relative" data-wow-delay="0.3s">
+                        <i class="icon-wine default-color font-50px"></i>
+                        <h3 class="display-block mt-0 mb-0 line-height-26"><span class="counter font-700 white-color">65</span></h3>
+                        <h5 class="mt-0 font-600 white-color">Project Completed</h5>
                     </div>
                 </div>
-                <!-- end counter item -->
-                <!-- start counter item -->
-                <div class="col-md-3 col-sm-6 col-xs-12 sm-padding-twelve-left xs-padding-15px-left wow fadeInRight"
-                     data-wow-delay="0.6s">
-                    <div class="feature-box-5 position-relative">
-                        <i class="icon-chat text-medium-gray icon-extra-medium top-6"></i>
-                        <div class="feature-content">
-                            <h6
-                                class="display-block text-extra-dark-gray font-weight-600 alt-font no-margin-bottom timer xs-margin-5px-bottom"
-                                data-speed="2000" data-to="650">650</h6>
-                            <span class="text-small text-uppercase position-relative top-minus4">Telephonic Talk</span>
-                        </div>
+                <div class="col-md-3 col-sm-6 xs-mb-20 sm-mb-20">
+                    <div class="wow fadeInRight counter-type-2 relative" data-wow-delay="0.4s">
+                        <i class="icon-hotairballoon default-color font-50px"></i>
+                        <h3 class="display-block mt-0 mb-0 line-height-26"><span class="counter font-700 white-color">6</span></h3>
+                        <h5 class="mt-0 font-600 white-color">Awwwards</h5>
                     </div>
                 </div>
-                <!-- end counter item -->
             </div>
         </div>
-    </section>
-    <!-- end counters section -->
-    <!-- start testimonial slider section -->
-    <!--<section class="bg-light-gray wow fadeIn">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12 wow fadeIn">
-                <p class="alt-font margin-5px-bottom text-uppercase text-small text-medium-gray">What people say</p>
-                <h5 class="text-uppercase alt-font text-extra-dark-gray margin-20px-bottom font-weight-700 sm-width-100 xs-width-100">Clients Words</h5>
-                <span class="separator-line-horrizontal-medium-light2 bg-deep-pink display-table margin-auto width-100px"></span>
-            </div>
-        </div>
-        <div class="row position-relative margin-100px-top sm-margin-70px-top xs-margin-50px-top">
-            <div class="swiper-container swiper-pagination-bottom black-move blog-slider swiper-three-slides">
-                <div class="swiper-wrapper">
-                    &lt;!&ndash; start testimonial item &ndash;&gt;
-                    <div class="col-md-4 col-sm-6 col-xs-12 swiper-slide sm-margin-four-bottom">
-                        <div class="margin-half-all bg-white box-shadow-light text-center padding-fourteen-all xs-padding-30px-all">
-                            <img src="images/testimonials/7c16b2aaf4927f77604ce8293dc08cbf.png" class="border-radius-100 width-40 margin-25px-bottom sm-margin-15px-bottom" alt=""/>
-                            <p class="sm-margin-15px-bottom xs-margin-20px-bottom">I wanted to hire the best and after looking at several other companies, I knew Jacob was the perfect guy for the job. He is a true professional.</p>
-                            <span class="text-extra-dark-gray text-small text-uppercase display-block line-height-10 alt-font font-weight-600">Shoko Mugikura</span>
-                            <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Design Manager</span>
-                        </div>
-                    </div>
-                    &lt;!&ndash; end testimonial item &ndash;&gt;
-                    &lt;!&ndash; start testimonial item &ndash;&gt;
-                    <div class="col-md-4 col-sm-6 col-xs-12 swiper-slide sm-margin-four-bottom">
-                        <div class="margin-half-all bg-white box-shadow-light text-center padding-fourteen-all xs-padding-30px-all">
-                            <img src="images/testimonials/avtar-15.jpg" class="border-radius-100 width-40 margin-25px-bottom sm-margin-15px-bottom" alt=""/>
-                            <p class="sm-margin-15px-bottom xs-margin-20px-bottom">Trust us we looked for a VERY long time and wasted thousands of dollars testing other teams, freelancers, and outsource companies.</p>
-                            <span class="text-extra-dark-gray text-small text-uppercase display-block line-height-10 alt-font font-weight-600">Alexander Harvard</span>
-                            <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Co Founder / CEO</span>
-                        </div>
-                    </div>
-                    &lt;!&ndash; end testimonial item &ndash;&gt;
-                    &lt;!&ndash; start testimonial item &ndash;&gt;
-                    <div class="col-md-4 col-sm-6 col-xs-12 swiper-slide sm-margin-four-bottom">
-                        <div class="margin-half-all bg-white box-shadow-light text-center padding-fourteen-all xs-padding-30px-all">
-                            <img src="images/testimonials/d11b13f43b7fc7950386ec9c99c80800.png" class="border-radius-100 width-40 margin-25px-bottom sm-margin-15px-bottom" alt=""/>
-                            <p class="sm-margin-15px-bottom xs-margin-20px-bottom">This is an excellent company! I personally enjoyed the energy and the professional support the whole team gave to us into creating website.</p>
-                            <span class="text-extra-dark-gray text-small text-uppercase display-block line-height-10 alt-font font-weight-600">Lindsay Swanson</span>
-                            <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Creative Director</span>
-                        </div>
-                    </div>
-                    &lt;!&ndash; end testimonial item &ndash;&gt;
-                    &lt;!&ndash; start testimonial item &ndash;&gt;
-                    <div class="col-md-4 col-sm-6 col-xs-12 swiper-slide sm-margin-four-bottom">
-                        <div class="margin-half-all bg-white box-shadow-light text-center padding-fourteen-all xs-padding-30px-all">
-                            <img src="images/testimonials/d31ea03447e5fc317d66b0867665df05%20(1).png" class="border-radius-100 width-40 margin-25px-bottom sm-margin-15px-bottom" alt=""/>
-                            <p class="sm-margin-15px-bottom xs-margin-20px-bottom">Their team are easy to work with and helped me make amazing websites in a short amount of time. Thanks again guys for all your hard work.</p>
-                            <span class="text-extra-dark-gray text-small text-uppercase display-block line-height-10 alt-font font-weight-600">Herman Miller</span>
-                            <span class="text-light-gray2 text-extra-small text-uppercase text-medium-gray">Creative Director</span>
-                        </div>
-                    </div>
-                    &lt;!&ndash; end testimonial item &ndash;&gt;
-                </div>
-                <div class="swiper-pagination swiper-pagination-three-slides height-auto"></div>
-            </div>
-        </div>
-    </div>
-</section>-->
-    <!-- end testimonial slider section -->
+    </section>-->
+    <!--== Counter End ==-->
 
-    <!-- start pricing section -->
-    <section class="wow fadeIn padding-50px-top bg-light-gray">
-        <div class="row">
-            <!-- start feature box item -->
-            <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 text-center center-col margin-four-bottom xs-margin-30px-bottom">
-                <h5 class="font-weight-300 text-extra-dark-gray ">Pricing Plans </h5>
-            </div>
-            <!-- end feature box item -->
-        </div>
+    <!--== Testimonails Style 01 Start ==-->
+    <section class="grey-bg">
         <div class="container">
             <div class="row">
-                <div class="pricing-box-style1">
-                    <!-- start pricing item -->
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp">
-                        <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                            <div class="padding-55px-all bg-very-light-gray sm-padding-30px-all xs-padding-40px-all">
-                                <!-- start pricing title -->
-                                <div class="pricing-title text-center">
-                                    <i class="ti-user icon-large text-deep-pink display-inline-block padding-30px-all bg-white box-shadow-light border-radius-100 margin-25px-bottom"></i>
-                                </div>
-                                <!-- end pricing title -->
-                                <!-- start pricing price -->
-                                <div class="pricing-price">
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">Standard</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-200 no-margin-bottom">EGP <span class="font-weight-400">2000</span></h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div>
-                                </div>
-                                <!-- end pricing price -->
+                <div class="col-sm-8 section-heading">
+                    <h4 class="text-uppercase mt-0">Testimonials</h4>
+                </div>
+            </div>
+            <div class="row mt-50">
+                <div class="slick testimonial">
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <!--== Slide ==-->
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
+                                <h5 class="font-700 mb-0">Hossam Ahmed</h5>
+                                <span class="grey-color font-14px">SEO Manager at Cocacola</span>
+                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
                             </div>
-                            <!-- start pricing features -->
-                            <div class="padding-45px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                <ul class="list-style-11">
-                                    <li>8 Posts on Social Channels</li>
-                                    <li>2 videos (it could be 1 min video or GIF).</li>
-                                </ul>
-                                <!-- start pricing action -->
-                                <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                    <a href="#" class="btn btn-dark-gray btn-small text-extra-small">Choose Plan</a>
-                                </div>
-                                <!-- end pricing action -->
-                            </div>
-                            <!-- end pricing features -->
                         </div>
                     </div>
-                    <!-- end pricing item -->
-                    <!-- start pricing item -->
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                            <div class="padding-55px-all bg-very-light-gray sm-padding-30px-all xs-padding-40px-all">
-                                <!-- start pricing title -->
-                                <div class="pricing-title text-center">
-                                    <i class="ti-briefcase icon-large text-deep-pink display-inline-block padding-30px-all bg-white box-shadow-light border-radius-100 margin-25px-bottom"></i>
-                                </div>
-                                <!-- end pricing title -->
-                                <!-- start pricing price -->
-                                <div class="pricing-price">
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">Business</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-200 no-margin-bottom">EGP <span class="font-weight-400">3200</span></h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div>
-                                </div>
-                                <!-- end pricing price -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <!--== Slide ==-->
+                        <div class="testimonial-item">
+                            <div class="testimonial-content">
+                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-2"/>
+                                <h5 class="font-700 mb-0">Hana Samy</h5>
+                                <span class="grey-color font-14px">Head of Product at ZARA</span>
+                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
                             </div>
-                            <!-- start pricing features -->
-                            <div class="padding-45px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                <ul class="list-style-11">
-                                    <li>12 Posts on Social Channels.</li>
-                                    <li>4 videos (it could be 1 min video or GIF).</li>
-                                </ul>
-                                <!-- start pricing action -->
-                                <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                    <a href="#" class="btn btn-dark-gray btn-small text-extra-small">Choose Plan</a>
-                                </div>
-                                <!-- end pricing action -->
-                            </div>
-                            <!-- end pricing features -->
                         </div>
                     </div>
-                    <!-- end pricing item -->
-                    <!-- start pricing item -->
-                    <div class="col-md-4 col-sm-12 col-xs-12 text-center wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="pricing-box border-all border-width-1 border-color-extra-light-gray">
-                            <div class="padding-55px-all bg-very-light-gray sm-padding-30px-all xs-padding-40px-all">
-                                <!-- start pricing title -->
-                                <div class="pricing-title text-center">
-                                    <i class="ti-world icon-large text-deep-pink display-inline-block padding-30px-all bg-white box-shadow-light border-radius-100 margin-25px-bottom"></i>
-                                </div>
-                                <!-- end pricing title -->
-                                <!-- start pricing price -->
-                                <div class="pricing-price">
-                                    <span class="alt-font text-extra-dark-gray font-weight-600 text-uppercase">Ultimate</span>
-                                    <h4 class="text-extra-dark-gray alt-font font-weight-200 no-margin-bottom">EGP <span class="font-weight-400">4200</span></h4>
-                                    <div class="text-extra-small text-uppercase alt-font margin-5px-top">Per Month</div>
-                                </div>
-                                <!-- end pricing price -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <!--== Slide ==-->
+                        <div class="testimonial-item">
+                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
+                                <h5 class="font-700 mb-0">Abdallah Rashid</h5>
+                                <span class="grey-color font-14px">CEO / Founder at Kido</span>
+                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
                             </div>
-                            <!-- start pricing features -->
-                            <div class="padding-45px-all pricing-features sm-padding-20px-all xs-padding-30px-all">
-                                <ul class="list-style-11">
-                                    <li>14 Posts on Social Channels.</li>
-                                    <li>6 videos (it could be 1 min video or GIF).</li>
-                                </ul>
-                                <!-- start pricing action -->
-                                <div class="pricing-action margin-35px-top sm-no-margin-top">
-                                    <a href="#" class="btn btn-dark-gray btn-small text-extra-small">Choose Plan</a>
-                                </div>
-                                <!-- end pricing action -->
-                            </div>
-                            <!-- end pricing features -->
                         </div>
                     </div>
-                    <!-- end pricing item -->
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <!--== Slide ==-->
+                        <div class="testimonial-item">
+                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
+                                <h5 class="font-700 mb-0">Shrief Ali</h5>
+                                <span class="grey-color font-14px">Marketing Manager at QNB</span>
+                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end pricing section -->
+    <!--== Testimonails Style 01 End ==-->
 
-    <!-- start clients slider section  -->
-    <section class="wow fadeIn padding-four-top">
-        <div class="container text-center">
+    <!--== Subscribe Start ==-->
+    <section class="pt-80 pb-80 dark-bg">
+        <div class="container">
+            <div class="row mt-50">
+                <div class="col-sm-7 section-heading white-color">
+                    <h3 class="font-600 mt-0">Sign up for newsletters</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed fermentum nibh, vel aliquet massa. Etiam in magna id risus lacinia luctus eget eu est.</p>
+                    <div class="tr-form-subscribe mt-30">
+                        <form class="signup-form remove-margin" method="post">
+                            <div class="input-group password-input-group">
+                                <input type="email" name="EMAIL" id="Email" class="newsletter-input form-control form-group border-radius-0" value="" placeholder="Your Mail Address">
+                                <button type="submit" class="newsletter-submit btn btn-light-outline btn-md btn-square" name="subscribe" id="Subscribe">
+                                    <span>sign up now</span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--== Subscribe End ==-->
+
+    <!--== Clients Start ==-->
+    <section class="grey-bg pt-80 pb-80">
+        <div class="container">
             <div class="row">
-                <div class="swiper-slider-clients swiper-container black-move wow fadeIn">
-                    <div class="swiper-wrapper">
-                        <!-- start slide -->
-                        @if($clients)
-                            @foreach($clients as $client)
-                                <div class="swiper-slide text-center"><a href="javascript:void(0);"><img
-                                            src="{{asset($client->image->path)}}" alt=""></a></div>
-                            @endforeach
-                        @endif
-
-                    </div>
+                <div class="client-slider slick">
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/client-banque-du-caire-landscape-image-2019-jul-19.png" alt="01"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Egypt Post.png" alt="02"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Exxon Mobil.png" alt="03"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arabia Holding.png" alt="04"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Orange.png" alt="05"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arco.png" alt="06"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Ghabbour Auto.png" alt="07"/> </div>
+                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Dunkin' Donuts.png" alt="08"/> </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="mt-40" style="display: flex; flex-direction: row; justify-content: center">
+                    <a class="btn btn-color btn-md btn-default" href="clients.html">Show Clients</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- end clients slider section -->
-
+    <!--== Clients End ==-->
 
 @endsection
 

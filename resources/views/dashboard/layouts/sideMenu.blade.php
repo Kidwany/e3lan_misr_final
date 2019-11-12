@@ -70,7 +70,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            {{--<li class="treeview">
                 <a href="#">
                     <i class="fa fa-list-ul"></i>
                     <span>Projects</span>
@@ -80,9 +80,9 @@
                     <li><a href="{{adminUrl('project/create')}}"><i class="fa fa-plus"></i> Add Projects</a></li>
                     <li><a href="{{adminUrl('project')}}"><i class="fa fa-edit"></i> Show / Edit Projects</a></li>
                 </ul>
-            </li>
+            </li>--}}
 
-            <li class="treeview">
+            {{--<li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
                     <span>Team</span>
@@ -92,7 +92,7 @@
                     <li><a href="{{adminUrl('team/create')}}"><i class="fa fa-upload"></i> Add New Member</a></li>
                     <li><a href="{{adminUrl('team')}}"><i class="fa fa-edit"></i> Show / Edit Members</a></li>
                 </ul>
-            </li>
+            </li>--}}
 
             <li class="treeview">
                 <a href="#">

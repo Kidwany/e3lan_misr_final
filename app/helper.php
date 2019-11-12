@@ -101,7 +101,7 @@ if (!function_exists('adminUrl'))
 {
     function adminUrl($url = null)
     {
-        return  url('crop-media-admin/' . $url);
+        return  url('e3lan-misr-admin/' . $url);
     }
 }
 

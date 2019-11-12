@@ -54,9 +54,38 @@
 <body>
 <div id="app">
     <main>
-        @include('website.layouts.header')
-        @yield('content')
-        @include('website.layouts.footer')
+        <div id="loader-overlay">
+            <div class="loader">
+                <svg version="1.1" id="L9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+                    <rect x="20" y="50" width="4" height="10" fill="#BF0731">
+                        <animateTransform attributeType="xml"
+                                          attributeName="transform" type="translate"
+                                          values="0 0; 0 20; 0 0"
+                                          begin="0" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="30" y="50" width="4" height="10" fill="#BF0731">
+                        <animateTransform attributeType="xml"
+                                          attributeName="transform" type="translate"
+                                          values="0 0; 0 20; 0 0"
+                                          begin="0.2s" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                    <rect x="40" y="50" width="4" height="10" fill="#BF0731">
+                        <animateTransform attributeType="xml"
+                                          attributeName="transform" type="translate"
+                                          values="0 0; 0 20; 0 0"
+                                          begin="0.4s" dur="0.6s" repeatCount="indefinite"/>
+                    </rect>
+                </svg>
+            </div>
+        </div>
+        <div class="wrapper">
+            <!--== Loader End ==-->
+            @include('website.layouts.header')
+            @yield('content')
+            @include('website.layouts.footer')
+        </div>
+
     </main>
 </div>
 
@@ -65,78 +94,45 @@
 
 
 
-{{--<!-- Scripts -->
-<script src="{{ asset('js/app.js') }}" defer></script>--}}
-<!-- JS
-============================================ -->
-<!-- javascript libraries -->
-<!-- JQuery Min JS -->
-<!-- end countdown section -->
-<!-- start scroll to top -->
-<a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
-<!-- end scroll to top  -->
-<!-- javascript libraries -->
-<script type="text/javascript" src="{{asset('website/js/jquery.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/modernizr.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/jquery.easing.1.3.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/skrollr.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/smooth-scroll.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/jquery.appear.js')}}"></script>
-<!-- menu navigation -->
-<script type="text/javascript" src="{{asset('website/js/bootsnav.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/jquery.nav.js')}}"></script>
-<!-- animation -->
-<script type="text/javascript" src="{{asset('website/js/wow.min.js')}}"></script>
-<!-- page scroll -->
-<!-- <script type="text/javascript" src="js/page-scroll.js"></script> -->
-<!-- swiper carousel -->
-<script type="text/javascript" src="{{asset('website/js/swiper.min.js')}}"></script>
-<!-- counter -->
-<script type="text/javascript" src="{{asset('website/js/jquery.count-to.js')}}"></script>
-<!-- parallax -->
-<script type="text/javascript" src="{{asset('website/js/jquery.stellar.js')}}"></script>
-<!-- magnific popup -->
-<script type="text/javascript" src="{{asset('website/js/jquery.magnific-popup.min.js')}}"></script>
-<!-- portfolio with shorting tab -->
-<script type="text/javascript" src="{{asset('website/js/isotope.pkgd.min.js')}}"></script>
-<!-- images loaded -->
-<script type="text/javascript" src="{{asset('website/js/imagesloaded.pkgd.min.js')}}"></script>
-<!-- pull menu -->
-<script type="text/javascript" src="{{asset('website/js/classie.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/js/hamburger-menu.js')}}"></script>
-<!-- counter  -->
-<script type="text/javascript" src="{{asset('website/js/counter.js')}}"></script>
-<!-- fit video  -->
-<script type="text/javascript" src="{{asset('website/js/jquery.fitvids.js')}}"></script>
-<!-- equalize -->
-<script type="text/javascript" src="{{asset('website/js/equalize.min.js')}}"></script>
-<!-- skill bars  -->
-<!-- justified gallery  -->
-<script type="text/javascript" src="{{asset('website/js/justified-gallery.min.js')}}"></script>
-<!--pie chart-->
-<script type="text/javascript" src="{{asset('website/js/jquery.easypiechart.min.js')}}"></script>
-<!-- instagram -->
-<!-- retina -->
-<script type="text/javascript" src="{{asset('website/js/retina.min.js')}}"></script>
-<!-- revolution -->
-<script type="text/javascript" src="{{asset('website/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
-<!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
-<!-- setting -->
-<script type="text/javascript" src="{{asset('website/js/main.js')}}"></script>
 
-<!-- revolution slider extensions (load below extensions JS files only on local file systems to make the slider work! The following part can be removed on server for on demand loading) -->
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.actions.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.carousel.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.kenburn.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.layeranimation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.migration.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.navigation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.parallax.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.slideanims.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('website/revolution/js/extensions/revolution.extension.video.min.js')}}"></script>
+<!--== Javascript Plugins ==-->
+<script src="{{assetPath('website/assets/js/jquery.min.js')}}"></script>
+<script src="{{assetPath('website/assets/js/smoothscroll.js')}}"></script>
+<script src="{{assetPath('website/assets/js/plugins.js')}}"></script>
+<script src="{{assetPath('website/assets/js/master.js')}}"></script>
 
+<!-- Revolution js Files -->
+<script type="text/javascript" src="{{assetPath('website/revolution/js/jquery.themepunch.tools.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/jquery.themepunch.revolution.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.actions.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.kenburn.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.layeranimation.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.migration.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.navigation.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.parallax.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.slideanims.min.js')}}"></script>
+<script type="text/javascript" src="{{assetPath('website/revolution/js/revolution.extension.video.min.js')}}"></script>
+
+<!-- WhatsHelp.io widget -->
+<!-- WhatsHelp.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            facebook: "656667041413984", // Facebook page ID
+            whatsapp: "+201118816000", // WhatsApp number
+            call_to_action: "", // Call to action
+            button_color: "#000000", // Color of button
+            position: "right", // Position may be 'right' or 'left'
+            order: "facebook,whatsapp", // Order of buttons
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /WhatsHelp.io widget -->
 @yield('customizedScript')
 
 

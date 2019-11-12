@@ -65,16 +65,29 @@
                                 </div>
 
                                 <div class="col-lg-6">
+                                    <label for="exampleInputEmail1">Mission</label>
+                                    <textarea type="text" class="form-control" name="mission_en" id="editor2" rows="6" placeholder="Enter Mission of Website">{{$about->about_en->mission}}</textarea>
+                                    <p class="help-block">Edit Mission of website</p>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label for="exampleInputEmail1">Vision</label>
+                                    <textarea type="text" class="form-control" name="vision_en" id="editor3" rows="6" placeholder="Enter Vision of Website" >{{$about->about_en->vision}}</textarea>
+                                    <p class="help-block">Edit Vision of website</p>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label for="exampleInputEmail1">Values</label>
+                                    <textarea type="text" class="form-control editor1" name="values_en" id="editor4" rows="6" placeholder="Enter Values of Website" >{{$about->about_en->value}}</textarea>
+                                    <p class="help-block">Edit Values of website</p>
+                                </div>
+
+                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1"> About Us Image</label>
                                     <input type="file" class="form-control" name="about_image_id" id="exampleInputEmail1" placeholder="Update Mession Image">
                                     <p class="help-block"> Update The Image in Mission Section</p>
                                 </div>
 
-                                <div class="col-lg-6">
-                                    <label for="exampleInputEmail1">Mission</label>
-                                    <textarea type="text" class="form-control" name="mission_en" id="" rows="6" placeholder="Enter Mission of Website">{{$about->about_en->mission}}</textarea>
-                                    <p class="help-block">Edit Mission of website</p>
-                                </div>
 
                                 <div class="col-lg-6">
                                     <label for="exampleInputEmail1"> Mission Image</label>
@@ -83,21 +96,9 @@
                                 </div>
 
                                 <div class="col-lg-6">
-                                    <label for="exampleInputEmail1">Vision</label>
-                                    <textarea type="text" class="form-control" name="vision_en" id="" rows="6" placeholder="Enter Vision of Website" >{{$about->about_en->vision}}</textarea>
-                                    <p class="help-block">Edit Vision of website</p>
-                                </div>
-
-                                <div class="col-lg-6">
                                     <label for="exampleInputEmail1"> Vision Image</label>
                                     <input type="file" class="form-control" name="vision_image_id"  id="exampleInputEmail1" placeholder="Update Vision Image">
                                     <p class="help-block"> Update The Image in Vision Section</p>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <label for="exampleInputEmail1">Experience</label>
-                                    <textarea type="text" class="form-control editor1" name="values_en" id="" rows="6" placeholder="Enter Values of Website" >{{$about->about_en->value}}</textarea>
-                                    <p class="help-block">Edit Values of website</p>
                                 </div>
 
                                 <div class="col-lg-6">

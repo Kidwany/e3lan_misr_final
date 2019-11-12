@@ -16,7 +16,7 @@ class DashboardController extends Controller
         $clients = Client::all()->count();
         $messages = Message::all()->count();
         $projects = Project::all()->count();
-        $members = Team::all()->count();
+        //$members = Team::all()->count();
         return view('dashboard.welcome', compact('clients', 'messages', 'members', 'projects'));
     }
 }

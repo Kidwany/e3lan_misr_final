@@ -23,7 +23,7 @@ class WebsitePagesController extends Controller
     public function index()
     {
         $slides = Slider::with('slider_'.currentLang(), 'image')->get();
-        $projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
+        //$projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
         $clients = Client::with('image')->orderBy('created_at', 'desc')->limit(10)->get();
         return view('website.welcome', compact( 'slides', 'images', 'projects', 'clients', 'images'));
     }

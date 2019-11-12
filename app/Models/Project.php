@@ -11,7 +11,7 @@ class Project extends Model  {
      *
      * @var string
      */
-    protected $table = 'project';
+    protected $table = 'billboard';
     protected $connection = 'mysql';
 
     /**
