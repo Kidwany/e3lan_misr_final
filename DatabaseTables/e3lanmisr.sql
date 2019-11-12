@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2019 at 11:37 PM
+-- Generation Time: Nov 12, 2019 at 10:30 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -38,6 +38,13 @@ CREATE TABLE `about` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `image_id`, `mission_image_id`, `vision_image_id`, `values_image_id`, `approach_image_id`, `created_at`, `updated_at`) VALUES
+(1, 9, 30, 38, 39, 59, '2019-11-11 22:00:00', '2019-11-11 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -103,6 +110,56 @@ INSERT INTO `billboard_images` (`id`, `project_id`, `image_id`, `created_at`, `u
 (34, 12, 61, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (35, 12, 62, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (36, 12, 63, '2019-10-26 18:25:15', '2019-10-26 18:25:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign`
+--
+
+CREATE TABLE `campaign` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign_details`
+--
+
+CREATE TABLE `campaign_details` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_at` timestamp NULL DEFAULT NULL,
+  `end_at` timestamp NULL DEFAULT NULL,
+  `availability` int(10) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `printing_cost` double DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign_items`
+--
+
+CREATE TABLE `campaign_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `billboard_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -214,10 +271,6 @@ INSERT INTO `image` (`id`, `name`, `path`, `alt`, `album_id`, `created_at`, `upd
 (39, '1572108825slide-1.jpg', 'dashboardImages/slider/1572108825slide-1.jpg', NULL, NULL, '2019-10-26 14:53:45', '2019-10-26 14:53:45'),
 (40, '1572108920slide-3.jpg', 'dashboardImages/slider/1572108920slide-3.jpg', NULL, NULL, '2019-10-26 14:55:20', '2019-10-26 14:55:20'),
 (41, '1572113740crop-moc.png', 'dashboardImages/about/1572113740crop-moc.png', NULL, NULL, '2019-10-26 16:15:40', '2019-10-26 16:15:40'),
-(42, '1572114430photography-1.jpg', 'dashboardImages/service/1572114430photography-1.jpg', NULL, NULL, '2019-10-26 16:27:10', '2019-10-26 16:27:10'),
-(43, '1572115091videography-1.jpg', 'dashboardImages/service/1572115091videography-1.jpg', NULL, NULL, '2019-10-26 16:38:11', '2019-10-26 16:38:11'),
-(44, '1572115277design_bg.jpg', 'dashboardImages/service/1572115277design_bg.jpg', NULL, NULL, '2019-10-26 16:41:17', '2019-10-26 16:41:17'),
-(45, '1572115552business-1.jpg', 'dashboardImages/service/1572115552business-1.jpg', NULL, NULL, '2019-10-26 16:45:52', '2019-10-26 16:45:52'),
 (46, '1572115668design.jpg', 'dashboardImages/service/1572115668design.jpg', NULL, NULL, '2019-10-26 16:47:48', '2019-10-26 16:47:48'),
 (56, '15721211396.jpg', 'dashboardImages/project/15721211396.jpg', NULL, NULL, '2019-10-26 18:18:59', '2019-10-26 18:18:59'),
 (57, '1572121489ee6fbe44521941.5814bb27bbf4d.jpg', 'dashboardImages/project/1572121489ee6fbe44521941.5814bb27bbf4d.jpg', NULL, NULL, '2019-10-26 18:24:49', '2019-10-26 18:24:49'),
@@ -228,7 +281,8 @@ INSERT INTO `image` (`id`, `name`, `path`, `alt`, `album_id`, `created_at`, `upd
 (62, '15721215155.jpg', 'dashboardImages/project/15721215155.jpg', NULL, NULL, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (63, '15721215156.jpg', 'dashboardImages/project/15721215156.jpg', NULL, NULL, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (65, '15721290943.jpg', 'dashboardImages/project/15721290943.jpg', NULL, NULL, '2019-10-26 20:31:34', '2019-10-26 20:31:34'),
-(66, '157213158020257992_10211454245566143_6148412932699077504_n.jpg', 'dashboardImages/team/157213158020257992_10211454245566143_6148412932699077504_n.jpg', NULL, NULL, '2019-10-26 21:13:00', '2019-10-26 21:13:00');
+(66, '157213158020257992_10211454245566143_6148412932699077504_n.jpg', 'dashboardImages/team/157213158020257992_10211454245566143_6148412932699077504_n.jpg', NULL, NULL, '2019-10-26 21:13:00', '2019-10-26 21:13:00'),
+(67, '1573591040Light.png', 'dashboardImages/setting/1573591040Light.png', NULL, NULL, '2019-11-12 18:37:20', '2019-11-12 18:37:20');
 
 -- --------------------------------------------------------
 
@@ -248,12 +302,17 @@ CREATE TABLE `message` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `message`
+-- Table structure for table `parent`
 --
 
-INSERT INTO `message` (`id`, `name`, `email`, `phone`, `title`, `message`, `file_id`, `created_at`, `updated_at`) VALUES
-(6, 'Fallon Henry', 'jafa@mailinator.com', '1', 'pevagobok@mailinator.com', 'Optio sed a consequOptio sed a consequOptio sed a consequOptio sed a consequ', NULL, '2019-10-26 20:53:18', '2019-10-26 20:53:18');
+CREATE TABLE `parent` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -277,13 +336,7 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `image_id`, `icon`, `icon_code`, `parent_service_id`, `created_by`, `created_at`, `updated_at`) VALUES
-(23, 7, NULL, 'icon-megaphone', NULL, 3, '2019-10-26 08:11:04', '2019-10-26 16:40:01'),
-(25, NULL, NULL, NULL, 23, 3, '2019-10-26 08:18:16', '2019-10-26 08:18:16'),
-(26, 42, NULL, 'icon-camera', NULL, 3, '2019-10-26 16:27:10', '2019-10-26 16:27:10'),
-(27, 43, NULL, 'icon-video', NULL, 3, '2019-10-26 16:38:11', '2019-10-26 16:38:11'),
-(28, 44, NULL, 'icon-pencil', NULL, 3, '2019-10-26 16:41:18', '2019-10-26 16:41:18'),
-(29, 45, NULL, 'icon-briefcase', NULL, 3, '2019-10-26 16:45:52', '2019-10-26 16:45:52'),
-(30, 46, NULL, 'icon-browser', NULL, 3, '2019-10-26 16:47:48', '2019-10-26 16:47:48');
+(23, 7, NULL, 'icon-megaphone', NULL, 3, '2019-10-26 08:11:04', '2019-10-26 16:40:01');
 
 -- --------------------------------------------------------
 
@@ -319,7 +372,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `logo`, `status`, `default_lang`, `created_at`, `updated_at`) VALUES
-(1, 37, 1, 'en', '2019-08-07 22:00:00', '2019-10-26 14:21:19');
+(1, 67, 1, 'en', '2019-08-07 22:00:00', '2019-11-12 18:37:20');
 
 -- --------------------------------------------------------
 
@@ -398,7 +451,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `role_id`, `image_id`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 'Mohamed Kidwany', 'kidoo@3elaji.com', NULL, NULL, NULL, '$2y$12$..vHGD7vwnIG74yYwzR2h.DKGN2MEZGaqkTkVl5cwpHsxkINHXL3W\r\n', '0LpvuglkZ4sffPupecJrX9yJqHg9Jag1sAkILElvehb9GdFbK7n13sDwK58Q', '2019-06-18 15:45:49', '2019-06-18 16:12:57'),
-(3, 'Kidwany', 'admin@cropmedia.org', NULL, NULL, NULL, '$2y$10$hK.eiBbbNJsfhenhnuiyBeyFG3YKJgspnP0uUsvFM33SXqZ2OPLd6', '1rAW8pkBymSIAqEaIKQq1CmW2RBByg9DbsXaJBWItuT6VEux0lKcf87hSve5', '2019-08-14 09:42:26', '2019-08-14 09:42:26');
+(3, 'Admin', 'admin@e3lan-misr.com', NULL, NULL, NULL, '$2y$10$hK.eiBbbNJsfhenhnuiyBeyFG3YKJgspnP0uUsvFM33SXqZ2OPLd6', 'tHNn1QXvh25NVKAgZ2jaMT28icdlEDdFbJ789Dxvly5oC7D7lqPMQ6aaVZzr', '2019-08-14 09:42:26', '2019-08-14 09:42:26');
 
 -- --------------------------------------------------------
 
@@ -453,6 +506,27 @@ ALTER TABLE `billboard_images`
   ADD KEY `image_project_id` (`project_id`);
 
 --
+-- Indexes for table `campaign`
+--
+ALTER TABLE `campaign`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id_cart` (`user_id`);
+
+--
+-- Indexes for table `campaign_details`
+--
+ALTER TABLE `campaign_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `campaign_parent` (`campaign_id`);
+
+--
+-- Indexes for table `campaign_items`
+--
+ALTER TABLE `campaign_items`
+  ADD KEY `parent_campaign_id` (`campaign_id`),
+  ADD KEY `parent_billboard_id` (`billboard_id`);
+
+--
 -- Indexes for table `client`
 --
 ALTER TABLE `client`
@@ -482,6 +556,12 @@ ALTER TABLE `image`
 -- Indexes for table `message`
 --
 ALTER TABLE `message`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parent`
+--
+ALTER TABLE `parent`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -574,6 +654,18 @@ ALTER TABLE `billboard_images`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
+-- AUTO_INCREMENT for table `campaign`
+--
+ALTER TABLE `campaign`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `campaign_details`
+--
+ALTER TABLE `campaign_details`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
@@ -595,13 +687,19 @@ ALTER TABLE `feature`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `parent`
+--
+ALTER TABLE `parent`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -637,7 +735,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `testimonial`
 --
 ALTER TABLE `testimonial`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -680,6 +778,25 @@ ALTER TABLE `billboard`
 ALTER TABLE `billboard_images`
   ADD CONSTRAINT `image_project_id` FOREIGN KEY (`project_id`) REFERENCES `billboard` (`id`),
   ADD CONSTRAINT `project_image_id` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `campaign`
+--
+ALTER TABLE `campaign`
+  ADD CONSTRAINT `user_id_cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `campaign_details`
+--
+ALTER TABLE `campaign_details`
+  ADD CONSTRAINT `campaign_parent` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `campaign_items`
+--
+ALTER TABLE `campaign_items`
+  ADD CONSTRAINT `parent_billboard_id` FOREIGN KEY (`billboard_id`) REFERENCES `billboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `parent_campaign_id` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `feature`

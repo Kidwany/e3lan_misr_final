@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2019 at 11:37 PM
+-- Generation Time: Nov 12, 2019 at 10:30 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -39,6 +39,13 @@ CREATE TABLE `about` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `about`
+--
+
+INSERT INTO `about` (`id`, `about_id`, `mission`, `vision`, `value`, `approach`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, '<p>&quot;E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors&rsquo; advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium &amp; Small formats.</p>', '<p>&quot;E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors&rsquo; advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium &amp; Small forma</p>', '<p>&quot;E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors&rsquo; advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium &amp; Small formats.</p>', '\"E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors’ advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium & Small formats.', '<p>&quot;E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors&rsquo; advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium &amp; Small formats.</p>', '2019-11-11 22:00:00', '2019-11-12 18:43:18');
 
 -- --------------------------------------------------------
 
@@ -124,6 +131,20 @@ INSERT INTO `feature` (`id`, `feature_id`, `title`, `slug`, `description`, `crea
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `parent`
+--
+
+CREATE TABLE `parent` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `service`
 --
 
@@ -146,13 +167,7 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `service_id`, `slug`, `title`, `description`, `second_title`, `second_description`, `third_title`, `third_description`, `created_at`, `updated_at`) VALUES
-(18, 23, NULL, 'Marketing Services', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-10-26 08:11:04', '2019-10-26 16:40:01'),
-(19, 25, NULL, 'Online Campaigns', 'Campaigns on social media channels also making videos.', NULL, NULL, NULL, NULL, '2019-10-26 08:18:16', '2019-10-26 08:23:24'),
-(20, 26, NULL, 'Photography', 'As we offer you photo sessions for your product to use it on the media channels.', NULL, NULL, NULL, NULL, '2019-10-26 16:27:10', '2019-10-26 16:37:13'),
-(21, 27, NULL, 'Videography', 'also making videos and make sure it shows the best image for your product and services.', NULL, NULL, NULL, NULL, '2019-10-26 16:38:11', '2019-10-26 16:38:11'),
-(22, 28, NULL, 'Designing', 'As we use this service for branding your products on Social Media channels so we can show the best image of your company.', NULL, NULL, NULL, NULL, '2019-10-26 16:41:18', '2019-10-26 16:41:18'),
-(23, 29, NULL, 'Branding', 'As we use this service to make a new identity for your company including (logos, paper work, social media templets, flayers, banners,', NULL, NULL, NULL, NULL, '2019-10-26 16:45:52', '2019-10-26 16:45:52'),
-(24, 30, NULL, 'Development Services', 'We build dynamic experiences and a wide variety of custom web development solutions, we have been designing and developing websites.', NULL, NULL, NULL, NULL, '2019-10-26 16:47:48', '2019-10-26 16:47:48');
+(18, 23, NULL, 'Marketing Services', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-10-26 08:11:04', '2019-10-26 16:40:01');
 
 -- --------------------------------------------------------
 
@@ -174,7 +189,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `setting_id`, `website_name`, `website_description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'E3lan Misr', 'Crop Media is business consultant company that was born big with a crew that have 8 years of experience.', '2019-08-07 22:00:00', '2019-10-26 14:21:19');
+(1, 1, 'E3lan Misr', '\"E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors’ advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium & Small formats.', '2019-08-07 22:00:00', '2019-11-12 18:37:20');
 
 -- --------------------------------------------------------
 
@@ -271,6 +286,13 @@ ALTER TABLE `feature`
   ADD KEY `feature_ar_parent` (`feature_id`);
 
 --
+-- Indexes for table `parent`
+--
+ALTER TABLE `parent`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id_fk` (`parent_id`);
+
+--
 -- Indexes for table `service`
 --
 ALTER TABLE `service`
@@ -340,6 +362,12 @@ ALTER TABLE `feature`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `parent`
+--
+ALTER TABLE `parent`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
@@ -361,7 +389,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `testimonial`
 --
 ALTER TABLE `testimonial`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `zone`
@@ -402,6 +430,12 @@ ALTER TABLE `client`
 --
 ALTER TABLE `feature`
   ADD CONSTRAINT `feature_ar_parent` FOREIGN KEY (`feature_id`) REFERENCES `e3lanmisr`.`feature` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `parent`
+--
+ALTER TABLE `parent`
+  ADD CONSTRAINT `parent_id_fk` FOREIGN KEY (`parent_id`) REFERENCES `e3lanmisr`.`parent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `service`
