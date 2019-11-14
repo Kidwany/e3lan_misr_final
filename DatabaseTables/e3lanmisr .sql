@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 02:48 PM
+-- Generation Time: Nov 14, 2019 at 03:13 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -103,6 +103,111 @@ INSERT INTO `billboard_images` (`id`, `project_id`, `image_id`, `created_at`, `u
 (34, 12, 61, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (35, 12, 62, '2019-10-26 18:25:15', '2019-10-26 18:25:15'),
 (36, 12, 63, '2019-10-26 18:25:15', '2019-10-26 18:25:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign`
+--
+
+CREATE TABLE `campaign` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `campaign`
+--
+
+INSERT INTO `campaign` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 2, '2019-11-12 22:00:00', '2019-11-12 22:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign_details`
+--
+
+CREATE TABLE `campaign_details` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_at` timestamp NULL DEFAULT NULL,
+  `end_at` timestamp NULL DEFAULT NULL,
+  `availability` int(10) DEFAULT NULL,
+  `price` double DEFAULT NULL,
+  `printing_cost` double DEFAULT NULL,
+  `status` int(10) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `campaign_details`
+--
+
+INSERT INTO `campaign_details` (`id`, `campaign_id`, `company`, `phone`, `position`, `name`, `start_at`, `end_at`, `availability`, `price`, `printing_cost`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'cxfcv', 'xbdxcfbxcb', 'fxbxcvbxc', NULL, '2019-11-12 22:00:00', '2019-11-12 22:00:00', NULL, 200, 0, 1, '2019-11-12 22:00:00', '2019-11-12 22:00:00'),
+(2, 1, 'sdvdzcvdzs', 'zvzcv', 'zxvzxcvzv', 'zvzvzv', '2019-11-12 22:00:00', '2019-11-12 22:00:00', NULL, 100, NULL, 1, '2019-11-12 22:00:00', '2019-11-12 22:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `campaign_items`
+--
+
+CREATE TABLE `campaign_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `campaign_id` int(10) UNSIGNED NOT NULL,
+  `billboard_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_location`
+--
+
+CREATE TABLE `child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_location_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_location`
+--
+
+INSERT INTO `child_location` (`id`, `parent_location_id`, `created_at`, `updated_at`) VALUES
+(2, 1, '2019-11-14 02:47:11', '2019-11-14 02:47:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_of_child_location`
+--
+
+CREATE TABLE `child_of_child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `child_location_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_of_child_location`
+--
+
+INSERT INTO `child_of_child_location` (`id`, `child_location_id`, `created_at`, `updated_at`) VALUES
+(2, 2, '2019-11-13 22:00:00', '2019-11-13 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -285,7 +390,41 @@ CREATE TABLE `message` (
 --
 
 INSERT INTO `message` (`id`, `name`, `email`, `phone`, `title`, `message`, `file_id`, `created_at`, `updated_at`) VALUES
+(1, 'elshenawy', 'islam.elshenawy@trioconceptme.com', '1', 'fdgfdgfdg', 'sasassasasasas', NULL, '2019-11-14 08:33:47', '2019-11-14 08:33:47'),
+(2, 'elshenawy', 'islam.elshenawy@trioconceptme.com', '1', 'fdgfdgfdg', 'fdsfdsfdsf', NULL, '2019-11-14 08:34:38', '2019-11-14 08:34:38'),
 (6, 'Fallon Henry', 'jafa@mailinator.com', '1', 'pevagobok@mailinator.com', 'Optio sed a consequOptio sed a consequOptio sed a consequOptio sed a consequ', NULL, '2019-10-26 20:53:18', '2019-10-26 20:53:18');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parent`
+--
+
+CREATE TABLE `parent` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parent_location`
+--
+
+CREATE TABLE `parent_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `parent_location`
+--
+
+INSERT INTO `parent_location` (`id`, `created_at`, `updated_at`) VALUES
+(1, '2019-11-13 22:00:00', '2019-11-13 22:00:00'),
+(2, '2019-11-14 01:46:11', '2019-11-14 01:46:11');
 
 -- --------------------------------------------------------
 
@@ -483,6 +622,13 @@ ALTER TABLE `billboard_images`
   ADD PRIMARY KEY (`id`),
   ADD KEY `project_image_id` (`image_id`),
   ADD KEY `image_project_id` (`project_id`);
+
+--
+-- Indexes for table `campaign`
+--
+ALTER TABLE `campaign`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id_cart` (`user_id`);
 
 --
 -- Indexes for table `client`
