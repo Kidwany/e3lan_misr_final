@@ -55,19 +55,15 @@
                 <div class="col-md-3 col-sm-3 col-xs-12">
                     <div class="widget sidebar_widget">
                         <h5 class="aside-title text-uppercase">Choose Zone</h5>
-                        <form method="get">
-                            <select name="orderby" style="color: #333">
+                        <!-- <form method="get"> -->
+                            <select name="orderby" style="color: #333" id="Zone1">
                                 <option value="menu_order" selected="selected">All Zones </option>
-                                <option value="popularity">6 October Bridge</option>
-                                <option value="rating">Mohandessin & 15th May</option>
-                                <option value="date">Mehwar 26th July</option>
-                                <option value="price">El Sheikh Zayed/ 6 October City</option>
-                                <option value="price-desc">Cairo Alex Desert Road</option>
-                                <option value="price-desc">El Wahat Road</option>
-                                <option value="price-desc">Waslet Dahshour</option>
+                                @foreach($locations as $location)
+                                <option value="{{$location->id}}">{{$location->parentLocation_en->location}}</option>
+                                @endforeach
                             </select> <input type="hidden" name="paged" value="1">
                             <!--<input type="text" name="name" class="md-input" id="search" required="" placeholder="Type what it's your mind...">-->
-                        </form>
+                        <!-- </form> -->
                     </div>
 
                     <div class="widget sidebar_widget">
@@ -126,26 +122,42 @@
             <!-- -------------------- Tabs --------------------------- -->
             <div class="row mt-30 tabs-style-01">
                 <div class="col-md-12">
-                    <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
+                    <form name="contact-form" action="{{url('add/buildCamp')}}" method="POST" class="contact-form-style-01">
+                    @csrf
                         <div class="messages"></div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label for="from">From</label>
-                                    <input type="date" name="from" class="md-input" id="from"  placeholder="Email *" required data-error="Please Enter Valid Email">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label for="to">To</label>
-                                    <input type="date" name="to" class="md-input" id="to" placeholder="Password" required>
+                     <div class="container">
+                        <div class="col-sm-6" style="height:130px;">
+                            <div class="form-group">
+                            <label for="from">From</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-sm-6" style="height:130px;">
+                            <div class="form-group">
+                            <label for="to">To</label>
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
                         <div class="row">
                             <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
-                                <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Add To Campaign</button>
+                                <button type="submit" class="btn btn-color btn-md btn-default"><i class="fa fa-filter"></i> Add To Campaign</button>
                             </div>
                         </div>
                     </form>

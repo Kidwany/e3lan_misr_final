@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Product;
+use App\Models\Parent_location;
 use App\Models\About;
 use App\Models\Project;
 use App\Models\Slider;
@@ -72,8 +73,9 @@ class WebsitePagesController extends Controller
 
     public function buildCamp()
     {
+        $locations = Parent_location::with('parentLocation_en')->get();
         $buildCamps = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
-        return view('website.buildCamp', compact('buildCamps'));
+        return view('website.buildCamp', compact('buildCamps','locations'));
     }
 
     public function service()
@@ -112,6 +114,19 @@ class WebsitePagesController extends Controller
 
     public function service_details($id)
     {
+        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
+        return view('website.services_details', compact('services'));
+    }
+
+    public function add_buildCamp($id,Request $request)
+    {
+        dd($request);
+        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
+        return view('website.services_details', compact('services'));
+    }
+    public function child_location($id,Request $request)
+    {
+        dd($request);
         $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
         return view('website.services_details', compact('services'));
     }
