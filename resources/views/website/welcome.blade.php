@@ -248,24 +248,14 @@
                 <!--<div class="col-md-12 col-sm-12 mb-50">
                     <img class="img-responsive" src="assets/images/gallery/service-img-big-01.jpg" alt="service" />
                 </div>-->
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.1s">
-                    <h4 class="mb-0">OOH Media</h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.2s">
-                    <h4 class="mb-0">Production </h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.3s">
-                    <h4 class="mb-0">Other Services</h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
+                @foreach($services as $service)
+                    <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.1s">
+                        <h4 class="mb-0">{{@$service->service_en->title}}</h4>
+                        <hr class="left-line default-bg">
+                        <p>{{@$service->service_en->description}}</p>
+                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{route('service_details', ['id' =>$service->id])}}"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -366,6 +356,8 @@
     </section>
     <!--== Video End ==-->
 
+    <br><br><br><br><br>
+
     <!--== Features ==-->
     <section class="remove-padding white-bg">
         <div class="container-fluid">
@@ -439,66 +431,67 @@
     </section>-->
     <!--== Counter End ==-->
 
-    <!--== Testimonails Style 01 Start ==-->
-    <section class="grey-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 section-heading">
-                    <h4 class="text-uppercase mt-0">Testimonials</h4>
-                </div>
-            </div>
-            <div class="row mt-50">
-                <div class="slick testimonial">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Hossam Ahmed</h5>
-                                <span class="grey-color font-14px">SEO Manager at Cocacola</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
+{{--    <!--== Testimonails Style 01 Start ==-->--}}
+{{--    <section class="grey-bg">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-8 section-heading">--}}
+{{--                    <h4 class="text-uppercase mt-0">Testimonials</h4>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row mt-50">--}}
+{{--                <div class="slick testimonial">--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content">--}}
+{{--                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Hossam Ahmed</h5>--}}
+{{--                                <span class="grey-color font-14px">SEO Manager at Cocacola</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-2"/>
-                                <h5 class="font-700 mb-0">Hana Samy</h5>
-                                <span class="grey-color font-14px">Head of Product at ZARA</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Abdallah Rashid</h5>
-                                <span class="grey-color font-14px">CEO / Founder at Kido</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Shrief Ali</h5>
-                                <span class="grey-color font-14px">Marketing Manager at QNB</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== Testimonails Style 01 End ==-->
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content">--}}
+{{--                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-2"/>--}}
+{{--                                <h5 class="font-700 mb-0">Hana Samy</h5>--}}
+{{--                                <span class="grey-color font-14px">Head of Product at ZARA</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Abdallah Rashid</h5>--}}
+{{--                                <span class="grey-color font-14px">CEO / Founder at Kido</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Shrief Ali</h5>--}}
+{{--                                <span class="grey-color font-14px">Marketing Manager at QNB</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <!--== Testimonails Style 01 End ==-->--}}
 
     <!--== Subscribe Start ==-->
+    <br><br><br><br><br>
     <section class="pt-80 pb-80 dark-bg">
         <div class="container">
             <div class="row mt-50">
@@ -526,14 +519,10 @@
         <div class="container">
             <div class="row">
                 <div class="client-slider slick">
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/client-banque-du-caire-landscape-image-2019-jul-19.png" alt="01"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Egypt Post.png" alt="02"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Exxon Mobil.png" alt="03"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arabia Holding.png" alt="04"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Orange.png" alt="05"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arco.png" alt="06"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Ghabbour Auto.png" alt="07"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Dunkin' Donuts.png" alt="08"/> </div>
+                    @foreach($clients as $client)
+                        <div class="client-logo"> <img class="img-responsive" src="{{url($client->image->path)}}" alt="{{$client->image->alt}}"/> </div>
+
+                    @endforeach
                 </div>
             </div>
             <div class="row">

@@ -27,8 +27,10 @@ class WebsitePagesController extends Controller
     {
         // $slides = Slider::with('slider_'.currentLang(), 'image')->get();
         // //$projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
-        // $clients = Client::with('image')->orderBy('created_at', 'desc')->limit(10)->get();
-        return view('website.welcome');
+        $clients = Client::with('image')->limit(10)->get();
+
+        $services = Service::all();
+        return view('website.welcome', compact('services','clients'));
     }
 
     public function project()
@@ -85,7 +87,7 @@ class WebsitePagesController extends Controller
 
     public function message(Request $request)
     {
-     
+
 
         $message = new Message;
         $message->name = $request->name;
@@ -101,7 +103,7 @@ class WebsitePagesController extends Controller
     }
 
 
-   
+
 
     public function team()
     {
