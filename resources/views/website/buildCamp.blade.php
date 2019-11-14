@@ -25,7 +25,7 @@
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <div class="product-item tr-products">
                             <div class="product-image tr-product-thumbnail">
-                                <a href="serviceDetails.html">
+                                <a href="{{url('serviceDetails')}}/{{$buildCamp->id}}">
                                     <img class="img-responsive" src="{{$buildCamp->image->path}}" alt="torneo-product"/>
                                 </a>
                                 <div class="product-action">

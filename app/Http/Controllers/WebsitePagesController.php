@@ -107,6 +107,14 @@ class WebsitePagesController extends Controller
         return view('website.team', compact('members'));
     }
 
+
+    public function service_details($id)
+    {
+        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
+        return view('website.services_details', compact('services'));
+    }
+
+
 }
 
 
