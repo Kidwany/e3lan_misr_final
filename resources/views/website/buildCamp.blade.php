@@ -126,26 +126,42 @@
             <!-- -------------------- Tabs --------------------------- -->
             <div class="row mt-30 tabs-style-01">
                 <div class="col-md-12">
-                    <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
+                    <form name="contact-form" action="{{url('add/buildCamp')}}" method="POST" class="contact-form-style-01">
+                    @csrf
                         <div class="messages"></div>
                         <div class="row">
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label for="from">From</label>
-                                    <input type="date" name="from" class="md-input" id="from"  placeholder="Email *" required data-error="Please Enter Valid Email">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                                <div class="form-group">
-                                    <label for="to">To</label>
-                                    <input type="date" name="to" class="md-input" id="to" placeholder="Password" required>
+                     <div class="container">
+                        <div class="col-sm-6" style="height:130px;">
+                            <div class="form-group">
+                            <label for="from">From</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-sm-6" style="height:130px;">
+                            <div class="form-group">
+                            <label for="to">To</label>
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        </div>
                         <div class="row">
                             <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
-                                <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Add To Campaign</button>
+                                <button type="submit" class="btn btn-color btn-md btn-default"><i class="fa fa-filter"></i> Add To Campaign</button>
                             </div>
                         </div>
                     </form>

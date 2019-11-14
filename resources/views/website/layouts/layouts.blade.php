@@ -97,6 +97,34 @@
 
 <!--== Javascript Plugins ==-->
 <script src="{{assetPath('website/assets/js/jquery.min.js')}}"></script>
+<!-- jQuery -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+
+<!-- Datepicker -->
+<link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+<!-- Script -->
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#datetimepicker1").datepicker( {
+    format: "mm-yyyy",
+    viewMode: "months", 
+    minViewMode: "months"
+});
+$("#datetimepicker2").datepicker( {
+    format: "mm-yyyy",
+    viewMode: "months", 
+    minViewMode: "months"
+});
+
+});
+</script>
+
 <script src="{{assetPath('website/assets/js/smoothscroll.js')}}"></script>
 <script src="{{assetPath('website/assets/js/plugins.js')}}"></script>
 <script src="{{assetPath('website/assets/js/master.js')}}"></script>
