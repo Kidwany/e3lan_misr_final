@@ -10,6 +10,7 @@ use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Message;
 use App\Models\Product;
+use App\Models\About;
 use App\Models\Project;
 use App\Models\Slider;
 use App\Models\Service;
@@ -22,10 +23,10 @@ class WebsitePagesController extends Controller
 {
     public function index()
     {
-        $slides = Slider::with('slider_'.currentLang(), 'image')->get();
-        //$projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
-        $clients = Client::with('image')->orderBy('created_at', 'desc')->limit(10)->get();
-        return view('website.welcome', compact( 'slides', 'images', 'projects', 'clients', 'images'));
+        // $slides = Slider::with('slider_'.currentLang(), 'image')->get();
+        // //$projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
+        // $clients = Client::with('image')->orderBy('created_at', 'desc')->limit(10)->get();
+        return view('website.welcome');
     }
 
     public function project()
@@ -48,7 +49,9 @@ class WebsitePagesController extends Controller
 
     public function about()
     {
-        return view('website.about', compact('og'));
+        $about = About::with('about_en', 'about_ar', 'missionImage', 'visionImage', 'valuesImage')->orderBy('created_at', 'desc')->first();
+        // dd($about);
+        return view('website.about',compact('about'));
     }
 
     public function contact()
@@ -60,38 +63,31 @@ class WebsitePagesController extends Controller
 
     public function client()
     {
-        $clients = Client::with('image')->get();
+        $clients = Client::with('image')->paginate(6);
         return view('website.client', compact('clients'));
     }
 
+    public function buildCamp()
+    {
+        $buildCamps = Client::with('image')->paginate(6);
+        return view('website.buildCamp', compact('buildCamps'));
+    }
 
     public function message(Request $request)
     {
-        $input = Input::get();
-        $this->validate($request,[
-            'email'         => 'bail|required|email|max:100',
-            'name'          => 'bail|required|max:100',
-            'phone'          => 'bail|required|max:14',
-            'message'       => 'bail|required|min:30|max:500',
-        ], [], [
-            'email'         => 'Email',
-            'name'          => 'Name ',
-            'phone'          => 'Phone ',
-            'message'       => 'Message',
-        ]);
+     
 
         $message = new Message;
-        $message->name = $input['name'];
-        $message->email = $input['email'];
-        $message->phone = $input['phone'];
-        $message->title = $input['title'];
-        $message->message = $input['message'];
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->phone = $request->Phone;
+        $message->title = $request->subject;
+        $message->message = $request->message;
         $message->phone = 1;
 
         $message->save();
-        Session::flash('create', ' Thanks for your Message ' . $message->name .  ' We Will Contact you within two days ');
+        return redirect()->back()->with('message', 'We Will Contact you within two days ');
 
-        return redirect('contact#contact');
     }
 
 

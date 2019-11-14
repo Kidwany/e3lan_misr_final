@@ -13,10 +13,10 @@
                     <div class="widget widget-links">
                         <h5 class="widget-title">Useful Links</h5>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{url('about')}}">About Us</a></li>
                             <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{url('contact')}}">Contact</a></li>
                             <li><a href="#">Gallery</a></li>
                             <li><a href="#">Start Your Campaign</a></li>
                         </ul>

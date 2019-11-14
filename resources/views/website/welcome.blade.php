@@ -538,7 +538,7 @@
             </div>
             <div class="row">
                 <div class="mt-40" style="display: flex; flex-direction: row; justify-content: center">
-                    <a class="btn btn-color btn-md btn-default" href="clients.html">Show Clients</a>
+                    <a class="btn btn-color btn-md btn-default" href="{{url('client')}}">Show Clients</a>
                 </div>
             </div>
         </div>

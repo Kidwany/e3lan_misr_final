@@ -23,7 +23,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     Route::get('lang/{lang}', 'LanguageController@changeLanguage');
 
     /*=======   Return Home     ========*/
-    Route::get('/', 'WebsitePagesController@campaign');
+    Route::get('/', 'WebsitePagesController@index');
 
     /*=======   Return about    ========*/
     Route::get('/about', 'WebsitePagesController@about');
@@ -45,6 +45,9 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 
     /*=======   Return Client     ========*/
     Route::get('/client', 'WebsitePagesController@client');
+    
+    /*=======   Return buildCamp     ========*/
+    Route::get('/buildCamp', 'WebsitePagesController@buildCamp');
 
 
 });

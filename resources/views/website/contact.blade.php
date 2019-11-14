@@ -19,6 +19,13 @@
     <section>
         <div class="container">
             <div class="row service-box-style-02">
+            @if(session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+
+
                 <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30">
                     <div class="col-inner white-bg dark-color feature-box full-width">
                         <div class="icon-heading">
@@ -68,7 +75,10 @@
             </div>
             <div class="row mt-50">
                 <div class="col-md-12">
-                    <form name="contact-form" id="contact-form" action="php/contact.php" method="POST" class="contact-form-style-02">
+
+                    <form name="contact-form" action="{{url('message')}}" method="POST" >
+                     @csrf
+
                         <div class="messages"></div>
                         <div class="row">
                             <div class="col-md-6 col-sm-6">
@@ -96,7 +106,7 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label class="sr-only" for="name">Phone</label>
-                                    <input type="text" name="name" class="md-input style-02" id="name" placeholder="Phone ">
+                                    <input type="text" name="Phone" class="md-input style-02" id="name" placeholder="Phone ">
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -116,7 +126,7 @@
                             </div>
                             <div class="col-md-12 col-sm-12">
                                 <div class="text-left mt-20">
-                                    <button type="submit" name="submit" class="btn btn-color btn-md btn-square btn-animate remove-margin"><span>Send Message <i class="ion-android-arrow-forward"></i></span></button>
+                                    <button type="submit"  class="btn btn-color btn-md btn-square btn-animate remove-margin"><span>Send Message <i class="ion-android-arrow-forward"></i></span></button>
                                 </div>
                             </div>
                         </div>

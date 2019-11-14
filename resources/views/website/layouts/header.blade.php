@@ -127,12 +127,12 @@
         <!--== Collect the nav links, forms, and other content for toggling ==-->
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
-                <li> <a href="index.html" class="dropdown-toggle">Home</a></li>
-                <li class="dropdown"> <a href="services.html" class="dropdown-toggle" data-toggle="dropdown">Services</a>
+                <li> <a href="{{url('/')}}" class="dropdown-toggle">Home</a></li>
+                <li><a href="{{url('about')}}" class="dropdown-toggle" data-toggle="dropdown">About</a></li>
+                <li class="dropdown"> <a href="{{url('services')}}" class="dropdown-toggle" data-toggle="dropdown">Services</a>
                     <ul class="dropdown-menu">
                         <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">OOH Media</a>
                         </li>
-
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Production </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">Landmarks </a></li>
@@ -148,15 +148,12 @@
                                 <li><a href="#">Others </a></li>
                             </ul>
                         </li>
-
                         <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Services</a></li>
-
                     </ul>
                 </li>
-                <li><a href="clients.html" class="dropdown-toggle" data-toggle="dropdown">Our Clients</a></li>
-                <li><a href="buildCamp.html" class="dropdown-toggle" data-toggle="dropdown">Build Your Campaign</a></li>
-                <li><a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About</a></li>
-                <li><a href="contact.html" class="dropdown-toggle" data-toggle="dropdown">Contact</a></li>
+                <li><a href="{{url('client')}}" class="dropdown-toggle" data-toggle="dropdown">Our Clients</a></li>
+                <li><a href="{{url('buildCamp')}}" class="dropdown-toggle" data-toggle="dropdown">Build Your Campaign</a></li>
+                <li><a href="{{url('contact')}}" class="dropdown-toggle" data-toggle="dropdown">Contact</a></li>
                 <li class="dropdown"> <a href="services.html" class="dropdown-toggle" data-toggle="dropdown">Mohamed</a>
                     <ul class="dropdown-menu">
                         <li> <a href="myCamps.html" class="dropdown-toggle" data-toggle="dropdown">My Campaigns</a></li>
