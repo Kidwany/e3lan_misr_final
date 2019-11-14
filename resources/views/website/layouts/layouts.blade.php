@@ -161,6 +161,20 @@ $(document).on('change', '#Zone1', function() {
 
 
 });
+$(document).ready(function () {
+$('#submit').click(function () {
+
+    $.ajax({
+        url: '{{ url('register/customer') }}',
+        type: 'post',
+        data: {
+            "_token": "{{ csrf_token() }}",
+            "id": "12"
+        },
+        success: function (data) {
+
+        }
+    });});
 });
     (function () {
         var options = {

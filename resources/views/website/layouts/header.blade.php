@@ -14,6 +14,8 @@
     <!--== End Top Search ==-->
     <div class="container">
         <!--== Start Atribute Navigation ==-->
+        @if(!Auth::user())
+
         <div class="attr-nav hidden-xs sm-display-none">
             <ul class="social-media-dark social-top">
                 <li>
@@ -25,7 +27,7 @@
                 <li><a href="#" class="icofont icofont-social-instagram"></a></li>-->
             </ul>
         </div>
-
+    @endif
         <div id="modal-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Login or Register</span>
             <!-- -------------------- Tabs --------------------------- -->
@@ -42,43 +44,10 @@
                         <div class="tab-content text-center">
                             <!-- -------------------- Login Tab --------------------------- -->
                             <div role="tabpanel" class="tab-pane fade in active" id="mission">
-                                <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
+                                <form name="contact-form" action="{{url('login/customer')}}" method="POST" class="contact-form-style-01">
+                                    @csrf
                                     <div class="messages"></div>
                                     <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="email">Email</label>
-                                                <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="sr-only">Password</label>
-                                                <input type="password" name="subject" class="md-input" id="subject-2" placeholder="Password" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
-                                            <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Login</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-
-                            <!-- -------------------- Register Tab --------------------------- -->
-                            <div role="tabpanel" class="tab-pane fade" id="history">
-                                <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
-                                    <div class="messages"></div>
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="email">Name</label>
-                                                <input type="text" name="name" class="md-input" id="Name" placeholder="Email *" required data-error="Please Enter Valid Email">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <label class="sr-only" for="email">Email</label>
@@ -92,6 +61,41 @@
                                                 <input type="password" name="password" class="md-input" id="subject-2" placeholder="Password" required>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
+                                            <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- -------------------- Register Tab --------------------------- -->
+                            <div role="tabpanel" class="tab-pane fade" id="history">
+                                <form name="contact-form" action="{{url('/register/customer')}}" method="POST" class="contact-form-style-01">
+                                    @csrf
+                                    <div class="messages"></div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="email">Name</label>
+                                                <input type="text" name="name" class="md-input" id="Name" placeholder="Name *" required data-error="Please Enter Valid Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="email">Email</label>
+                                                <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="form-group">
+                                                <label class="sr-only">Password</label>
+                                                <input type="password" name="password" class="md-input" id="subject-2" placeholder="Password *" required>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-group">
@@ -102,7 +106,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
-                                            <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Login</button>
+                                            <button type="submit" class="btn btn-color btn-md btn-default" ><i class="fa fa-filter"></i>Register</button>
                                         </div>
                                     </div>
                                 </form>
@@ -154,14 +158,17 @@
                 <li><a href="{{url('client')}}" class="dropdown-toggle" data-toggle="dropdown">Our Clients</a></li>
                 <li><a href="{{url('buildCamp')}}" class="dropdown-toggle" data-toggle="dropdown">Build Your Campaign</a></li>
                 <li><a href="{{url('contact')}}" class="dropdown-toggle" data-toggle="dropdown">Contact</a></li>
-                <li class="dropdown"> <a href="services.html" class="dropdown-toggle" data-toggle="dropdown">Mohamed</a>
+                @if(Auth::user())
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mohamed</a>
                     <ul class="dropdown-menu">
-                        <li> <a href="myCamps.html" class="dropdown-toggle" data-toggle="dropdown">My Campaigns</a></li>
+                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Campaigns</a></li>
                         <div class="line-horizontal grey-bg width-100-percent centerize-col"></div>
-                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logout</a></li>
+                        <li> <a href="{{url('logout/customer')}}" class="dropdown-toggle" data-toggle="dropdown">Logout</a></li>
                     </ul>
                 </li>
+                @endif
             </ul>
+
         </div>
         <!--== /.navbar-collapse ==-->
     </div>

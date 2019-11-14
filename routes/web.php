@@ -22,8 +22,11 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 
     Route::get('lang/{lang}', 'LanguageController@changeLanguage');
 
+
+//    Route::get('register','UserController@register')->name('register');
+
     /*=======   Return Home     ========*/
-    Route::get('/', 'WebsitePagesController@index');
+    Route::get('/', 'WebsitePagesController@index')->name('home');
 
     /*=======   Return about    ========*/
     Route::get('/about', 'WebsitePagesController@about');
@@ -67,9 +70,13 @@ Route::get('maintenance', function () {
     return 'maintenance';
 });
 
+Route::post('register/customer','UserController@register')->name('register');
+Route::post('login/customer','UserController@login')->name('login');
+Route::get('logout/customer','UserController@logout')->name('logout');
 
-Auth::routes();
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@campaign')->name('home');
+//Auth::routes();
+
+
+//Route::get('/home', 'HomeController@campaign');
