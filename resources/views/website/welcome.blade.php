@@ -248,24 +248,14 @@
                 <!--<div class="col-md-12 col-sm-12 mb-50">
                     <img class="img-responsive" src="assets/images/gallery/service-img-big-01.jpg" alt="service" />
                 </div>-->
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.1s">
-                    <h4 class="mb-0">OOH Media</h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.2s">
-                    <h4 class="mb-0">Production </h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
-                <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.3s">
-                    <h4 class="mb-0">Other Services</h4>
-                    <hr class="left-line default-bg">
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="btn btn-md btn-color btn-animate btn-square mt-20"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
-                </div>
+                @foreach($services as $service)
+                    <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30 wow fadeInRight" data-wow-delay="0.1s">
+                        <h4 class="mb-0">{{@$service->service_en->title}}</h4>
+                        <hr class="left-line default-bg">
+                        <p>{{@$service->service_en->description}}</p>
+                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{route('service_details', ['id' =>$service->id])}}"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -529,14 +519,9 @@
         <div class="container">
             <div class="row">
                 <div class="client-slider slick">
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/client-banque-du-caire-landscape-image-2019-jul-19.png" alt="01"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Egypt Post.png" alt="02"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Exxon Mobil.png" alt="03"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arabia Holding.png" alt="04"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Orange.png" alt="05"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Arco.png" alt="06"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Ghabbour Auto.png" alt="07"/> </div>
-                    <div class="client-logo"> <img class="img-responsive" src="assets/images/clients/Dunkin' Donuts.png" alt="08"/> </div>
+                    @foreach($clients as $client)
+                        <div class="client-logo"> <img class="img-responsive" src="{{url($client->image->path)}}" alt="{{$client->image->alt}}"/> </div>
+                    @endforeach
                 </div>
             </div>
             <div class="row">

@@ -34,7 +34,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 //    Route::get('/service/{id}', 'ServicesController@show')->name('show service');
 
     /*=======   Return Service Details     ========*/
-    Route::get('/service-details/{id}', 'WebsitePagesController@serviceDetails');
+    Route::get('/service-details/{id}', 'WebsitePagesController@service_details')->name('service_details');
 
     /*=======   Return Contact     ========*/
     Route::get('/contact', 'WebsitePagesController@contact');
