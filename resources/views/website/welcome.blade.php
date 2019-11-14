@@ -42,7 +42,9 @@
                                  data-paddingbottom="[10,10,10,10]"
                                  data-paddingleft="[0,0,0,0]"
 
-                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">Production & Advertising </div>
+                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">
+                                Production & Advertising
+                            </div>
 
                             <!-- LAYER NR. 2 -->
                             <div class="tp-caption NotGeneric-SubTitle   tp-resizeme"
@@ -63,7 +65,9 @@
                                  data-paddingbottom="[0,0,0,0]"
                                  data-paddingleft="[0,0,0,0]"
 
-                                 style="z-index: 6; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;letter-spacing: 0px;font-size:18px;">Production for any branding/advertising items (Landmarks – Mockups – Exhibitions’ Booths ) </div>
+                                 style="z-index: 6; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;letter-spacing: 0px;font-size:18px;">
+                                Production for any branding/advertising items (Landmarks – Mockups – Exhibitions’ Booths )
+                            </div>
 
                             <!-- LAYER NR. 3 -->
                             <div class="tp-caption NotGeneric-Icon   tp-resizeme"
@@ -84,7 +88,8 @@
                                  data-paddingbottom="[0,0,0,0]"
                                  data-paddingleft="[0,0,0,0]"
 
-                                 style="z-index: 7; white-space: nowrap;text-transform:left;cursor:default;"><a class="btn btn-color btn-lg btn-default" tabindex="0">What We Do</a> </div>
+                                 style="z-index: 7; white-space: nowrap;text-transform:left;cursor:default;"><a class="btn btn-color btn-lg btn-default" tabindex="0">What We Do</a>
+                            </div>
                         </div>
                     </li>
                     <!-- SLIDE  -->
@@ -115,7 +120,9 @@
                                  data-paddingbottom="[10,10,10,10]"
                                  data-paddingleft="[0,0,0,0]"
 
-                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">E3lan Misr Advertising!</div>
+                                 style="z-index: 5; white-space: nowrap;text-transform:left;font-family: 'Montserrat', sans-serif;">
+                                E3lan Misr Advertising!
+                            </div>
 
 
                             <!-- LAYER NR. 2 -->

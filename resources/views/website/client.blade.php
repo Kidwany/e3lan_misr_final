@@ -30,7 +30,7 @@
                 </div>
                 @endforeach
             </div>
-            {!! $clients->render() !!}
+{{--            {!! $clients->render() !!}--}}
 
         </div>
     </section>

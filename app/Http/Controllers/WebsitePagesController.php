@@ -66,7 +66,7 @@ class WebsitePagesController extends Controller
 
     public function client()
     {
-        $clients = Client::with('image')->paginate(6);
+        $clients = Client::with('image')->get();
         return view('website.client', compact('clients'));
     }
 

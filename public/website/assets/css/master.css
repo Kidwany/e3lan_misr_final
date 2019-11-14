@@ -4724,7 +4724,9 @@ form.register {
 .client-logo img:hover {opacity: 1.0;filter: alpha(opacity=100);cursor: pointer;}
 section.big-block .client-logo {padding:10%;}
 .client-sm-logos img{margin:0 auto;width:150px;}
-.client-logo-height img {-webkit-filter: grayscale(1);filter: grayscale(1);}
+.client-logo-height img {
+    /*-webkit-filter: grayscale(1);filter: grayscale(1);*/
+}
 .client-logo-height:hover img {filter: grayscale(0);-webkit-filter: grayscale(0);}
 .client-logo-height{height:190px;}
 .client-logo-height:hover{box-shadow: 0 0 4px rgba(0,0,0,.1);}
