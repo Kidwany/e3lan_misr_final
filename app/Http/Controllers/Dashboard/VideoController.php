@@ -24,12 +24,12 @@ class VideoController extends Controller
         if ($albumID)
         {
             $videos = Video::with('album')->where('album_id', $albumID)->get();
-            return view('dashboard.video.index', compact('videos'));
+            return view('dashboard.video.campaign', compact('videos'));
         }
         else
         {
             $videos = Video::all();
-            return view('dashboard.video.index', compact('videos'));
+            return view('dashboard.video.campaign', compact('videos'));
         }
     }
 

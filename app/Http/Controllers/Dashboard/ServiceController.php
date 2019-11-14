@@ -32,7 +32,7 @@ class ServiceController extends Controller
             return view('dashboard.service.subService', compact('services'));
         }*/
         $services = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
-        return view('dashboard.service.index', compact('services'));
+        return view('dashboard.service.campaign', compact('services'));
     }
 
     /**

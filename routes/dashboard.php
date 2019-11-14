@@ -13,79 +13,95 @@
 
 /*==============================================   Dashboard Routes    ====================================================*/
 
-Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard'], function () {
+Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => 'e3lan-misr-admin'], function () {
 
 
     /* -- Return Home Page -- */
-    Route::get('/e3lan-misr-admin', 'DashboardController@index');
+    Route::get('/', 'DashboardController@campaign');
 
     /* -- Return Slider Page -- */
-    Route::resource('/e3lan-misr-admin/slider', 'SliderController');
+    Route::resource('/slider', 'SliderController');
 
     /* -- Return Service Page -- */
-    Route::resource('/e3lan-misr-admin/service', 'ServiceController');
-    Route::get('/e3lan-misr-admin/service/{id}/create', 'ServiceController@createSubService');
-    Route::post('/e3lan-misr-admin/sub-service/create', 'ServiceController@storeSub');
+    Route::resource('/service', 'ServiceController');
+    Route::get('/service/{id}/create', 'ServiceController@createSubService');
+    Route::post('/sub-service/create', 'ServiceController@storeSub');
 
     /* -- Return Client Page -- */
-    Route::resource('/e3lan-misr-admin/client', 'ClientController');
+    Route::resource('/client', 'ClientController');
 
     /* -- Return Testimonial Page -- */
-    Route::resource('/e3lan-misr-admin/testimonial', 'TestimonialController');
+    Route::resource('/testimonial', 'TestimonialController');
 
     /* -- Return Team Page -- */
-    Route::resource('/e3lan-misr-admin/team', 'TeamController');
+    Route::resource('/team', 'TeamController');
 
     /* -- Return Appointment Page -- */
-    Route::resource('/e3lan-misr-admin/appointment', 'AppointmentController');
+    //Route::resource('/appointment', 'AppointmentController');
 
     /* -- Return Video Page -- */
-    Route::resource('/e3lan-misr-admin/video', 'VideoController');
+    Route::resource('/video', 'VideoController');
 
 
     /* -- Return Video Page -- */
-    Route::resource('/e3lan-misr-admin/blog', 'BlogController');
+    //Route::resource('/blog', 'BlogController');
 
     /* -- Return Album Page -- */
-    Route::resource('/e3lan-misr-admin/album', 'AlbumController');
+    Route::resource('/album', 'AlbumController');
 
     /* -- Return Gallery Page -- */
-    Route::resource('/e3lan-misr-admin/gallery', 'GalleryController');
-    Route::get('/e3lan-misr-admin/album/{id}/upload-to-gallery', 'AlbumController@uploadPage');
-    Route::post('/e3lan-misr-admin/album/{id}/upload-to-gallery', 'AlbumController@upload');
+    Route::resource('/gallery', 'GalleryController');
+    Route::get('/album/{id}/upload-to-gallery', 'AlbumController@uploadPage');
+    Route::post('/album/{id}/upload-to-gallery', 'AlbumController@upload');
 
     /* -- Return Message Page -- */
-    Route::resource('/e3lan-misr-admin/message', 'MessageController');
+    Route::resource('/message', 'MessageController');
 
     /* -- Return Feature Page -- */
-    Route::resource('/e3lan-misr-admin/feature', 'FeatureController');
+    Route::resource('/feature', 'FeatureController');
 
     /* -- Return Product Page -- */
-    Route::resource('/e3lan-misr-admin/product', 'ProductController');
+    //Route::resource('/product', 'ProductController');
 
     /*--------  About   --------*/
-    Route::get('/e3lan-misr-admin/about/edit', 'AboutController@edit');
-    Route::patch('/e3lan-misr-admin/about/update', 'AboutController@update');
+    Route::get('/about/edit', 'AboutController@edit');
+    Route::patch('/about/update', 'AboutController@update');
 
     /*--------  Contact   --------*/
-    Route::get('/e3lan-misr-admin/contact/edit', 'ContactController@edit');
-    Route::patch('/e3lan-misr-admin/contact/update', 'ContactController@update');
+    Route::get('/contact/edit', 'ContactController@edit');
+    Route::patch('/contact/update', 'ContactController@update');
 
 
     /*--------  Setting   --------*/
-    Route::get('/e3lan-misr-admin/setting/edit', 'SettingController@edit');
-    Route::patch('/e3lan-misr-admin/setting/update', 'SettingController@update');
+    Route::get('/setting/edit', 'SettingController@edit');
+    Route::patch('/setting/update', 'SettingController@update');
 
 
     /* -- Return Gallery Page -- */
-    Route::resource('/e3lan-misr-admin/gallery', 'GalleryController');
-    Route::post('/e3lan-misr-admin/upload-to-gallery', 'GalleryController@uploadImagesToGallery');
+    Route::resource('/gallery', 'GalleryController');
+    Route::post('/upload-to-gallery', 'GalleryController@uploadImagesToGallery');
 
 
     /* -- Project -- */
-    Route::resource('/e3lan-misr-admin/project', 'ProjectController');
-    Route::delete('/e3lan-misr-admin/project/delete-image/{id}', 'ProjectController@deleteImage');
-    Route::get('/e3lan-misr-admin/project/{id}/images', 'ProjectController@projectImages');
+    Route::resource('/project', 'ProjectController');
+    Route::delete('/project/delete-image/{id}', 'ProjectController@deleteImage');
+    Route::get('/project/{id}/images', 'ProjectController@projectImages');
+
+    /* --- Campaign Requests  ---*/
+    Route::get('/campaign-request', 'CampaignController@index');
+    Route::get('/campaign-request/{$id}', 'CampaignController@show');
+
+    /* --- Parent Location ---*/
+    Route::resource('parent-location', 'ParentLocationController');
+
+    /* --- Child Location ---*/
+    Route::resource('child-location', 'ChildLocationController');
+
+    /* --- Child of Child Location ---*/
+    Route::resource('child-of-child-location', 'ChildOfChildLocationController');
+
+    /* --- Parent Location ---*/
+    Route::resource('billboard', 'BillboardController');
 
 });
 
@@ -96,4 +112,4 @@ Auth::routes();
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@campaign')->name('home');

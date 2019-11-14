@@ -21,7 +21,7 @@ class TeamController extends Controller
     public function index()
     {
         $members = Team::with('team_en')->get();
-        return view('dashboard.team.index', compact('members'));
+        return view('dashboard.team.campaign', compact('members'));
     }
 
     /**

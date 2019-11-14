@@ -25,17 +25,17 @@ class AlbumController extends Controller
         if ($albumType == 'images')
         {
             $albums = Album::with('album_en', 'createdBy', 'image')->where('type', 1)->get();
-            return view('dashboard.album.index', compact('albums'));
+            return view('dashboard.album.campaign', compact('albums'));
         }
         elseif ($albumType == 'videos')
         {
             $albums = Album::with('album_en', 'createdBy', 'image')->where('type', 2)->get();
-            return view('dashboard.album.index', compact('albums'));
+            return view('dashboard.album.campaign', compact('albums'));
         }
         else
         {
             $albums = Album::with('album_en', 'createdBy', 'image')->get();
-            return view('dashboard.album.index', compact('albums'));
+            return view('dashboard.album.campaign', compact('albums'));
         }
     }
 

@@ -19,7 +19,7 @@ class TestimonialController extends Controller
     public function index()
     {
         $testimonials = Testimonial::with('testimonial_en', 'createdBy')->get();
-        return view('dashboard.testimonial.index', compact('testimonials'));
+        return view('dashboard.testimonial.campaign', compact('testimonials'));
     }
 
     /**

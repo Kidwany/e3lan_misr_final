@@ -60,6 +60,18 @@
 
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-map-signs"></i>
+                    <span>Billboards</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('billboard/create')}}"><i class="fa fa-plus"></i> Add Billboard</a></li>
+                    <li><a href="{{adminUrl('billboard')}}"><i class="fa fa-edit"></i> Show / Edit Billboard</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-money"></i>
                     <span>Client</span>
                     <i class="fa fa-angle-left pull-right"></i>
@@ -70,29 +82,52 @@
                 </ul>
             </li>
 
-            {{--<li class="treeview">
+            <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-list-ul"></i>
-                    <span>Projects</span>
+                    <i class="fa fa-map-pin"></i>
+                    <span>Locations</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{adminUrl('project/create')}}"><i class="fa fa-plus"></i> Add Projects</a></li>
-                    <li><a href="{{adminUrl('project')}}"><i class="fa fa-edit"></i> Show / Edit Projects</a></li>
+                    <li><a href="{{adminUrl('parent-location/create')}}"><i class="fa fa-plus"></i> Add Location</a></li>
+                    <li><a href="{{adminUrl('parent-location')}}"><i class="fa fa-edit"></i> Show / Edit Location</a></li>
                 </ul>
-            </li>--}}
+            </li>
 
-            {{--<li class="treeview">
+            <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i>
-                    <span>Team</span>
+                    <i class="fa fa-map"></i>
+                    <span>Zones</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{adminUrl('team/create')}}"><i class="fa fa-upload"></i> Add New Member</a></li>
-                    <li><a href="{{adminUrl('team')}}"><i class="fa fa-edit"></i> Show / Edit Members</a></li>
+                    <li><a href="{{adminUrl('child-location/create')}}"><i class="fa fa-plus"></i> Add Zone</a></li>
+                    <li><a href="{{adminUrl('child-location')}}"><i class="fa fa-edit"></i> Show / Edit Zone</a></li>
                 </ul>
-            </li>--}}
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-map-marker"></i>
+                    <span>Areas</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('child-of-child-location/create')}}"><i class="fa fa-plus"></i> Add Area</a></li>
+                    <li><a href="{{adminUrl('child-of-child-location')}}"><i class="fa fa-edit"></i> Show / Edit Area</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-microphone"></i>
+                    <span>Campaigns</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('campaign-request')}}"><i class="fa fa-edit"></i> Show Campaigns Requests</a></li>
+                </ul>
+            </li>
 
             <li class="treeview">
                 <a href="#">

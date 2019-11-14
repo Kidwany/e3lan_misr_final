@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2019 at 10:30 PM
+-- Generation Time: Nov 14, 2019 at 07:19 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -50,26 +50,12 @@ INSERT INTO `about` (`id`, `about_id`, `mission`, `vision`, `value`, `approach`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `area`
---
-
-CREATE TABLE `area` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `area_id` int(10) UNSIGNED NOT NULL,
-  `area` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `billboard`
 --
 
 CREATE TABLE `billboard` (
   `id` int(10) UNSIGNED NOT NULL,
-  `project_id` int(10) UNSIGNED NOT NULL,
+  `billboard_id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `client` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -81,8 +67,50 @@ CREATE TABLE `billboard` (
 -- Dumping data for table `billboard`
 --
 
-INSERT INTO `billboard` (`id`, `project_id`, `name`, `client`, `description`, `created_at`, `updated_at`) VALUES
+INSERT INTO `billboard` (`id`, `billboard_id`, `name`, `client`, `description`, `created_at`, `updated_at`) VALUES
 (5, 12, 'Maverick Project', 'Ahmed Sayed', 'Maverick ProjectMaverick  ProjectMaverick Project', '2019-10-26 20:25:15', '2019-10-26 18:25:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_location`
+--
+
+CREATE TABLE `child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `child_location_id` int(10) UNSIGNED NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_location`
+--
+
+INSERT INTO `child_location` (`id`, `child_location_id`, `location`, `created_at`, `updated_at`) VALUES
+(2, 2, 'New Cairo', '2019-11-14 02:47:11', '2019-11-14 02:47:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_of_child_location`
+--
+
+CREATE TABLE `child_of_child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `child_of_child_location_id` int(10) UNSIGNED NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_of_child_location`
+--
+
+INSERT INTO `child_of_child_location` (`id`, `child_of_child_location_id`, `location`, `created_at`, `updated_at`) VALUES
+(1, 2, '5th Satellment', '2019-11-13 22:00:00', '2019-11-14 03:22:33');
 
 -- --------------------------------------------------------
 
@@ -141,6 +169,29 @@ CREATE TABLE `parent` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parent_location`
+--
+
+CREATE TABLE `parent_location` (
+  `id` int(10) NOT NULL,
+  `parent_location_id` int(10) UNSIGNED NOT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `parent_location`
+--
+
+INSERT INTO `parent_location` (`id`, `parent_location_id`, `location`, `description`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Cairo', NULL, '2019-11-13 22:00:00', '2019-11-14 01:53:12'),
+(2, 2, 'Alexandria', NULL, '2019-11-14 01:46:11', '2019-11-14 01:46:11');
 
 -- --------------------------------------------------------
 
@@ -232,20 +283,6 @@ CREATE TABLE `testimonial` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `zone`
---
-
-CREATE TABLE `zone` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `zone_id` int(10) UNSIGNED NOT NULL,
-  `zone` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Indexes for dumped tables
 --
@@ -258,18 +295,25 @@ ALTER TABLE `about`
   ADD KEY `about_ar_id` (`about_id`);
 
 --
--- Indexes for table `area`
---
-ALTER TABLE `area`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `area_parent_id` (`area_id`);
-
---
 -- Indexes for table `billboard`
 --
 ALTER TABLE `billboard`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `project_id_en` (`project_id`);
+  ADD KEY `project_id_en` (`billboard_id`);
+
+--
+-- Indexes for table `child_location`
+--
+ALTER TABLE `child_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_zone_id` (`child_location_id`);
+
+--
+-- Indexes for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `area_parent_id` (`child_of_child_location_id`);
 
 --
 -- Indexes for table `client`
@@ -291,6 +335,13 @@ ALTER TABLE `feature`
 ALTER TABLE `parent`
   ADD PRIMARY KEY (`id`),
   ADD KEY `parent_id_fk` (`parent_id`);
+
+--
+-- Indexes for table `parent_location`
+--
+ALTER TABLE `parent_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `location_parent_id` (`parent_location_id`);
 
 --
 -- Indexes for table `service`
@@ -321,13 +372,6 @@ ALTER TABLE `testimonial`
   ADD KEY `testimonial_id_ar` (`testimonial_id`);
 
 --
--- Indexes for table `zone`
---
-ALTER TABLE `zone`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `parent_zone_id` (`zone_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -338,16 +382,22 @@ ALTER TABLE `about`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `area`
---
-ALTER TABLE `area`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `billboard`
 --
 ALTER TABLE `billboard`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `child_location`
+--
+ALTER TABLE `child_location`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `client`
@@ -368,10 +418,16 @@ ALTER TABLE `parent`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `parent_location`
+--
+ALTER TABLE `parent_location`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -392,12 +448,6 @@ ALTER TABLE `testimonial`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `zone`
---
-ALTER TABLE `zone`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -408,16 +458,22 @@ ALTER TABLE `about`
   ADD CONSTRAINT `about_ar_id` FOREIGN KEY (`about_id`) REFERENCES `e3lanmisr`.`about` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `area`
---
-ALTER TABLE `area`
-  ADD CONSTRAINT `area_parent_id` FOREIGN KEY (`area_id`) REFERENCES `e3lanmisr`.`area` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `billboard`
 --
 ALTER TABLE `billboard`
-  ADD CONSTRAINT `project_id_en` FOREIGN KEY (`project_id`) REFERENCES `e3lanmisr`.`billboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `project_id_en` FOREIGN KEY (`billboard_id`) REFERENCES `e3lanmisr`.`billboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `child_location`
+--
+ALTER TABLE `child_location`
+  ADD CONSTRAINT `parent_zone_id` FOREIGN KEY (`child_location_id`) REFERENCES `e3lanmisr`.`child_location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  ADD CONSTRAINT `area_parent_id` FOREIGN KEY (`child_of_child_location_id`) REFERENCES `e3lanmisr`.`child_of_child_location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `client`
@@ -436,6 +492,12 @@ ALTER TABLE `feature`
 --
 ALTER TABLE `parent`
   ADD CONSTRAINT `parent_id_fk` FOREIGN KEY (`parent_id`) REFERENCES `e3lanmisr`.`parent` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `parent_location`
+--
+ALTER TABLE `parent_location`
+  ADD CONSTRAINT `location_parent_id` FOREIGN KEY (`parent_location_id`) REFERENCES `e3lanmisr`.`parent_location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `service`
@@ -460,12 +522,6 @@ ALTER TABLE `slider`
 --
 ALTER TABLE `testimonial`
   ADD CONSTRAINT `testimonial_id_ar` FOREIGN KEY (`testimonial_id`) REFERENCES `e3lanmisr`.`testimonial` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `zone`
---
-ALTER TABLE `zone`
-  ADD CONSTRAINT `parent_zone_id` FOREIGN KEY (`zone_id`) REFERENCES `e3lanmisr`.`zone` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

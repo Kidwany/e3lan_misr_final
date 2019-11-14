@@ -21,7 +21,7 @@ class SliderController extends Controller
     public function index()
     {
         $slides = Slider::with('image', 'slider_en', 'createdBy')->get();
-        return view('dashboard.slider.index', compact('slides'));
+        return view('dashboard.slider.campaign', compact('slides'));
     }
 
     /**

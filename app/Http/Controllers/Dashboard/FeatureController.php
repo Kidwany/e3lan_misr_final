@@ -23,7 +23,7 @@ class FeatureController extends Controller
     {
 
         $features = Feature::with('feature_en', 'image')->get();
-        return view('dashboard.feature.index', compact('features'));
+        return view('dashboard.feature.campaign', compact('features'));
     }
 
     /**

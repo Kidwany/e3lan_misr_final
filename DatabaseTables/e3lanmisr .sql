@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2019 at 10:30 PM
+-- Generation Time: Nov 14, 2019 at 07:19 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -49,18 +49,6 @@ INSERT INTO `about` (`id`, `image_id`, `mission_image_id`, `vision_image_id`, `v
 -- --------------------------------------------------------
 
 --
--- Table structure for table `area`
---
-
-CREATE TABLE `area` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `billboard`
 --
 
@@ -69,7 +57,7 @@ CREATE TABLE `billboard` (
   `code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_id` int(10) UNSIGNED DEFAULT NULL,
   `service_id` int(10) DEFAULT NULL,
-  `area_id` int(10) UNSIGNED DEFAULT NULL,
+  `location_id` int(10) UNSIGNED DEFAULT NULL,
   `size_id` int(10) UNSIGNED DEFAULT NULL,
   `dimension` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location` text COLLATE utf8mb4_unicode_ci,
@@ -82,8 +70,8 @@ CREATE TABLE `billboard` (
 -- Dumping data for table `billboard`
 --
 
-INSERT INTO `billboard` (`id`, `code`, `image_id`, `service_id`, `area_id`, `size_id`, `dimension`, `location`, `created_by`, `created_at`, `updated_at`) VALUES
-(12, NULL, 46, 23, NULL, NULL, NULL, NULL, 3, '2019-10-26 12:12:27', '2019-10-26 18:24:49');
+INSERT INTO `billboard` (`id`, `code`, `image_id`, `service_id`, `location_id`, `size_id`, `dimension`, `location`, `created_by`, `created_at`, `updated_at`) VALUES
+(12, '#355ddf', 46, 23, 2, NULL, NULL, NULL, 3, '2019-10-26 12:12:27', '2019-10-26 18:24:49');
 
 -- --------------------------------------------------------
 
@@ -124,6 +112,13 @@ CREATE TABLE `campaign` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `campaign`
+--
+
+INSERT INTO `campaign` (`id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 2, '2019-11-12 22:00:00', '2019-11-12 22:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +142,14 @@ CREATE TABLE `campaign_details` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `campaign_details`
+--
+
+INSERT INTO `campaign_details` (`id`, `campaign_id`, `company`, `phone`, `position`, `name`, `start_at`, `end_at`, `availability`, `price`, `printing_cost`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'cxfcv', 'xbdxcfbxcb', 'fxbxcvbxc', NULL, '2019-11-12 22:00:00', '2019-11-12 22:00:00', NULL, 0, 0, 1, '2019-11-12 22:00:00', '2019-11-12 22:00:00'),
+(2, 1, 'sdvdzcvdzs', 'zvzcv', 'zxvzxcvzv', 'zvzvzv', '2019-11-12 22:00:00', '2019-11-12 22:00:00', NULL, NULL, NULL, 1, '2019-11-12 22:00:00', '2019-11-12 22:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -160,6 +163,46 @@ CREATE TABLE `campaign_items` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_location`
+--
+
+CREATE TABLE `child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_location_id` int(10) UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_location`
+--
+
+INSERT INTO `child_location` (`id`, `parent_location_id`, `created_at`, `updated_at`) VALUES
+(2, 1, '2019-11-14 02:47:11', '2019-11-14 02:47:11');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `child_of_child_location`
+--
+
+CREATE TABLE `child_of_child_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `child_location_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `child_of_child_location`
+--
+
+INSERT INTO `child_of_child_location` (`id`, `child_location_id`, `created_at`, `updated_at`) VALUES
+(2, 2, '2019-11-13 22:00:00', '2019-11-13 22:00:00');
 
 -- --------------------------------------------------------
 
@@ -317,6 +360,26 @@ CREATE TABLE `parent` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `parent_location`
+--
+
+CREATE TABLE `parent_location` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `parent_location`
+--
+
+INSERT INTO `parent_location` (`id`, `created_at`, `updated_at`) VALUES
+(1, '2019-11-13 22:00:00', '2019-11-13 22:00:00'),
+(2, '2019-11-14 01:46:11', '2019-11-14 01:46:11');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `service`
 --
 
@@ -453,19 +516,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `role_id`, `image_id`, `email_verifi
 (2, 'Mohamed Kidwany', 'kidoo@3elaji.com', NULL, NULL, NULL, '$2y$12$..vHGD7vwnIG74yYwzR2h.DKGN2MEZGaqkTkVl5cwpHsxkINHXL3W\r\n', '0LpvuglkZ4sffPupecJrX9yJqHg9Jag1sAkILElvehb9GdFbK7n13sDwK58Q', '2019-06-18 15:45:49', '2019-06-18 16:12:57'),
 (3, 'Admin', 'admin@e3lan-misr.com', NULL, NULL, NULL, '$2y$10$hK.eiBbbNJsfhenhnuiyBeyFG3YKJgspnP0uUsvFM33SXqZ2OPLd6', 'tHNn1QXvh25NVKAgZ2jaMT28icdlEDdFbJ789Dxvly5oC7D7lqPMQ6aaVZzr', '2019-08-14 09:42:26', '2019-08-14 09:42:26');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `zone`
---
-
-CREATE TABLE `zone` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `area_id` int(10) UNSIGNED DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 --
 -- Indexes for dumped tables
 --
@@ -482,20 +532,14 @@ ALTER TABLE `about`
   ADD KEY `approach_image_id` (`approach_image_id`);
 
 --
--- Indexes for table `area`
---
-ALTER TABLE `area`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `billboard`
 --
 ALTER TABLE `billboard`
   ADD PRIMARY KEY (`id`),
   ADD KEY `project_service_id` (`service_id`),
   ADD KEY `billboard_image_id` (`image_id`),
-  ADD KEY `billboard_area_id` (`area_id`),
-  ADD KEY `billboard_size_id` (`size_id`);
+  ADD KEY `billboard_size_id` (`size_id`),
+  ADD KEY `billboard_location_id` (`location_id`);
 
 --
 -- Indexes for table `billboard_images`
@@ -525,6 +569,20 @@ ALTER TABLE `campaign_details`
 ALTER TABLE `campaign_items`
   ADD KEY `parent_campaign_id` (`campaign_id`),
   ADD KEY `parent_billboard_id` (`billboard_id`);
+
+--
+-- Indexes for table `child_location`
+--
+ALTER TABLE `child_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `zone_location_id` (`parent_location_id`);
+
+--
+-- Indexes for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `area_zone` (`child_location_id`);
 
 --
 -- Indexes for table `client`
@@ -562,6 +620,12 @@ ALTER TABLE `message`
 -- Indexes for table `parent`
 --
 ALTER TABLE `parent`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parent_location`
+--
+ALTER TABLE `parent_location`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -619,13 +683,6 @@ ALTER TABLE `users`
   ADD KEY `user_image_id` (`image_id`);
 
 --
--- Indexes for table `zone`
---
-ALTER TABLE `zone`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `zone_area_id` (`area_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -634,12 +691,6 @@ ALTER TABLE `zone`
 --
 ALTER TABLE `about`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `area`
---
-ALTER TABLE `area`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `billboard`
@@ -657,13 +708,25 @@ ALTER TABLE `billboard_images`
 -- AUTO_INCREMENT for table `campaign`
 --
 ALTER TABLE `campaign`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `campaign_details`
 --
 ALTER TABLE `campaign_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `child_location`
+--
+ALTER TABLE `child_location`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `client`
@@ -693,7 +756,7 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `parent`
@@ -702,10 +765,16 @@ ALTER TABLE `parent`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `parent_location`
+--
+ALTER TABLE `parent_location`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `service_images`
@@ -744,12 +813,6 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `zone`
---
-ALTER TABLE `zone`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- Constraints for dumped tables
 --
 
@@ -767,8 +830,8 @@ ALTER TABLE `about`
 -- Constraints for table `billboard`
 --
 ALTER TABLE `billboard`
-  ADD CONSTRAINT `billboard_area_id` FOREIGN KEY (`area_id`) REFERENCES `area` (`id`),
   ADD CONSTRAINT `billboard_image_id` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`),
+  ADD CONSTRAINT `billboard_location_id` FOREIGN KEY (`location_id`) REFERENCES `child_of_child_location` (`id`),
   ADD CONSTRAINT `billboard_size_id` FOREIGN KEY (`size_id`) REFERENCES `size` (`id`),
   ADD CONSTRAINT `project_service_id` FOREIGN KEY (`service_id`) REFERENCES `service` (`id`);
 
@@ -797,6 +860,18 @@ ALTER TABLE `campaign_details`
 ALTER TABLE `campaign_items`
   ADD CONSTRAINT `parent_billboard_id` FOREIGN KEY (`billboard_id`) REFERENCES `billboard` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `parent_campaign_id` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `child_location`
+--
+ALTER TABLE `child_location`
+  ADD CONSTRAINT `zone_location_id` FOREIGN KEY (`parent_location_id`) REFERENCES `parent_location` (`id`);
+
+--
+-- Constraints for table `child_of_child_location`
+--
+ALTER TABLE `child_of_child_location`
+  ADD CONSTRAINT `area_zone` FOREIGN KEY (`child_location_id`) REFERENCES `child_location` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `feature`
@@ -838,12 +913,6 @@ ALTER TABLE `testimonial`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `user_image_id` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `zone`
---
-ALTER TABLE `zone`
-  ADD CONSTRAINT `zone_area_id` FOREIGN KEY (`area_id`) REFERENCES `area` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

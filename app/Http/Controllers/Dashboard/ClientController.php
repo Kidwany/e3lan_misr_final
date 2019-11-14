@@ -20,7 +20,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::with('client_en', 'createdBy', 'image')->get();
-        return view('dashboard.client.index', compact('clients'));
+        return view('dashboard.client.campaign', compact('clients'));
     }
 
     /**

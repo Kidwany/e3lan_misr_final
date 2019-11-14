@@ -14,7 +14,7 @@ class GalleryController extends Controller
     public function index()
     {
         $images = Gallery::with('image')->get();
-        return view('dashboard.gallery.index', compact('images'));
+        return view('dashboard.gallery.campaign', compact('images'));
     }
 
     public function create()

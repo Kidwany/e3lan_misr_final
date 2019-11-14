@@ -22,7 +22,7 @@ class ProjectController extends Controller
     {
         $services = Service::with('service_en')->get();
         $projects =  Project::with('project_en')->get();
-        return view('dashboard.project.index', compact('services', 'projects'));
+        return view('dashboard.project.campaign', compact('services', 'projects'));
     }
 
     /**
