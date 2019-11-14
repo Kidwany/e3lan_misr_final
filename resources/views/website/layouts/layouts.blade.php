@@ -21,7 +21,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
+    <title>{{@$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
 
     <!-- CSS ============================================ -->
 
