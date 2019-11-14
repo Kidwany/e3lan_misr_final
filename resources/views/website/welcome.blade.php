@@ -366,6 +366,8 @@
     </section>
     <!--== Video End ==-->
 
+    <br><br><br><br><br>
+
     <!--== Features ==-->
     <section class="remove-padding white-bg">
         <div class="container-fluid">
@@ -439,66 +441,67 @@
     </section>-->
     <!--== Counter End ==-->
 
-    <!--== Testimonails Style 01 Start ==-->
-    <section class="grey-bg">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 section-heading">
-                    <h4 class="text-uppercase mt-0">Testimonials</h4>
-                </div>
-            </div>
-            <div class="row mt-50">
-                <div class="slick testimonial">
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Hossam Ahmed</h5>
-                                <span class="grey-color font-14px">SEO Manager at Cocacola</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
+{{--    <!--== Testimonails Style 01 Start ==-->--}}
+{{--    <section class="grey-bg">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-8 section-heading">--}}
+{{--                    <h4 class="text-uppercase mt-0">Testimonials</h4>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="row mt-50">--}}
+{{--                <div class="slick testimonial">--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content">--}}
+{{--                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Hossam Ahmed</h5>--}}
+{{--                                <span class="grey-color font-14px">SEO Manager at Cocacola</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content">
-                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-2"/>
-                                <h5 class="font-700 mb-0">Hana Samy</h5>
-                                <span class="grey-color font-14px">Head of Product at ZARA</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Abdallah Rashid</h5>
-                                <span class="grey-color font-14px">CEO / Founder at Kido</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-xs-12">
-                        <!--== Slide ==-->
-                        <div class="testimonial-item">
-                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>
-                                <h5 class="font-700 mb-0">Shrief Ali</h5>
-                                <span class="grey-color font-14px">Marketing Manager at QNB</span>
-                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== Testimonails Style 01 End ==-->
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content">--}}
+{{--                                <img class="img-responsive img-circle text-center" src="assets/images/testimonials/user%20(1).png" alt="avatar-2"/>--}}
+{{--                                <h5 class="font-700 mb-0">Hana Samy</h5>--}}
+{{--                                <span class="grey-color font-14px">Head of Product at ZARA</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Abdallah Rashid</h5>--}}
+{{--                                <span class="grey-color font-14px">CEO / Founder at Kido</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-sm-6 col-xs-12">--}}
+{{--                        <!--== Slide ==-->--}}
+{{--                        <div class="testimonial-item">--}}
+{{--                            <div class="testimonial-content"> <img class="img-responsive img-circle" src="assets/images/testimonials/user%20(1).png" alt="avatar-1"/>--}}
+{{--                                <h5 class="font-700 mb-0">Shrief Ali</h5>--}}
+{{--                                <span class="grey-color font-14px">Marketing Manager at QNB</span>--}}
+{{--                                <p class="mt-20 line-height-26 font-14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sodales nec nulla ac aliquet. Duis vel nunc eget.</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
+{{--    <!--== Testimonails Style 01 End ==-->--}}
 
     <!--== Subscribe Start ==-->
+    <br><br><br><br><br>
     <section class="pt-80 pb-80 dark-bg">
         <div class="container">
             <div class="row mt-50">

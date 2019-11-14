@@ -6,7 +6,7 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="widget widget-text">
                         <div class="logo logo-footer"><a href="index.html"> <img class="logo logo-display" src="assets/images/logo/Light.png" style="max-height: 100px" alt=""></a> </div>
-                        <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
+{{--                        <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>--}}
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-2">

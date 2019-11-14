@@ -31,6 +31,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 
     /*=======   Return Service    ========*/
     Route::get('/service', 'WebsitePagesController@service');
+//    Route::get('/service/{id}', 'ServicesController@show')->name('show service');
 
     /*=======   Return Service Details     ========*/
     Route::get('/service-details/{id}', 'WebsitePagesController@serviceDetails');
@@ -45,7 +46,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 
     /*=======   Return Client     ========*/
     Route::get('/client', 'WebsitePagesController@client');
-    
+
     /*=======   Return buildCamp     ========*/
     Route::get('/buildCamp', 'WebsitePagesController@buildCamp');
 
