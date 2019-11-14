@@ -28,13 +28,6 @@
                                 <a href="{{url('serviceDetails')}}/{{$service->id}}">
                                     <img class="img-responsive" src="{{$service->image->path}}" alt="torneo-product"/>
                                 </a>
-                                <div class="product-action">
-                                    <div class="tr-modal-popup">
-                                        <a href="#details-popup" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn" type="button" value="Add to Cart">
-                                            <i class="icofont icofont-mega-phone"></i> <span>Add to Campaign </span>
-                                        </a>
-                                    </div>
-                                </div>
                                 <div class="wrap-label">
                                     <span class="label-product new-label">New</span>
                                     <!--<span class="label-product sale-label">-50%</span>-->
