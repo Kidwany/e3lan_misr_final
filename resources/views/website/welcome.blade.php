@@ -521,6 +521,7 @@
                 <div class="client-slider slick">
                     @foreach($clients as $client)
                         <div class="client-logo"> <img class="img-responsive" src="{{url($client->image->path)}}" alt="{{$client->image->alt}}"/> </div>
+
                     @endforeach
                 </div>
             </div>
