@@ -13,6 +13,7 @@ use App\Models\Product;
 use App\Models\About;
 use App\Models\Project;
 use App\Models\Slider;
+use App\Models\Campaign;
 use App\Models\Service;
 use App\Models\Team;
 use Illuminate\Http\Request;
@@ -69,9 +70,16 @@ class WebsitePagesController extends Controller
 
     public function buildCamp()
     {
-        $buildCamps = Client::with('image')->paginate(6);
+        $buildCamps = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
         return view('website.buildCamp', compact('buildCamps'));
     }
+
+    public function service()
+    {
+        $services = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
+        return view('website.services', compact('services'));
+    }
+
 
     public function message(Request $request)
     {
@@ -91,17 +99,21 @@ class WebsitePagesController extends Controller
     }
 
 
-    public function service()
-    {
-        //$services = Service::with('childService')->where('parent_service_id', null)->get()
-        return view('website.service');
-    }
+   
 
     public function team()
     {
         $members = Team::with('image')->get();
         return view('website.team', compact('members'));
     }
+
+
+    public function service_details($id)
+    {
+        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
+        return view('website.services_details', compact('services'));
+    }
+
 
 }
 
