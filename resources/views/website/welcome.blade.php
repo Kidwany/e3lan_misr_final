@@ -3,6 +3,12 @@
 
 @section('content')
 
+    {{--    @if(session()->has('message'))--}}
+{{--        <div class="alert alert-success">--}}
+{{--            {{ session()->get('message') }}--}}
+{{--        </div>--}}
+{{--    @endif--}}
+
     <!--== Hero Slider Start ==-->
     <section class="remove-padding transition-none">
         <div id="rev_slider_1078_1_wrapper" class="rev_slider_wrapper fullwidthbanner-container" data-alias="classic4export" data-source="gallery" style="margin:0px auto;background-color:transparent;padding:0px;margin-top:0px;margin-bottom:0px;">

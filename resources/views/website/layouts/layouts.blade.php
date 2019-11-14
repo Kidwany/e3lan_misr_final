@@ -117,6 +117,21 @@
 <!-- WhatsHelp.io widget -->
 <!-- WhatsHelp.io widget -->
 <script type="text/javascript">
+$(document).ready(function () {
+$('#submit').click(function () {
+
+    $.ajax({
+        url: '{{ url('register/customer') }}',
+        type: 'post',
+        data: {
+            "_token": "{{ csrf_token() }}",
+            "id": "12"
+        },
+        success: function (data) {
+
+        }
+    });});
+});
     (function () {
         var options = {
             facebook: "656667041413984", // Facebook page ID
