@@ -55,6 +55,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     /*=======   Return service     ========*/
     Route::get('/services', 'WebsitePagesController@service');
     Route::get('/serviceDetails/{id}', 'WebsitePagesController@service_details');
+    Route::get('/child_location/{id}', 'WebsitePagesController@child_location');
 
 
 });

@@ -122,7 +122,7 @@ $("#datetimepicker2").datepicker( {
     minViewMode: "months"
 });
 
-});
+
 </script>
 
 <script src="{{assetPath('website/assets/js/smoothscroll.js')}}"></script>
@@ -145,6 +145,23 @@ $("#datetimepicker2").datepicker( {
 <!-- WhatsHelp.io widget -->
 <!-- WhatsHelp.io widget -->
 <script type="text/javascript">
+$(document).ready(function(){
+$(document).on('change', '#Zone1', function() {
+    
+    var id = $(this).val();
+    alert(id);
+        $.ajax({
+            url: '{!! url('child_location') !!}',
+            type: 'post',
+            data: {id: id  },
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            success: function (data) {
+            }
+        });
+
+
+});
+});
     (function () {
         var options = {
             facebook: "656667041413984", // Facebook page ID

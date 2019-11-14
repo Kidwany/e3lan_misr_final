@@ -124,6 +124,12 @@ class WebsitePagesController extends Controller
         $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
         return view('website.services_details', compact('services'));
     }
+    public function child_location($id,Request $request)
+    {
+        dd($request);
+        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
+        return view('website.services_details', compact('services'));
+    }
 
 
 }
