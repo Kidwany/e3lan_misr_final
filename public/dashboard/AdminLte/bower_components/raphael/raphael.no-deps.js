@@ -4986,7 +4986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     **
 	     > Parameters
 	     **
-	     - index (number) position of the deletion
+	     - campaign (number) position of the deletion
 	     - count (number) number of element to remove
 	     - insertion… (object) #optional elements to insert
 	     = (object) set elements that were deleted

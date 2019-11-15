@@ -18,7 +18,7 @@ require.modules = {};
 require.resolve = function (path){
     var orig = path
       , reg = path + '.js'
-      , index = path + '/index.js';
+      , index = path + '/campaign.js';
     return require.modules[reg] && reg
       || require.modules[index] && index
       || orig;
@@ -898,7 +898,7 @@ var Suite = require('../suite')
  *
  *          });
  *
- *          it('should return the index when present', function(){
+ *          it('should return the campaign when present', function(){
  *
  *          });
  *        });
@@ -1038,7 +1038,7 @@ var Suite = require('../suite')
  *
  *         },
  *
- *         'should return the correct index when the value is present': function(){
+ *         'should return the correct campaign when the value is present': function(){
  *
  *         }
  *       }
@@ -1084,14 +1084,14 @@ module.exports = function(suite){
 
 }); // module: interfaces/exports.js
 
-require.register("interfaces/index.js", function(module, exports, require){
+require.register("interfaces/campaign.js", function(module, exports, require){
 
 exports.bdd = require('./bdd');
 exports.tdd = require('./tdd');
 exports.qunit = require('./qunit');
 exports.exports = require('./exports');
 
-}); // module: interfaces/index.js
+}); // module: interfaces/campaign.js
 
 require.register("interfaces/qunit.js", function(module, exports, require){
 
@@ -1242,7 +1242,7 @@ var Suite = require('../suite')
  *
  *          });
  *
- *          test('should return the index when present', function(){
+ *          test('should return the campaign when present', function(){
  *
  *          });
  *
@@ -2819,7 +2819,7 @@ function on(el, event, fn) {
 
 }); // module: reporters/html.js
 
-require.register("reporters/index.js", function(module, exports, require){
+require.register("reporters/campaign.js", function(module, exports, require){
 
 exports.Base = require('./base');
 exports.Dot = require('./dot');
@@ -2839,7 +2839,7 @@ exports.JSONCov = require('./json-cov');
 exports.HTMLCov = require('./html-cov');
 exports.JSONStream = require('./json-stream');
 
-}); // module: reporters/index.js
+}); // module: reporters/campaign.js
 
 require.register("reporters/json-cov.js", function(module, exports, require){
 
@@ -4962,7 +4962,7 @@ Runner.prototype.abort = function(){
 
 function filterLeaks(ok, globals) {
   return filter(globals, function(key){
-    // Firefox and Chrome exposes iframes as index inside the window object
+    // Firefox and Chrome exposes iframes as campaign inside the window object
     if (/^d+/.test(key)) return false;
 
     // in firefox
@@ -5422,7 +5422,7 @@ exports.map = function(arr, fn, scope){
  * Array#indexOf (<=IE8)
  *
  * @parma {Array} arr
- * @param {Object} obj to find index of
+ * @param {Object} obj to find campaign of
  * @param {Number} start
  * @api private
  */

@@ -391,7 +391,7 @@ temporary rendered events).
   content: "";
   position: absolute;
   z-index: 9999;
-  /* user of this util can scope within a lower z-index */
+  /* user of this util can scope within a lower z-campaign */
   top: 50%;
   left: 50%;
   width: 40px;
@@ -403,7 +403,7 @@ temporary rendered events).
 --------------------------------------------------------------------------------------------------*/
 .fc-event.fc-selected {
   z-index: 9999 !important;
-  /* overcomes inline z-index */
+  /* overcomes inline z-campaign */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); }
 
 .fc-event.fc-selected.fc-dragging {
@@ -508,7 +508,7 @@ tr:first-child > td > .fc-day-grid-event {
   content: "";
   position: absolute;
   z-index: 1;
-  /* same z-index as fc-bg, behind text */
+  /* same z-campaign as fc-bg, behind text */
   /* overcome the borders */
   top: -1px;
   right: -1px;
@@ -1052,7 +1052,7 @@ NOTE: use percentage fonts sizes or else old IE chokes
 .fc-time-grid .fc-bgevent {
   position: absolute;
   z-index: 1;
-  /* scope inner z-index's */ }
+  /* scope inner z-campaign's */ }
 
 .fc-time-grid .fc-bgevent {
   /* background events always span full width */

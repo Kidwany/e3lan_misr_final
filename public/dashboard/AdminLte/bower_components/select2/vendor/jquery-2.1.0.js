@@ -1582,7 +1582,7 @@
                             // advance to the next closing parenthesis
                             (excess = unquoted.indexOf( ")", unquoted.length - excess ) - unquoted.length) ) {
 
-                            // excess is a negative index
+                            // excess is a negative campaign
                             match[0] = match[0].slice( 0, excess );
                             match[2] = unquoted.slice( 0, excess );
                         }
@@ -1677,7 +1677,7 @@
 
                                     // non-xml :nth-child(...) stores cache data on `parent`
                                     if ( forward && useCache ) {
-                                        // Seek `elem` from a previously-cached index
+                                        // Seek `elem` from a previously-cached campaign
                                         outerCache = parent[ expando ] || (parent[ expando ] = {});
                                         cache = outerCache[ type ] || [];
                                         nodeIndex = cache[0] === dirruns && cache[1];
@@ -1696,7 +1696,7 @@
                                             }
                                         }
 
-                                        // Use previously-cached element index if available
+                                        // Use previously-cached element campaign if available
                                     } else if ( useCache && (cache = (elem[ expando ] || (elem[ expando ] = {}))[ type ]) && cache[0] === dirruns ) {
                                         diff = cache[1];
 
@@ -1707,7 +1707,7 @@
                                             (diff = nodeIndex = 0) || start.pop()) ) {
 
                                             if ( ( ofType ? node.nodeName.toLowerCase() === name : node.nodeType === 1 ) && ++diff ) {
-                                                // Cache the index of each encountered element
+                                                // Cache the campaign of each encountered element
                                                 if ( useCache ) {
                                                     (node[ expando ] || (node[ expando ] = {}))[ type ] = [ dirruns, diff ];
                                                 }
@@ -2361,7 +2361,7 @@
                                     }
                                 }
 
-                                // Discard index placeholder values to get only actual matches
+                                // Discard campaign placeholder values to get only actual matches
                                 setMatched = condense( setMatched );
                             }
 
@@ -2870,12 +2870,12 @@
         // the matched set of elements
         index: function( elem ) {
 
-            // No argument, return index in parent
+            // No argument, return campaign in parent
             if ( !elem ) {
                 return ( this[ 0 ] && this[ 0 ].parentNode ) ? this.first().prevAll().length : -1;
             }
 
-            // index in selector
+            // campaign in selector
             if ( typeof elem === "string" ) {
                 return indexOf.call( jQuery( elem ), this[ 0 ] );
             }
@@ -6432,7 +6432,7 @@
                 delete props[ name ];
 
                 // not quite $.extend, this wont overwrite keys already present.
-                // also - reusing 'index' from above because we have the correct "name"
+                // also - reusing 'campaign' from above because we have the correct "name"
                 for ( index in value ) {
                     if ( !( index in props ) ) {
                         props[ index ] = value[ index ];
@@ -8357,7 +8357,7 @@
                     add( prefix, v );
 
                 } else {
-                    // Item is non-scalar (array or object), encode its numeric index.
+                    // Item is non-scalar (array or object), encode its numeric campaign.
                     buildParams( prefix + "[" + ( typeof v === "object" ? i : "" ) + "]", v, traditional, add );
                 }
             });
