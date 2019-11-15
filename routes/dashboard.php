@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
 
 
     /* -- Return Home Page -- */
-    Route::get('/', 'DashboardController@campaign');
+    Route::get('/', 'DashboardController@index');
 
     /* -- Return Slider Page -- */
     Route::resource('/slider', 'SliderController');

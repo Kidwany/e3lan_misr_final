@@ -5,18 +5,18 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4">
                     <div class="widget widget-text">
-                        <div class="logo logo-footer"><a href="index.html"> <img class="logo logo-display" src="assets/images/logo/Light.png" style="max-height: 100px" alt=""></a> </div>
-                        <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>
+                        <div class="logo logo-footer"><a href="index.html"> <img class="logo logo-display" src="{{url('website')}}/assets/images/logo/Light.png" style="max-height: 100px" alt=""></a> </div>
+{{--                        <p>Objectively innovate empowered manufactured products whereas parallel platforms. Holisticly predominate extensible testing procedures for reliable supply chains. Dramatically engage top-line web services vis-a-vis cutting-edge deliverables.</p>--}}
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-2">
                     <div class="widget widget-links">
                         <h5 class="widget-title">Useful Links</h5>
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li><a href="{{url('about')}}">About Us</a></li>
                             <li><a href="#">Our Services</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{url('contact')}}">Contact</a></li>
                             <li><a href="#">Gallery</a></li>
                             <li><a href="#">Start Your Campaign</a></li>
                         </ul>
