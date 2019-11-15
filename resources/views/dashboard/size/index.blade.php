@@ -25,13 +25,13 @@
 
     <section class="content-header">
         <h1>
-            Billboards
-            <small>All Billboards</small>
+            Billboard Sizes
+            <small>All Billboard Sizes</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/service')}}">Billboard</a></li>
-            <li class="active">All Billboards</li>
+            <li><a href="{{adminUrl('/size')}}">Billboard Sizes</a></li>
+            <li class="active">All Billboard Sizes</li>
         </ol>
     </section>
 
@@ -42,8 +42,8 @@
             <div class="col-md-12">
                 <div class="box box-primary" style="padding: 15px">
                     <div class="box-header with-border">
-                        <h3 class="box-title">All Billboards Info</h3>
-                        <a href="{{adminUrl('service/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard </a>
+                        <h3 class="box-title">All Billboard Sizes Info</h3>
+                        <a href="{{adminUrl('size/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard Size </a>
                     </div>
                     @include('dashboard.layouts.messages')
                     <!-- /.box-header -->
@@ -51,44 +51,33 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th>Image</th>
-                            <th>Code</th>
-                            <th>Area</th>
-                            <th>Size</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>ID</th>
+                            <th>Billboard Size</th>
+                            <th>Created_at</th>
+                            <th>Updated_at</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>id</th>
-                            <th>Image</th>
-                            <th>Code</th>
-                            <th>Area</th>
-                            <th>Size</th>
-                            <th>Created at</th>
-                            <th>Updated at</th>
+                            <th>ID</th>
+                            <th>Billboard Size</th>
+                            <th>Created_at</th>
+                            <th>Updated_at</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @if($billboards)
-                            @foreach($billboards as $billboard)
+                        @if($sizes)
+                            @foreach($sizes as $size)
                                 <tr>
-                                    <td>{{$billboard->id}}</td>
-                                    <td><img src="{{$billboard->image_id ? asset($billboard->image->path) : asset('dashboard/img/picture.png')}}" style="width: 50px" alt="slide image" > </td>
-                                    <td>{{$billboard->code}}</td>
-                                    <td>{{$billboard->childOfChildLocation->childOfChildLocation_en->location}}</td>
-                                    <td>{{$billboard->billboardSize->size}}</td>
-                                    <td>{{$billboard->created_at ? $billboard->created_at->diffForHumans() : ''}}</td>
-                                    <td>{{$billboard->updated_at ? $billboard->updated_at->diffForHumans() : ''}}</td>
+                                    <td>{{$size->id}}</td>
+                                    <td>{{$size->size}}</td>
+                                    <td>{{$size->created_at ? $size->created_at->diffForHumans() : ''}}</td>
+                                    <td>{{$size->updated_at ? $size->updated_at->diffForHumans() : ''}}</td>
                                     <td>
-                                        <a href="{{route('billboard.edit', $billboard->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
-                                        <a href="{{adminUrl('billboard/'.$billboard->id . '/create')}}" class style="font-size: 20px"><i class="fa fa-plus" title="Add Mini Billboards to this service"></i> </a>
-                                        <a href="{{adminUrl('billboard/'.$billboard->id)}}" class style="font-size: 20px"><i class="fa fa-image" title="Show Sub-Billboards"></i> </a>
-                                        <button type="button" class data-toggle="modal" data-target="#delete{{$billboard->id}}" style="font-size: 20px">
+                                        <a href="{{route('size.edit', $size->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
+                                        <button type="button" class data-toggle="modal" data-target="#delete{{$size->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -98,21 +87,21 @@
                         </tbody>
                     </table>
 
-                    @if($billboards)
-                        @foreach($billboards as $billboard)
-                            <div class="modal modal-danger fade" id="delete{{$billboard->id}}">
+                    @if($sizes)
+                        @foreach($sizes as $size)
+                            <div class="modal modal-danger fade" id="delete{{$size->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Delete User</h4>
+                                            <h4 class="modal-title">Delete Billboard Size</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are You Sure You Want To Delete Billboard <strong>{{$billboard->billborad_en->name}}</strong></p>
+                                            <p>Are You Sure You Want To Delete Size <strong>{{$size->size}}</strong></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{route('billboard.destroy', $billboard->id)}}" method="post">
+                                            <form action="{{route('size.destroy', $size->id)}}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <div class="d-flex flex-row">

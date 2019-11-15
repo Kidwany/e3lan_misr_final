@@ -103,6 +103,9 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     /* --- Parent Location ---*/
     Route::resource('billboard', 'BillboardController');
 
+    /* --- Billboards Sizes ---*/
+    Route::resource('size', 'SizeController');
+
 });
 
 

@@ -56,7 +56,7 @@ class Billboard extends Model  {
         return $this->belongsTo(Image::class, 'image_id', 'id')->withDefault();
     }
 
-    public function size()
+    public function billboardSize()
     {
         return $this->belongsTo(Image::class, 'size_id', 'id')->withDefault();
     }
