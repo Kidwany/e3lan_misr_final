@@ -112,7 +112,7 @@
                         <div class="widget sidebar_widget">
                             <h5 class="aside-title text-uppercase">Choose Location</h5>
                             <!-- <form method="get"> -->
-                            <select name="parent" style="color: #333" id="parent_location" required>
+                            <select name="parent" style="color: #333" id="parent_location">
                                 <option value="menu_order" selected="selected">All Locations </option>
                                 @foreach($locations as $location)
                                     <option value="{{$location->id}}">{{$location->parentLocation_en->location}}</option>
@@ -125,7 +125,7 @@
                         <!-- Child Location -->
                         <div class="widget sidebar_widget">
                             <h5 class="aside-title text-uppercase">Choose Zone</h5>
-                            <select name="child" style="color: #333" id="childLocation" required>
+                            <select name="child" style="color: #333" id="childLocation">
                                 <option selected="selected">All Zone </option>
                             </select>
                         </div>
@@ -135,7 +135,6 @@
                             <h5 class="aside-title text-uppercase">Choose Area</h5>
                             <select name="child_of_child" style="color: #333" id="childOfChildLocation">
                                 <option value="" selected="selected">All Areas </option>
-
                             </select>
                         </div>
 
@@ -148,7 +147,7 @@
                                         @foreach($sizes as $size)
                                             <div class="col-lg-6">
                                                 <div class="form-check">
-                                                    <input type="checkbox" name="size" value="{{$size->id}}"> {{$size->size}}<br>
+                                                    <input type="checkbox" name="size[]" value="{{$size->id}}"> {{$size->size}}<br>
                                                 </div>
                                             </div>
                                         @endforeach

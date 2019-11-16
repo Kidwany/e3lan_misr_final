@@ -18,7 +18,7 @@ class Billboard extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['code', 'image_id', 'service_id', 'parent_location_id', 'child_location_id', 'child_of_child_location_id', 'size_id', 'dimension', 'location', 'created_by'];
+    protected $fillable = ['code', 'image_id', 'service_id', 'sub_service_id', 'parent_location_id', 'child_location_id', 'child_of_child_location_id', 'size_id', 'dimension', 'location', 'created_by'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -80,6 +80,11 @@ class Billboard extends Model  {
     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id', 'id')->withDefault();
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class, 'billboard_images', 'billboard_id','image_id')->withTimestamps();
     }
 
 }

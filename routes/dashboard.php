@@ -102,6 +102,9 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
 
     /* --- Parent Location ---*/
     Route::resource('billboard', 'BillboardController');
+    Route::get('child-locations/{id}', 'BillboardController@getChildLocations');
+    Route::get('child-of-child-locations/{id}', 'BillboardController@getChildOfChildLocations');
+    Route::get('sub-services/{id}', 'BillboardController@getSubServices');
 
     /* --- Billboards Sizes ---*/
     Route::resource('size', 'SizeController');

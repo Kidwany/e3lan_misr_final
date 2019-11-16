@@ -35,7 +35,8 @@ class WebsitePagesController extends Controller
     {
         $clients = Client::with('image')->limit(10)->get();
         $services = Service::all();
-        return view('website.welcome', compact('services','clients'));
+        $slides = Slider::with('image')->get();
+        return view('website.welcome', compact('services','clients', 'slides'));
     }
 
     /* Return About Page */
@@ -83,8 +84,6 @@ class WebsitePagesController extends Controller
     /* Return Send Message Page */
     public function message(Request $request)
     {
-
-
         $message = new Message;
         $message->name = $request->name;
         $message->email = $request->email;
@@ -109,6 +108,27 @@ class WebsitePagesController extends Controller
 
     public function buildCamp()
     {
+
+        /*$parentLocationId = Input::get('parentLocation');
+        $childLocationId = Input::get('childLocation');
+        $childOfChildLocation = Input::get('childOfChildLocation');
+        $sizeId = Input::get('size');
+
+        $mainQuery = Billboard::with('billboard_en');
+        $parentQuery = '';
+        if (!empty($parentLocationId))
+        {
+            $parentQuery .= 'where(\'parent_location_id\', $parentLocationId)->get()';
+            $billboards = $mainQuery->{$parentQuery};
+        }
+        elseif (!empty($childLocationId))
+
+        $billboards = Billboard::with('billboard_en')
+            ->where('parent_location_id', $parentLocationId)
+            ->where('child_location_id', $childLocationId)
+            ->where('child_of_child_location_id', '=', '*')
+            ->get();*/
+
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
         $billboards = Billboard::with('billboard_en', 'image')->get();
@@ -166,17 +186,13 @@ class WebsitePagesController extends Controller
 
     }
 
+    /**
+     * Add Requested Items and Checkout
+     */
     public function showRequestedItems()
     {
         $userId = Auth::user()->id;
         $requestedCampaign = Campaign::with('billboard')->where('user_id', $userId)->where('status', 1)->first();
-        /*if ($requestedCampaign)
-        {
-            $campaignItems = Campaign_item::with('requestedCampaign', 'requestedBillboard')
-                ->where('campaign_id', $requestedCampaign->id)
-                ->get();
-            return view('website.requestedItems', compact('campaignItems'));
-        }*/
         return view('website.requestedItems', compact('requestedCampaign'));
     }
 
@@ -211,6 +227,9 @@ class WebsitePagesController extends Controller
 
     }
 
+    /**
+     * Show My Last Campaigns
+     */
     public function myCampaigns()
     {
         $campaigns = Campaign::with('campaignDetails')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
@@ -242,12 +261,57 @@ class WebsitePagesController extends Controller
         $childOfChildLocation = $request->child_of_child;
         $sizeId = $request->size;
 
-        $billboards = Billboard::with('billboard_en', 'image')
-            ->where('parent_location_id', $parentLocationId)
-            ->where('child_location_id', $childLocationId)
-            ->where('child_of_child_location_id', $childOfChildLocation)
-            ->where('size_id', $sizeId)
-            ->get();
+        $sizesArray = [];
+        if (isset($sizeId))
+        {
+            foreach ($sizeId as $size)
+            {
+                array_push($sizesArray, $size);
+            }
+        }
+        /*$sizeUrl = "";
+        if (!empty($sizeId))
+        {
+            foreach ($sizeId as $size)
+            {
+                {
+                    $sizeUrl .=  $size . "_";
+                }
+            }
+        }
+
+        return redirect('/buildCamp?parentLocation=' . $parentLocationId .
+            '&childLocation=' . $childLocationId .
+            '&childOfChildLocation=' . $childOfChildLocation .
+            '&size=' . $sizeUrl
+        );*/
+
+
+        if ($parentLocationId)
+        {
+            $billboards = Billboard::with('billboard_en')->where('parent_location_id', $parentLocationId)->get();
+        }
+
+        if ($childLocationId)
+        {
+            $billboards = Billboard::with('billboard_en')->where('child_location_id', $childLocationId)->get();
+        }
+
+        if ($childOfChildLocation)
+        {
+            $billboards = Billboard::with('billboard_en')->where('child_of_child_location_id', $childOfChildLocation)->get();
+        }
+
+        if ($sizeId)
+        {
+            $billboards = Billboard::with('billboard_en')
+                ->where('parent_location_id', $parentLocationId)
+                ->where('child_location_id', $childLocationId)
+                ->where('child_of_child_location_id', $childOfChildLocation)
+                ->whereIn('size_id', $sizesArray)
+                ->get();
+        }
+
 
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
