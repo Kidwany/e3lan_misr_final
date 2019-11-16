@@ -18,7 +18,7 @@ class Campaign extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['user_id'];
+    protected $fillable = ['user_id', 'status'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -55,6 +55,11 @@ class Campaign extends Model  {
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function campaignItems()
+    {
+        return $this->hasMany(Campaign_item::class, 'campaign_id', 'id');
     }
 
 }

@@ -1,6 +1,55 @@
 @extends('website.layouts.layouts')
 @section('title', 'Campaign')
 
+@section('customizedScript')
+    <script>
+        $(document).ready(function () {
+            $('#parent_location').on('change', function () {
+                var parentId = $(this).val();
+                //alert(parentId);
+                if (parentId)
+                {
+                    $.ajax({
+                        header: '@csrf',
+                        url: 'child_location/' + parentId,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#childLocation').empty();
+                            $('#childOfChildLocation').empty();
+                            $.each(data, function (key, value) {
+                                $('#childLocation').append('<option value="' + value.id +'">'+ value.child_location_en.location +'</option>')
+
+                            })
+                        }
+                    })
+                }
+            });
+
+            $('#childLocation').on('click', function () {
+                var childId = $(this).val();
+                //alert(childId);
+                if (childId)
+                {
+                    $.ajax({
+                        header: '@csrf',
+                        url: 'child_of_child_location/' + childId,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#childOfChildLocation').empty();
+                            $.each(data, function (key, value) {
+                                $('#childOfChildLocation').append('<option value="' + value.id +'">'+ value.child_of_child_location_en.location +'</option>')
+
+                            })
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+@endsection
+
 @section('content')
 
   <!--== Page Title Start ==-->
@@ -19,103 +68,106 @@
     <!--== Featured Product Start ==-->
     <section style="min-height: 350px">
         <div class="container">
+            @include('dashboard.layouts.messages')
             <div class="row">
                 <div class="col-md-9 col-sm-9 col-xs-12 xs-mb-50">
-                   @foreach($buildCamps as $buildCamp)
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="product-item tr-products">
-                            <div class="product-image tr-product-thumbnail">
-                                <a href="{{url('serviceDetails')}}/{{$buildCamp->id}}">
-                                    <img class="img-responsive" src="{{$buildCamp->image->path}}" alt="torneo-product"/>
-                                </a>
-                                <div class="product-action">
-                                    <div class="tr-modal-popup">
-                                        <a href="#details-popup" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn" type="button" value="Add to Cart">
-                                            <i class="icofont icofont-mega-phone"></i> <span>Add to Campaign </span>
+                    @if(count($billboards) > 0)
+                        @foreach($billboards as $billboard)
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="product-item tr-products">
+                                    <div class="product-image tr-product-thumbnail">
+                                        <a href="{{url('serviceDetails')}}/{{$billboard->id}}">
+                                            <img class="img-responsive" src="{{asset($billboard->image->path)}}" alt="torneo-product"/>
                                         </a>
+                                        <div class="product-action">
+                                            <div class="tr-modal-popup">
+                                                <a href="#details-popup{{$billboard->id}}" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn" type="button" value="Add to Cart">
+                                                    <i class="icofont icofont-mega-phone"></i> <span>Add to Campaign </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="wrap-label">
+                                            <span class="label-product new-label">New</span>
+                                            <!--<span class="label-product sale-label">-50%</span>-->
+                                        </div>
+                                    </div>
+                                    <div class="tr-product-content">
+                                        <h4><a href="{{url('serviceDetails')}}/{{$billboard->id}}" class="tr-product-title" title="Stitchout Boot">{{@$buildCamp->service_en->title}}</a></h4>
+                                        <div class="product-price tr-product-price">
+                                            <span class="tr-product-price-price">{{$billboard->code}}</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="wrap-label">
-                                    <span class="label-product new-label">New</span>
-                                    <!--<span class="label-product sale-label">-50%</span>-->
-                                </div>
                             </div>
-                            <div class="tr-product-content">
-                                <h4><a href="{{url('serviceDetails')}}/{{$buildCamp->id}}" class="tr-product-title" title="Stitchout Boot">{{@$buildCamp->service_en->title}}</a></h4>
-                                <div class="product-price tr-product-price">
-                                    <span class="tr-product-price-price">#AGD009</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                  
-
+                        @endforeach
+                        @else
+                        <p class="text-center">No Results Found</p>
+                    @endif
                 </div>
                 <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="widget sidebar_widget">
-                        <h5 class="aside-title text-uppercase">Choose Zone</h5>
-                        <!-- <form method="get"> -->
-                            <select name="orderby" style="color: #333" id="Zone1">
-                                <option value="menu_order" selected="selected">All Zones </option>
+                    <form action="{{url('filter')}}" method="post">
+                        @csrf
+                        @method('post')
+                        <!-- Parent Location -->
+                        <div class="widget sidebar_widget">
+                            <h5 class="aside-title text-uppercase">Choose Location</h5>
+                            <!-- <form method="get"> -->
+                            <select name="parent" style="color: #333" id="parent_location" required>
+                                <option value="menu_order" selected="selected">All Locations </option>
                                 @foreach($locations as $location)
-                                <option value="{{$location->id}}">{{$location->parentLocation_en->location}}</option>
+                                    <option value="{{$location->id}}">{{$location->parentLocation_en->location}}</option>
                                 @endforeach
-                            </select> <input type="hidden" name="paged" value="1">
+                            </select>
                             <!--<input type="text" name="name" class="md-input" id="search" required="" placeholder="Type what it's your mind...">-->
-                        <!-- </form> -->
-                    </div>
+                            <!-- </form> -->
+                        </div>
 
-                    <div class="widget sidebar_widget">
-                        <h5 class="aside-title text-uppercase">Choose Area</h5>
-                        <select name="orderby" style="color: #333">
-                            <option value="menu_order" selected="selected">All Areas </option>
-                            <option value="popularity">Nasr City</option>
-                            <option value="rating">Ramsees - Ghamra</option>
-                            <option value="date">Heliopolis</option>
-                            <option value="price">Dokki</option>
+                        <!-- Child Location -->
+                        <div class="widget sidebar_widget">
+                            <h5 class="aside-title text-uppercase">Choose Zone</h5>
+                            <select name="child" style="color: #333" id="childLocation" required>
+                                <option selected="selected">All Zone </option>
+                            </select>
+                        </div>
 
-                        </select> <input type="hidden" name="paged" value="1">
-                    </div>
+                        <!-- Child of Child Location -->
+                        <div class="widget sidebar_widget">
+                            <h5 class="aside-title text-uppercase">Choose Area</h5>
+                            <select name="child_of_child" style="color: #333" id="childOfChildLocation">
+                                <option value="" selected="selected">All Areas </option>
 
-                    <div class="widget sidebar_widget display-block">
-                        <h5 class="aside-title text-uppercase">Choose Sizes</h5>
-                        <div class="row">
-                            <div class="container-fluid">
-                                <div class="col-lg-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="vehicle1" value="Bike"> Large<br>
-                                    </div>
+                            </select>
+                        </div>
+
+                        <!-- Size -->
+                        <div class="widget sidebar_widget display-block">
+                            <h5 class="aside-title text-uppercase">Choose Sizes</h5>
+                            <div class="row">
+                                <div class="container-fluid">
+                                    @if($sizes)
+                                        @foreach($sizes as $size)
+                                            <div class="col-lg-6">
+                                                <div class="form-check">
+                                                    <input type="checkbox" name="size" value="{{$size->id}}"> {{$size->size}}<br>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="vehicle1" value="Bike">Mega<br>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-check">
-                                        <input type="checkbox" name="vehicle1" value="Bike"> Small<br>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
-                    </div>
 
-               
-
-                    <div class="row">
-                        <div class="mt-40" style="display: flex; flex-direction: row; justify-content: center">
-                            <a class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Filter</a>
+                        <div class="row">
+                            <div class="mt-40" style="display: flex; flex-direction: row; justify-content: center">
+                                <button class="btn btn-color btn-md btn-default" type="submit" ><i class="fa fa-filter"></i> Filter</button>
+                            </div>
                         </div>
-                    </div>
-                  
-
+                    </form>
                 </div>
             </div>
         </div>
 
+{{--
         <div id="details-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Enter Duration</span>
 
@@ -165,7 +217,68 @@
             </div>
 
         </div>
+--}}
 
+        @foreach($billboards as $billboard)
+            <div id="details-popup{{$billboard->id}}" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
+                <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Enter Duration</span>
+                <!-- <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
+                     <div class="messages"></div>
+                     <div class="row">
+                         <div class="col-md-12 col-sm-12">
+                             <div class="form-group">
+                                 <label class="sr-only" for="email">Email</label>
+                                 <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
+                                 <div class="help-block with-errors"></div>
+                             </div>
+                         </div>
+                         <div class="col-md-12 col-sm-12">
+                             <div class="form-group">
+                                 <label class="sr-only">Password</label>
+                                 <input type="password" name="subject" class="md-input" id="subject-2" placeholder="Password" required>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
+                             <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Login</button>
+                         </div>
+                     </div>
+                 </form>-->
+
+                <!-- -------------------- Tabs --------------------------- -->
+                <div class="row mt-30 tabs-style-01">
+                    <div class="col-md-12">
+                        <form name="contact-form" action="{{url('add-to-campaign')}}" method="POST" class="contact-form-style-01">
+                            @csrf
+                            @method('post')
+                            <input type="hidden" name="code" value="{{$billboard->id}}">
+                            <div class="messages"></div>
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="from">From</label>
+                                        <input type="date" name="from" class="md-input" id="from"  placeholder="Email *" required data-error="Please Enter Valid Email">
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <label for="to">To</label>
+                                        <input type="date" name="to" class="md-input" id="to" placeholder="Password" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
+                                    <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Add To Campaign</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
 
     </section>
     <!--== Featured Product End ==-->

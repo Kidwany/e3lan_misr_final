@@ -21,7 +21,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{@$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
+    <title>{{$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
 
     <!-- CSS ============================================ -->
 
@@ -29,6 +29,7 @@
 
     <!-- Core Style Sheets -->
     <link rel="stylesheet" href="{{assetPath('website/assets/css/master.css')}}">
+    <link rel="stylesheet" href="{{assetPath('website/assets/css/style_updates.css')}}">
     <!-- Responsive Style Sheets -->
     <link rel="stylesheet" href="{{assetPath('website/assets/css/responsive.css')}}">
     <!-- Revolution Style Sheets -->
@@ -81,6 +82,7 @@
         </div>
         <div class="wrapper">
             <!--== Loader End ==-->
+
             @include('website.layouts.header')
             @yield('content')
             @include('website.layouts.footer')
@@ -96,35 +98,35 @@
 
 
 <!--== Javascript Plugins ==-->
-<script src="{{assetPath('website/assets/js/jquery.min.js')}}"></script>
 <!-- jQuery -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
 
 
 <!-- Datepicker -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css' rel='stylesheet' type='text/css'>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>--}}
 <!-- Script -->
-<script type="text/javascript">
-$(document).ready(function(){
-    $("#datetimepicker1").datepicker( {
-    format: "mm-yyyy",
-    viewMode: "months", 
-    minViewMode: "months"
-});
-$("#datetimepicker2").datepicker( {
-    format: "mm-yyyy",
-    viewMode: "months", 
-    minViewMode: "months"
-});
+{{--<script type="text/javascript">
+$(document).ready(function() {
+    $("#datetimepicker1").datepicker({
+        format: "mm-yyyy",
+        viewMode: "months",
+        minViewMode: "months"
+    });
+    $("#datetimepicker2").datepicker({
+        format: "mm-yyyy",
+        viewMode: "months",
+        minViewMode: "months"
+    });
+})
 
 
-</script>
-
+</script>--}}
+<script src="{{assetPath('website/assets/js/jquery.min.js')}}"></script>
 <script src="{{assetPath('website/assets/js/smoothscroll.js')}}"></script>
 <script src="{{assetPath('website/assets/js/plugins.js')}}"></script>
 <script src="{{assetPath('website/assets/js/master.js')}}"></script>
@@ -145,37 +147,38 @@ $("#datetimepicker2").datepicker( {
 <!-- WhatsHelp.io widget -->
 <!-- WhatsHelp.io widget -->
 <script type="text/javascript">
-$(document).ready(function(){
-$(document).on('change', '#Zone1', function() {
-    
-    var id = $(this).val();
-    alert(id);
+$(document).ready(function() {
+    /*$(document).on('change', '#Zone1', function () {
+
+        var id = $(this).val();
+        alert(id);
         $.ajax({
-            url: '{!! url('child_location') !!}',
+            url: '',
             type: 'post',
-            data: {id: id  },
+            data: {id: id},
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             success: function (data) {
             }
         });
 
 
-});
-$(document).ready(function () {
-$('#submit').click(function () {
+    });
+    $(document).ready(function () {
+        $('#submit').click(function () {
 
-    $.ajax({
-        url: '{{ url('register/customer') }}',
-        type: 'post',
-        data: {
-            "_token": "{{ csrf_token() }}",
-            "id": "12"
-        },
-        success: function (data) {
+            $.ajax({
+                url: ' url('register/customer') }}',
+                type: 'post',
+                data: {
+                    "_token": " csrf_token() ",
+                    "id": "12"
+                },
+                success: function (data) {
 
-        }
-    });});
-});
+                }
+            });
+        });
+    });*/
     (function () {
         var options = {
             facebook: "656667041413984", // Facebook page ID
@@ -186,10 +189,17 @@ $('#submit').click(function () {
             order: "facebook,whatsapp", // Order of buttons
         };
         var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () {
+            WhWidgetSendButton.init(host, proto, options);
+        };
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
     })();
+})
 </script>
 <!-- /WhatsHelp.io widget -->
 @yield('customizedScript')

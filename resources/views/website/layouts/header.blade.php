@@ -27,7 +27,7 @@
                 <li><a href="#" class="icofont icofont-social-instagram"></a></li>-->
             </ul>
         </div>
-    @endif
+        @endif
         <div id="modal-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Login or Register</span>
             <!-- -------------------- Tabs --------------------------- -->
@@ -124,7 +124,7 @@
         <!--== Start Header Navigation ==-->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu"> <i class="tr-icon ion-android-menu"></i> </button>
-            <div class="logo"> <a href="index.html"> <img class="logo logo-display" src="assets/images/logo/Light.png" alt=""> <img class="logo logo-scrolled" src="assets/images/logo/Dark.png" alt=""> </a> </div>
+            <div class="logo"> <a href="{{url('/')}}"> <img class="logo logo-display" src="{{asset($setting->image->path)}}" alt=""> <img class="logo logo-scrolled" src="{{asset('website/assets/images/logo/Dark.png')}}" alt=""> </a> </div>
         </div>
         <!--== End Header Navigation ==-->
 
@@ -133,35 +133,39 @@
             <ul class="nav navbar-nav navbar-right" data-in="fadeIn" data-out="fadeOut">
                 <li> <a href="{{url('/')}}" class="dropdown-toggle">Home</a></li>
                 <li><a href="{{url('about')}}" class="dropdown-toggle" data-toggle="dropdown">About</a></li>
-                <li class="dropdown"> <a href="{{url('services')}}" class="dropdown-toggle" data-toggle="dropdown">Services</a>
+                <li class="dropdown">
+                    <a href="{{url('services?service=all')}}" class="dropdown-toggle" data-toggle="dropdown">Services</a>
                     <ul class="dropdown-menu">
-                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">OOH Media</a>
-                        </li>
-                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Production </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Landmarks </a></li>
-                                <li><a href="#">Street Signage </a></li>
-                                <li><a href="#">Directional Signs </a></li>
-                                <li><a href="#">Project Hoardings  </a></li>
-                                <li><a href="#">Landscaping   </a></li>
-                                <li><a href="#">Mock-ups    </a></li>
-                                <li><a href="#">Exhibitions     </a></li>
-                                <li><a href="#">Booth constructions     </a></li>
-                                <li><a href="#">ATM Casing     </a></li>
-                                <li><a href="#">Kiosks     </a></li>
-                                <li><a href="#">Others </a></li>
-                            </ul>
-                        </li>
-                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Other Services</a></li>
+                        @if($services)
+                            @foreach($services as $service)
+                                @if(count($service->childService) == 0)
+                                    <li> <a href="{{url('services?service=' . $service->{'service_' . currentLang()}->title)}}" class="dropdown-toggle" data-toggle="dropdown">{{$service->{'service_' . currentLang()}->title }}</a></li>
+                                @endif
+                                @if(count($service->childService) > 0)
+                                    <li class="dropdown"> <a href="{{url('services?service=' . $service->{'service_' . currentLang()}->title)}}" class="dropdown-toggle" data-toggle="dropdown">{{$service->{'service_' . currentLang()}->title }} </a>
+                                        <ul class="dropdown-menu">
+                                            @foreach($service->childService as $child)
+                                                <li>
+                                                    <a href="{{url('services?service=' . $child->{'service_' . currentLang()}->title)}}">
+                                                        {{$child->{'service_' . currentLang()}->title}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endforeach
+                        @endif
                     </ul>
                 </li>
                 <li><a href="{{url('client')}}" class="dropdown-toggle" data-toggle="dropdown">Our Clients</a></li>
                 <li><a href="{{url('buildCamp')}}" class="dropdown-toggle" data-toggle="dropdown">Build Your Campaign</a></li>
                 <li><a href="{{url('contact')}}" class="dropdown-toggle" data-toggle="dropdown">Contact</a></li>
                 @if(Auth::user())
-                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mohamed</a>
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name}}</a>
                     <ul class="dropdown-menu">
-                        <li> <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Campaigns</a></li>
+                        <li> <a href="{{url('show-requested-items')}}" class="dropdown-toggle" data-toggle="dropdown">Show Requested Items</a></li>
+                        <li> <a href="{{url('my-campaigns')}}" class="dropdown-toggle" data-toggle="dropdown">My Campaigns</a></li>
                         <div class="line-horizontal grey-bg width-100-percent centerize-col"></div>
                         <li> <a href="{{url('logout/customer')}}" class="dropdown-toggle" data-toggle="dropdown">Logout</a></li>
                     </ul>

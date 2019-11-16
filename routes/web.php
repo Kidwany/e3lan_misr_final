@@ -59,7 +59,22 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     Route::get('/services', 'WebsitePagesController@service');
     Route::get('/serviceDetails/{id}', 'WebsitePagesController@service_details');
     Route::get('/child_location/{id}', 'WebsitePagesController@child_location');
+    Route::get('/child_of_child_location/{id}', 'WebsitePagesController@child_of_child_location');
 
+    /*======== Filter ========*/
+    Route::post('/filter', 'WebsitePagesController@filter');
+
+    /*======== Add To Campaign ========*/
+    Route::post('/add-to-campaign', 'WebsitePagesController@addToCampaign');
+
+    /*======== show Requested Items ========*/
+    Route::get('/show-requested-items', 'WebsitePagesController@showRequestedItems');
+
+    /*======== Submit Request ========*/
+    Route::post('submit-campaign-request', 'WebsitePagesController@submitCampaignRequest');
+
+    /*======== My Campaigns ========*/
+    Route::get('my-campaigns', 'WebsitePagesController@myCampaigns');
 
 });
 

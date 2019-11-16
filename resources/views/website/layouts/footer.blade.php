@@ -15,10 +15,10 @@
                         <ul>
                             <li><a href="{{url('/')}}">Home</a></li>
                             <li><a href="{{url('about')}}">About Us</a></li>
-                            <li><a href="#">Our Services</a></li>
+                            <li><a href="{{url('services')}}">Our Services</a></li>
                             <li><a href="{{url('contact')}}">Contact</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">Start Your Campaign</a></li>
+                            {{--<li><a href="#">Gallery</a></li>--}}
+                            <li><a href="{{url('buildCamp')}}">Start Your Campaign</a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,9 +27,9 @@
                         <h5 class="widget-title">Contact Us</h5>
                         <div class="widget-links">
                             <ul>
-                                <li>57 Rabaa Buildings, Nasr City Cairo, Egypt</li>
-                                <li>(+20) 0225698754</li>
-                                <li>sales@e3lan-misr.com</li>
+                                <li>{{$contact->address_en}}</li>
+                                <li>{{$contact->phone}}</li>
+                                <li>{{$contact->email}}</li>
                             </ul>
                         </div>
                     </div>
@@ -38,9 +38,9 @@
                     <div class="widget widget-links">
                         <h5 class="widget-title">Our Services</h5>
                         <ul>
-                            <li><a href="#">OOH Media</a></li>
-                            <li><a href="#">Production </a></li>
-                            <li><a href="#">Other Services</a></li>
+                            @foreach($services as $service)
+                                <li><a href="{{url('services?service=' . $service->{'service_' . currentLang()}->title)}}">{{$service->{'service_' . currentLang()}->title }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

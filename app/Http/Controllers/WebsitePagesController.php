@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Billboard;
+use App\Models\Campaign_item;
+use App\Models\Child_location;
+use App\Models\Child_of_child_location;
 use App\Models\Client;
 use App\Models\Feature;
 use App\Models\Gallery;
@@ -13,44 +17,28 @@ use App\Models\Product;
 use App\Models\Parent_location;
 use App\Models\About;
 use App\Models\Project;
+use App\Models\Size;
 use App\Models\Slider;
 use App\Models\Campaign;
 use App\Models\Service;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class WebsitePagesController extends Controller
 {
+
+    /* Return Home Page */
     public function index()
     {
-        // $slides = Slider::with('slider_'.currentLang(), 'image')->get();
-        // //$projects = Project::with('project_en')->limit(6)->orderBy('created_at', 'desc')->get();
         $clients = Client::with('image')->limit(10)->get();
-
         $services = Service::all();
         return view('website.welcome', compact('services','clients'));
     }
 
-    public function project()
-    {
-        $projects = Project::with('image')->orderBy('created_at', 'desc')->get();
-        return view('website.portfolio', compact('projects'));
-    }
-
-    public function projectDetails($id)
-    {
-        $project = Project::with('images', 'image')->find($id);
-        if ($project)
-        {
-            $next = Project::where('id', '>', $id)->orderBy('id', 'asc')->first();
-            $previous = Project::where('id', '<', $id)->orderBy('id', 'desc')->first();
-            return view('website.project', compact('project', 'next', 'previous'));
-        }
-    }
-
-
+    /* Return About Page */
     public function about()
     {
         $about = About::with('about_en', 'about_ar', 'missionImage', 'visionImage', 'valuesImage')->orderBy('created_at', 'desc')->first();
@@ -58,33 +46,41 @@ class WebsitePagesController extends Controller
         return view('website.about',compact('about'));
     }
 
+    /* Return Contact Page */
     public function contact()
     {
         $contact = Contact::orderby('id', 'desc')->first();
         return view('website.contact', compact('contact'));
     }
 
-
+    /* Return Client Page */
     public function client()
     {
         $clients = Client::with('image')->get();
         return view('website.client', compact('clients'));
     }
 
-    public function buildCamp()
-    {
-        $locations = Parent_location::with('parentLocation_en')->get();
-        $buildCamps = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
-        return view('website.buildCamp', compact('buildCamps','locations'));
-    }
 
+    /* Return Service Page */
     public function service()
     {
-        $services = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
-        return view('website.services', compact('services'));
+        $locations = Parent_location::with('parentLocation_en')->get();
+        $sizes = Size::all();
+        $billboards = Billboard::with('billboard_en', 'image')->get();
+        return view('website.services', compact('billboards','locations', 'sizes'));
+        /*$services = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
+        return view('website.services', compact('services'));*/
+    }
+
+    /* Return Service Details Page */
+    public function service_details($id)
+    {
+        $billboard = Billboard::with('billboard_en', 'image')->find($id);
+        return view('website.services_details', compact('billboard'));
     }
 
 
+    /* Return Send Message Page */
     public function message(Request $request)
     {
 
@@ -103,32 +99,160 @@ class WebsitePagesController extends Controller
     }
 
 
-
-
-    public function team()
-    {
-        $members = Team::with('image')->get();
-        return view('website.team', compact('members'));
-    }
-
-
-    public function service_details($id)
-    {
-        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
-        return view('website.services_details', compact('services'));
-    }
-
-    public function add_buildCamp($id,Request $request)
+    public function add_buildCamp($id, Request $request)
     {
         dd($request);
         $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
         return view('website.services_details', compact('services'));
     }
-    public function child_location($id,Request $request)
+
+
+    public function buildCamp()
     {
-        dd($request);
-        $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
-        return view('website.services_details', compact('services'));
+        $locations = Parent_location::with('parentLocation_en')->get();
+        $sizes = Size::all();
+        $billboards = Billboard::with('billboard_en', 'image')->get();
+        return view('website.buildCamp', compact('billboards','locations', 'sizes'));
+    }
+
+    /**
+     * Add Bill Board To Next Campaign
+     */
+    public function addToCampaign(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $billboardId = \request('code');
+        $campaign = Campaign::with('campaignDetails')
+            ->where('user_id', $userId)
+            ->where('status', 1)
+            ->first();
+
+        //check if campaign exist
+        if ($campaign)
+        {
+            $isCampaignItem = Campaign_item::where('billboard_id', $billboardId)->where('campaign_id', $campaign->id)->first();
+            if ($isCampaignItem)
+            {
+                return redirect()->back()->with('exception', 'Item Already Added To Your Campaign Before, Please Complete Your Campaign Info');
+            }
+            else
+            {
+                $campaignItem = new Campaign_item();
+                $campaignItem->billboard_id = $billboardId;
+                $campaignItem->campaign_id = $campaign->id;
+                $campaignItem->starts = \request('from');
+                $campaignItem->end = \request('to');
+                $campaignItem->save();
+            }
+        }
+        else
+        {
+            $newCampaign = new Campaign();
+            $newCampaign->user_id = $userId;
+            $newCampaign->status = 1;
+            $newCampaign->save();
+
+            $newCampaign->campaignDetails()->create(['campaign_id' => $newCampaign->id]);
+
+            $campaignItem = new Campaign_item();
+            $campaignItem->billboard_id = $billboardId;
+            $campaignItem->campaign_id = $newCampaign->id;
+            $campaignItem->starts = \request('from');
+            $campaignItem->end = \request('to');
+            $campaignItem->save();
+        }
+
+        return redirect()->back()->with('create', 'Item Added To Your Campaign Successfully, Please Complete Your Campaign Info');
+
+    }
+
+    public function showRequestedItems()
+    {
+        $userId = Auth::user()->id;
+        $requestedCampaign = Campaign::with('billboard')->where('user_id', $userId)->where('status', 1)->first();
+        /*if ($requestedCampaign)
+        {
+            $campaignItems = Campaign_item::with('requestedCampaign', 'requestedBillboard')
+                ->where('campaign_id', $requestedCampaign->id)
+                ->get();
+            return view('website.requestedItems', compact('campaignItems'));
+        }*/
+        return view('website.requestedItems', compact('requestedCampaign'));
+    }
+
+
+    /**
+     * Save Request
+     */
+    public function submitCampaignRequest(Request $request)
+    {
+        $this->validate($request,[
+            'company_name'  => 'required|max:100',
+            'position'      => 'required|max:50',
+            'phone'         => 'required|min:8|max:20',
+            'camp_name'     => 'required|max:100',
+        ], [], [
+            'camp_name'     => 'Campaign Name',
+        ]);
+
+        $userId = Auth::user()->id;
+        $requestedCampaign = Campaign::with('billboard')->where('user_id', $userId)->where('status', 1)->first();
+        $requestedCampaign->status = 2;
+        $requestedCampaign->save();
+
+        $requestedCampaign->campaignDetails()->update([
+            'company' => \request('company_name'),
+            'phone' => \request('phone'),
+            'position' => \request('position'),
+            'name' => \request('camp_name')
+        ]);
+
+        return redirect('my-campaigns')->with('create', 'Your Campaign Submitted Successfully');
+
+    }
+
+    public function myCampaigns()
+    {
+        $campaigns = Campaign::with('campaignDetails')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        return view('website.myCampaigns', compact('campaigns'));
+    }
+
+    /**
+     * Return Child Locations Based on Parent Location Returned from Ajax Request Page
+     */
+    public function child_location($id)
+    {
+        $childLocations = Child_location::with('childLocation_en')->where('parent_location_id', $id)->get();
+        return response()->json($childLocations);
+    }
+
+    /**
+     * Return Child of Child Locations Based on Parent Location Returned from Ajax Request Page
+     */
+    public function child_of_child_location($id)
+    {
+        $childOfChildLocations = Child_of_child_location::with('childOfChildLocation_en')->where('child_location_id', $id)->get();
+        return response()->json($childOfChildLocations);
+    }
+
+    public function filter(Request $request)
+    {
+        $parentLocationId = $request->parent;
+        $childLocationId = $request->child;
+        $childOfChildLocation = $request->child_of_child;
+        $sizeId = $request->size;
+
+        $billboards = Billboard::with('billboard_en', 'image')
+            ->where('parent_location_id', $parentLocationId)
+            ->where('child_location_id', $childLocationId)
+            ->where('child_of_child_location_id', $childOfChildLocation)
+            ->where('size_id', $sizeId)
+            ->get();
+
+        $locations = Parent_location::with('parentLocation_en')->get();
+        $sizes = Size::all();
+
+        return view('website.buildCamp', compact('billboards', 'locations', 'sizes'));
     }
 
 

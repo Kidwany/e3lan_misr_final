@@ -4,7 +4,7 @@
 @section('content')
 
     <!--== Page Title Start ==-->
-    <section class="parallax-bg fixed-bg md-screen" data-parallax-bg-image="assets/images/contact/contatc_bg.jpg" data-parallax-speed="0.5" data-parallax-direction="up">
+    <section class="parallax-bg fixed-bg md-screen" data-parallax-bg-image="{{asset('website/assets/images/contact/contatc_bg.jpg')}}" data-parallax-speed="0.5" data-parallax-direction="up">
         <div class="parallax-overlay"></div>
         <div class="container">
             <div class="page-title text-center white-color">
