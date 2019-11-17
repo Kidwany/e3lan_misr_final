@@ -1,6 +1,6 @@
 @if(count($errors) > 0)
     <div class="w-100">
-        <div class="alert alert-danger" style="background-color: #f66e84; height: 60px !important; padding: 0px 7px 0px !important; font-size: 12px !important;">
+        <div class="alert alert-danger" style="background-color: #f66e84;">
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{$error}}</li>

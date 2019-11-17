@@ -18,15 +18,16 @@
 
         <div class="attr-nav hidden-xs sm-display-none">
             <ul class="social-media-dark social-top">
-                <li>
+                {{--<li>
                     <div class="tr-modal-popup">
                         <a href="#modal-popup" data-effect="mfp-zoom-in" class=" icofont icofont-login white" style="color: #ddb35b"> Login</a>
                     </div>
-                </li>
-                <!--<li><a href="#" class="icofont icofont-social-twitter"></a></li>
-                <li><a href="#" class="icofont icofont-social-instagram"></a></li>-->
+                </li>--}}
+                <li><a href="{{url('/login/customer')}}" class="icofont icofont-login default-color"> Login</a></li>
+                {{--<li><a href="#" class="icofont icofont-social-instagram"></a></li>--}}
             </ul>
         </div>
+
         @endif
         <div id="modal-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Login or Register</span>
@@ -153,14 +154,14 @@
                         @if($services)
                             @foreach($services as $service)
                                 @if(count($service->childService) == 0)
-                                    <li> <a href="{{url('services?service=' . $service->{'service_' . currentLang()}->title)}}" class="dropdown-toggle" data-toggle="dropdown">{{$service->{'service_' . currentLang()}->title }}</a></li>
+                                    <li> <a href="{{url('services?parentService=' . $service->id)}}" class="dropdown-toggle" data-toggle="dropdown">{{$service->{'service_' . currentLang()}->title }}</a></li>
                                 @endif
                                 @if(count($service->childService) > 0)
                                     <li class="dropdown"> <a href="{{url('services?service=' . $service->{'service_' . currentLang()}->title)}}" class="dropdown-toggle" data-toggle="dropdown">{{$service->{'service_' . currentLang()}->title }} </a>
                                         <ul class="dropdown-menu">
                                             @foreach($service->childService as $child)
                                                 <li>
-                                                    <a href="{{url('services?service=' . $child->{'service_' . currentLang()}->title)}}">
+                                                    <a href="{{url('services?childService=' . $child->id)}}">
                                                         {{$child->{'service_' . currentLang()}->title}}
                                                     </a>
                                                 </li>

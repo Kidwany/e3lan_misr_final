@@ -37,6 +37,7 @@ class LayoutsServiceProvide extends ServiceProvider
                 'website.services_details',
                 'website.requestedItems',
                 'website.myCampaigns',
+                'website.login',
             ],
             LayoutsComposer::class
         );

@@ -51,7 +51,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     Route::get('/client', 'WebsitePagesController@client');
 
     /*=======   Return buildCamp     ========*/
-    Route::get('/buildCamp', 'WebsitePagesController@buildCamp');
+    Route::get('/buildCamp', 'WebsitePagesController@buildCamp')->middleware('guest');
     Route::get('/serviceDetails/{id}', 'WebsitePagesController@service_details');
     Route::post('/add/buildCamp', 'WebsitePagesController@add_buildCamp');
 
@@ -87,6 +87,7 @@ Route::get('maintenance', function () {
 
 Route::post('register/customer','UserController@register')->name('register');
 Route::post('login/customer','UserController@login')->name('login');
+Route::get('login/customer','UserController@loginPage')->name('login');
 Route::get('logout/customer','UserController@logout')->name('logout');
 
 

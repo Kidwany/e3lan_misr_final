@@ -12,8 +12,8 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email',
-            'password' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|confirmed',
         ]);
 
         $user = new User();
@@ -60,5 +60,10 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/');
 
+    }
+
+    public function loginPage()
+    {
+        return view('website.login');
     }
 }

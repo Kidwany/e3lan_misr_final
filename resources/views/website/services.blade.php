@@ -1,5 +1,5 @@
 @extends('website.layouts.layouts')
-@section('title', 'Campaign')
+@section('title', 'Services')
 
 @section('customizedScript')
     <script>
@@ -143,7 +143,7 @@
                                         @foreach($sizes as $size)
                                             <div class="col-lg-6">
                                                 <div class="form-check">
-                                                    <input type="checkbox" name="size" value="{{$size->id}}"> {{$size->size}}<br>
+                                                    <input type="checkbox" name="size[]" value="{{$size->id}}"> {{$size->size}}<br>
                                                 </div>
                                             </div>
                                         @endforeach

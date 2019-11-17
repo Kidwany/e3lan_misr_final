@@ -65,12 +65,23 @@ class WebsitePagesController extends Controller
     /* Return Service Page */
     public function service()
     {
+        $parentService = Input::get('parentService');
+        $childService = Input::get('childService');
+        if (!empty($parentService))
+        {
+            $billboards = Billboard::with('billboard_en', 'image')->where('service_id', $parentService)->get();
+        }
+        elseif (!empty($childService))
+        {
+            $billboards = Billboard::with('billboard_en', 'image')->where('sub_service_id', $childService)->get();
+        }
+        else
+        {
+            $billboards = Billboard::with('billboard_en', 'image')->get();
+        }
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
-        $billboards = Billboard::with('billboard_en', 'image')->get();
         return view('website.services', compact('billboards','locations', 'sizes'));
-        /*$services = Service::with('service_en', 'createdBy', 'image')->where('parent_service_id', null)->get();
-        return view('website.services', compact('services'));*/
     }
 
     /* Return Service Details Page */
@@ -132,7 +143,16 @@ class WebsitePagesController extends Controller
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
         $billboards = Billboard::with('billboard_en', 'image')->get();
-        return view('website.buildCamp', compact('billboards','locations', 'sizes'));
+        $authUser = Auth::user();
+        if ($authUser)
+        {
+            return view('website.buildCamp', compact('billboards','locations', 'sizes'));
+        }
+        else
+        {
+            return redirect('login/customer');
+        }
+
     }
 
     /**
@@ -191,9 +211,17 @@ class WebsitePagesController extends Controller
      */
     public function showRequestedItems()
     {
-        $userId = Auth::user()->id;
-        $requestedCampaign = Campaign::with('billboard')->where('user_id', $userId)->where('status', 1)->first();
-        return view('website.requestedItems', compact('requestedCampaign'));
+        $authUser = Auth::user();
+        if ($authUser)
+        {
+            $userId = Auth::user()->id;
+            $requestedCampaign = Campaign::with('billboard')->where('user_id', $userId)->where('status', 1)->first();
+            return view('website.requestedItems', compact('requestedCampaign'));
+        }
+        else
+        {
+            return redirect('login/customer');
+        }
     }
 
 
@@ -232,8 +260,16 @@ class WebsitePagesController extends Controller
      */
     public function myCampaigns()
     {
-        $campaigns = Campaign::with('campaignDetails')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
-        return view('website.myCampaigns', compact('campaigns'));
+        $authUser = Auth::user();
+        if ($authUser)
+        {
+            $campaigns = Campaign::with('campaignDetails')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+            return view('website.myCampaigns', compact('campaigns'));        }
+        else
+        {
+            return redirect('login/customer');
+        }
+
     }
 
     /**
@@ -259,10 +295,10 @@ class WebsitePagesController extends Controller
         $parentLocationId = $request->parent;
         $childLocationId = $request->child;
         $childOfChildLocation = $request->child_of_child;
-        $sizeId = $request->size;
+        $sizeId = \request('size');
 
         $sizesArray = [];
-        if (isset($sizeId))
+        if (!empty($sizeId))
         {
             foreach ($sizeId as $size)
             {
