@@ -51,15 +51,29 @@
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <label class="sr-only" for="email">Email</label>
-                                                <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
-                                                <div class="help-block with-errors"></div>
+                                                <input type="email" name="email" class="md-input {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
+                                                <div class="help-block with-errors">
+                                                  @if ($errors->has('email'))
+                                                        <span class="invalid-feedback">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-sm-12">
                                             <div class="form-group">
                                                 <label class="sr-only">Password</label>
-                                                <input type="password" name="password" class="md-input" id="subject-2" placeholder="Password" required>
+                                                <input type="password" name="password" class="md-input {{ $errors->has('password') ? ' is-invalid' : '' }}" id="subject-2" placeholder="Password" required>
                                             </div>
+                                            <div class="help-block with-errors">
+                                                  @if ($errors->has('password'))
+                                                        <span class="invalid-feedback">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
+                                                </div>
+
                                         </div>
                                     </div>
                                     <div class="row">

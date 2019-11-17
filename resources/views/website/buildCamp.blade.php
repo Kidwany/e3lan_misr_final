@@ -1,57 +1,11 @@
 @extends('website.layouts.layouts')
 @section('title', 'Campaign')
 
-@section('customizedScript')
-    <script>
-        $(document).ready(function () {
-            $('#parent_location').on('change', function () {
-                var parentId = $(this).val();
-                //alert(parentId);
-                if (parentId)
-                {
-                    $.ajax({
-                        header: '@csrf',
-                        url: 'child_location/' + parentId,
-                        type: "GET",
-                        dataType: 'json',
-                        success: function (data) {
-                            $('#childLocation').empty();
-                            $('#childOfChildLocation').empty();
-                            $.each(data, function (key, value) {
-                                $('#childLocation').append('<option value="' + value.id +'">'+ value.child_location_en.location +'</option>')
 
-                            })
-                        }
-                    })
-                }
-            });
-
-            $('#childLocation').on('click', function () {
-                var childId = $(this).val();
-                //alert(childId);
-                if (childId)
-                {
-                    $.ajax({
-                        header: '@csrf',
-                        url: 'child_of_child_location/' + childId,
-                        type: "GET",
-                        dataType: 'json',
-                        success: function (data) {
-                            $('#childOfChildLocation').empty();
-                            $.each(data, function (key, value) {
-                                $('#childOfChildLocation').append('<option value="' + value.id +'">'+ value.child_of_child_location_en.location +'</option>')
-
-                            })
-                        }
-                    })
-                }
-            });
-        });
-    </script>
-@endsection
 
 @section('content')
 
+<input type="hidden" id="chekauth" value="{{auth()->check() ? "1" : "2"}} ">
   <!--== Page Title Start ==-->
   <div class="transition-none">
         <section class="title-hero-bg parallax-effect" style="background-image: url({{url('website')}}/assets/images/services/camp_cover.jpg);">
@@ -81,7 +35,7 @@
                                         </a>
                                         <div class="product-action">
                                             <div class="tr-modal-popup">
-                                                <a href="#details-popup{{$billboard->id}}" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn" type="button" value="Add to Cart">
+                                                <a href="#details-popup{{$billboard->id}}" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn checkauth" type="button" value="Add to Cart">
                                                     <i class="icofont icofont-mega-phone"></i> <span>Add to Campaign </span>
                                                 </a>
                                             </div>
@@ -166,7 +120,6 @@
             </div>
         </div>
 
-{{--
         <div id="details-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Enter Duration</span>
 
@@ -216,34 +169,11 @@
             </div>
 
         </div>
---}}
 
         @foreach($billboards as $billboard)
-            <div id="details-popup{{$billboard->id}}" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
+
+            <div id="details-popup{{$billboard->id}}" class="tesauth  white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
                 <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Enter Duration</span>
-                <!-- <form name="contact-form" action="#" method="POST" class="contact-form-style-01">
-                     <div class="messages"></div>
-                     <div class="row">
-                         <div class="col-md-12 col-sm-12">
-                             <div class="form-group">
-                                 <label class="sr-only" for="email">Email</label>
-                                 <input type="email" name="email" class="md-input" id="email" placeholder="Email *" required data-error="Please Enter Valid Email">
-                                 <div class="help-block with-errors"></div>
-                             </div>
-                         </div>
-                         <div class="col-md-12 col-sm-12">
-                             <div class="form-group">
-                                 <label class="sr-only">Password</label>
-                                 <input type="password" name="subject" class="md-input" id="subject-2" placeholder="Password" required>
-                             </div>
-                         </div>
-                     </div>
-                     <div class="row">
-                         <div class="mt-10" style="display: flex; flex-direction: row; justify-content: center">
-                             <button type="submit" class="btn btn-color btn-md btn-default" href="clients.html"><i class="fa fa-filter"></i> Login</button>
-                         </div>
-                     </div>
-                 </form>-->
 
                 <!-- -------------------- Tabs --------------------------- -->
                 <div class="row mt-30 tabs-style-01">
@@ -277,12 +207,14 @@
                     </div>
                 </div>
             </div>
+
         @endforeach
 
     </section>
     <!--== Featured Product End ==-->
 
-  
+ 
+
 
 
   

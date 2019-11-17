@@ -25,8 +25,25 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+
+
+
     public function login(Request $request)
     {
+
+
+          $validator = \Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+             ]);
+
+            if($validator->fails()) {
+
+                return redirect()
+                ->back()
+                ->withInput($request->all())
+                ->withErrors($validator, 'error');
+                }
 
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'custom_id' => 0])) {
 
