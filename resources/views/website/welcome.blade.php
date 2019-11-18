@@ -117,7 +117,7 @@
                         <h4 class="mb-0">{{@$service->service_en->title}}</h4>
                         <hr class="left-line default-bg">
                         <p>{{@$service->service_en->description}}</p>
-                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{route('service_details', ['id' =>$service->id])}}"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{url('services?parentService=' . $service->id)}}"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
                     </div>
                 @endforeach
             </div>

@@ -1,20 +1,20 @@
 <!--== Header Start ==-->
 <nav class="navbar navbar-default navbar-fixed navbar-transparent white bootsnav on no-full">
     <!--== Start Top Search ==-->
-    <!--<div class="fullscreen-search-overlay" id="search-overlay"> <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="icofont icofont-close"></i></a>
+    <div class="fullscreen-search-overlay" id="search-overlay"> <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="icofont icofont-close"></i></a>
         <div id="fullscreen-search-wrapper">
             <form method="get" id="fullscreen-searchform">
-                <input type="text" value="" placeholder="Type and hit Enter..." id="fullscreen-search-input" class="search-bar-top">
+                <input type="text" value="" placeholder="Search..." id="fullscreen-search-input" class="search-bar-top">
                 <i class="fullscreen-search-icon icofont icofont-search">
                     <input value="" type="submit">
                 </i>
             </form>
         </div>
-    </div>-->
+    </div>
     <!--== End Top Search ==-->
     <div class="container">
         <!--== Start Atribute Navigation ==-->
-        @if(!Auth::user())
+
 
         <div class="attr-nav hidden-xs sm-display-none">
             <ul class="social-media-dark social-top">
@@ -23,12 +23,15 @@
                         <a href="#modal-popup" data-effect="mfp-zoom-in" class=" icofont icofont-login white" style="color: #ddb35b"> Login</a>
                     </div>
                 </li>--}}
-                <li><a href="{{url('/login/customer')}}" class="icofont icofont-login default-color"> Login</a></li>
+                @if(!Auth::user())
+                    <li><a href="{{url('/login/customer')}}" class="icofont icofont-login default-color"> Login</a></li>
+                @endif
+                <li class="search"><a href="#" id="search-button"><i class="icofont icofont-search"></i></a></li>
+
                 {{--<li><a href="#" class="icofont icofont-social-instagram"></a></li>--}}
             </ul>
         </div>
 
-        @endif
         <div id="modal-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
             <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Login or Register</span>
             <!-- -------------------- Tabs --------------------------- -->
