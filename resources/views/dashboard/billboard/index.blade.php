@@ -54,7 +54,7 @@
                             <th>id</th>
                             <th>Image</th>
                             <th>Code</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Size</th>
                             <th>Created at</th>
                             <th>Updated at</th>
@@ -66,7 +66,7 @@
                             <th>id</th>
                             <th>Image</th>
                             <th>Code</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Size</th>
                             <th>Created at</th>
                             <th>Updated at</th>
@@ -80,14 +80,13 @@
                                     <td>{{$billboard->id}}</td>
                                     <td><img src="{{$billboard->image_id ? asset($billboard->image->path) : asset('dashboard/img/picture.png')}}" style="width: 50px" alt="slide image" > </td>
                                     <td>{{$billboard->code}}</td>
-                                    <td>{{$billboard->childOfChildLocation->childOfChildLocation_en->location}}</td>
-                                    <td>{{$billboard->size->size}}</td>
+                                    <td>{{$billboard->parentLocation->parentLocation_en->location}}</td>
+                                    <td>{{$billboard->billboardSize->size}}</td>
                                     <td>{{$billboard->created_at ? $billboard->created_at->diffForHumans() : ''}}</td>
                                     <td>{{$billboard->updated_at ? $billboard->updated_at->diffForHumans() : ''}}</td>
                                     <td>
                                         <a href="{{route('billboard.edit', $billboard->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
-                                        <a href="{{adminUrl('billboard/'.$billboard->id . '/create')}}" class style="font-size: 20px"><i class="fa fa-plus" title="Add Mini Billboards to this service"></i> </a>
-                                        <a href="{{adminUrl('billboard/'.$billboard->id)}}" class style="font-size: 20px"><i class="fa fa-image" title="Show Sub-Billboards"></i> </a>
+                                        <a href="#." class style="font-size: 20px"><i class="fa fa-image" title="Show Billboard Images"></i> </a>
                                         <button type="button" class data-toggle="modal" data-target="#delete{{$billboard->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -109,7 +108,7 @@
                                             <h4 class="modal-title">Delete User</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are You Sure You Want To Delete Billboard <strong>{{$billboard->billborad_en->name}}</strong></p>
+                                            <p>Are You Sure You Want To Delete Billboard <strong>{{$billboard->billboard_en->name}}</strong></p>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="{{route('billboard.destroy', $billboard->id)}}" method="post">

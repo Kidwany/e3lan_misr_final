@@ -63,11 +63,11 @@
                                 <p class="help-block">Enter Icon Code </p>
                             </div>
 
-                            <div class="col-lg-6">
+                            {{--<div class="col-lg-6">
                                 <label for="exampleInputEmail1"> Image</label>
                                 <input type="file" class="form-control" name="image_id" id="exampleInputEmail1" placeholder="Enter Service text">
                                 <p class="help-block"> Upload Service Image </p>
-                            </div>
+                            </div>--}}
 
 
                             <div class="col-lg-6">

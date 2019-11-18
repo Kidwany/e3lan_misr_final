@@ -41,4 +41,14 @@ class Campaign_item extends Model  {
      */
     protected $dates = [];
 
+    public function requestedCampaign()
+    {
+        return $this->belongsTo(Campaign::class, 'campaign_id', 'id')->withDefault();
+    }
+
+    public function requestedBillboard()
+    {
+        return $this->belongsTo(Billboard::class, 'billboard_id', 'id')->withDefault();
+    }
+
 }

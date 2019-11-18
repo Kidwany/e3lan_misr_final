@@ -18,7 +18,7 @@ class Billboard extends Model  {
      *
      * @var array
      */
-    protected $fillable = ['code', 'image_id', 'service_id', 'area_id', 'size_id', 'dimension', 'location', 'created_by'];
+    protected $fillable = ['code', 'image_id', 'service_id', 'sub_service_id', 'parent_location_id', 'child_location_id', 'child_of_child_location_id', 'size_id', 'dimension', 'location', 'created_by'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -46,7 +46,7 @@ class Billboard extends Model  {
         return $this->belongsToMany(Campaign::class, 'campaign_items', 'billboard_id', 'campaign_id');
     }
 
-    public function billborad_en()
+    public function billboard_en()
     {
         return $this->hasOne(\App\Models\English\Billboard::class, 'billboard_id', 'id')->withDefault();
     }
@@ -56,19 +56,35 @@ class Billboard extends Model  {
         return $this->belongsTo(Image::class, 'image_id', 'id')->withDefault();
     }
 
-    public function size()
+    public function billboardSize()
     {
-        return $this->belongsTo(Image::class, 'size_id', 'id')->withDefault();
+        return $this->belongsTo(Size::class, 'size_id', 'id')->withDefault();
     }
+
+    public function parentLocation()
+    {
+        return $this->belongsTo(Parent_location::class, 'parent_location_id', 'id')->withDefault();
+    }
+
+    public function childLocation()
+    {
+        return $this->belongsTo(Child_location::class, 'child_location_id', 'id')->withDefault();
+    }
+
 
     public function childOfChildLocation()
     {
-        return $this->belongsTo(Child_of_child_location::class, 'location_id', 'id')->withDefault();
+        return $this->belongsTo(Child_of_child_location::class, 'child_of_child_location_id', 'id')->withDefault();
     }
 
     public function service()
     {
         return $this->belongsTo(Service::class, 'service_id', 'id')->withDefault();
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany(Image::class, 'billboard_images', 'billboard_id','image_id')->withTimestamps();
     }
 
 }

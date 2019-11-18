@@ -22,7 +22,7 @@ class LayoutsServiceProvide extends ServiceProvider
                 'website.contact',
                 'website.blog',
                 'website.blogDetails',
-                'website.service',
+                'website.services',
                 'website.serviceDetails',
                 'website.client',
                 'website.offers',
@@ -33,6 +33,11 @@ class LayoutsServiceProvide extends ServiceProvider
                 'website.team',
                 'website.portfolio',
                 'website.project',
+                'website.buildCamp',
+                'website.services_details',
+                'website.requestedItems',
+                'website.myCampaigns',
+                'website.login',
             ],
             LayoutsComposer::class
         );

@@ -26,12 +26,12 @@
     <section class="content-header">
         <h1>
             Areas
-            <small>All Areas</small>
+            <small>All Locations</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/child-of-child-location')}}">Areas</a></li>
-            <li class="active">All Areas</li>
+            <li><a href="{{adminUrl('/child-of-child-location')}}">Locations</a></li>
+            <li class="active">All Locations</li>
         </ol>
     </section>
 
@@ -42,8 +42,8 @@
             <div class="col-md-12">
                 <div class="box box-primary" style="padding: 15px">
                     <div class="box-header with-border">
-                        <h3 class="box-title">All Areas Info</h3>
-                        <a href="{{adminUrl('child-of-child-location/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Area </a>
+                        <h3 class="box-title">All Locations Info</h3>
+                        <a href="{{adminUrl('child-of-child-location/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Location </a>
                     </div>
                     @include('dashboard.layouts.messages')
                     <!-- /.box-header -->
@@ -52,7 +52,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Zone</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
@@ -62,7 +62,7 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Zone</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
@@ -98,10 +98,10 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Delete Area</h4>
+                                            <h4 class="modal-title">Delete Location</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are You Sure You Want To Delete Area <strong>{{$location->childOfChildLocation_en->location}}</strong></p>
+                                            <p>Are You Sure You Want To Delete Location <strong>{{$location->childOfChildLocation_en->location}}</strong></p>
                                         </div>
                                         <div class="modal-footer">
                                             <form action="{{route('child-of-child-location.destroy', $location->id)}}" method="post">

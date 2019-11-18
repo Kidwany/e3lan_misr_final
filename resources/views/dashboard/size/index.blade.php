@@ -25,13 +25,13 @@
 
     <section class="content-header">
         <h1>
-            Areas
-            <small>All Areas</small>
+            Billboard Sizes
+            <small>All Billboard Sizes</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/parent-location')}}">Areas</a></li>
-            <li class="active">All Areas</li>
+            <li><a href="{{adminUrl('/size')}}">Billboard Sizes</a></li>
+            <li class="active">All Billboard Sizes</li>
         </ol>
     </section>
 
@@ -42,8 +42,8 @@
             <div class="col-md-12">
                 <div class="box box-primary" style="padding: 15px">
                     <div class="box-header with-border">
-                        <h3 class="box-title">All Areas Info</h3>
-                        <a href="{{adminUrl('parent-location/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Area </a>
+                        <h3 class="box-title">All Billboard Sizes Info</h3>
+                        <a href="{{adminUrl('size/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard Size </a>
                     </div>
                     @include('dashboard.layouts.messages')
                     <!-- /.box-header -->
@@ -52,7 +52,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Area</th>
+                            <th>Billboard Size</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
                             <th>Actions</th>
@@ -61,23 +61,23 @@
                         <tfoot>
                         <tr>
                             <th>ID</th>
-                            <th>Area</th>
+                            <th>Billboard Size</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @if($locations)
-                            @foreach($locations as $location)
+                        @if($sizes)
+                            @foreach($sizes as $size)
                                 <tr>
-                                    <td>{{$location->id}}</td>
-                                    <td>{{$location->parentLocation_en->location}}</td>
-                                    <td>{{$location->created_at ? $location->created_at->diffForHumans() : ''}}</td>
-                                    <td>{{$location->updated_at ? $location->updated_at->diffForHumans() : ''}}</td>
+                                    <td>{{$size->id}}</td>
+                                    <td>{{$size->size}}</td>
+                                    <td>{{$size->created_at ? $size->created_at->diffForHumans() : ''}}</td>
+                                    <td>{{$size->updated_at ? $size->updated_at->diffForHumans() : ''}}</td>
                                     <td>
-                                        <a href="{{route('parent-location.edit', $location->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
-                                        <button type="button" class data-toggle="modal" data-target="#delete{{$location->id}}" style="font-size: 20px">
+                                        <a href="{{route('size.edit', $size->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
+                                        <button type="button" class data-toggle="modal" data-target="#delete{{$size->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -87,21 +87,21 @@
                         </tbody>
                     </table>
 
-                    @if($locations)
-                        @foreach($locations as $location)
-                            <div class="modal modal-danger fade" id="delete{{$location->id}}">
+                    @if($sizes)
+                        @foreach($sizes as $size)
+                            <div class="modal modal-danger fade" id="delete{{$size->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Delete Area</h4>
+                                            <h4 class="modal-title">Delete Billboard Size</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are You Sure You Want To Delete Project <strong>{{$location->parentLocation_en->location}}</strong></p>
+                                            <p>Are You Sure You Want To Delete Size <strong>{{$size->size}}</strong></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{route('parent-location.destroy', $location->id)}}" method="post">
+                                            <form action="{{route('size.destroy', $size->id)}}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <div class="d-flex flex-row">

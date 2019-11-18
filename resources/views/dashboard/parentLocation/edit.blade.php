@@ -15,13 +15,13 @@
 
     <section class="content-header">
         <h1>
-            Locations
-            <small>Update Location</small>
+            Areas
+            <small>Update Area</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/parent-location')}}">Locations</a></li>
-            <li class="active">Update Location</li>
+            <li><a href="{{adminUrl('/parent-location')}}">Areas</a></li>
+            <li class="active">Update Area</li>
         </ol>
     </section>
 
@@ -38,16 +38,16 @@
                 <div class="col-md-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Location Info</h3>
+                            <h3 class="box-title">Add Area Info</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
                         <div class="box-body">
                             <div class="form-group">
                                 <div class="col-lg-6">
-                                    <label for="exampleInputEmail1"> Location Name</label>
-                                    <input type="text" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Location Name" value="{{$location->parentLocation_en->location}}">
-                                    <p class="help-block">Enter Location Name</p>
+                                    <label for="exampleInputEmail1"> Area Name</label>
+                                    <input type="text" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Area Name" value="{{$location->parentLocation_en->location}}">
+                                    <p class="help-block">Enter Area Name</p>
                                 </div>
 
                                 {{--<div class="col-lg-6">

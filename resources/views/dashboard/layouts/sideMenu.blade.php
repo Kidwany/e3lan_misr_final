@@ -85,12 +85,12 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-map-pin"></i>
-                    <span>Locations</span>
+                    <span>Areas</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{adminUrl('parent-location/create')}}"><i class="fa fa-plus"></i> Add Location</a></li>
-                    <li><a href="{{adminUrl('parent-location')}}"><i class="fa fa-edit"></i> Show / Edit Location</a></li>
+                    <li><a href="{{adminUrl('parent-location/create')}}"><i class="fa fa-plus"></i> Add Area</a></li>
+                    <li><a href="{{adminUrl('parent-location')}}"><i class="fa fa-edit"></i> Show / Edit Area</a></li>
                 </ul>
             </li>
 
@@ -109,14 +109,28 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-map-marker"></i>
-                    <span>Areas</span>
+                    <span>Locations</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{adminUrl('child-of-child-location/create')}}"><i class="fa fa-plus"></i> Add Area</a></li>
-                    <li><a href="{{adminUrl('child-of-child-location')}}"><i class="fa fa-edit"></i> Show / Edit Area</a></li>
+                    <li><a href="{{adminUrl('child-of-child-location/create')}}"><i class="fa fa-plus"></i> Add Locations</a></li>
+                    <li><a href="{{adminUrl('child-of-child-location')}}"><i class="fa fa-edit"></i> Show / Edit Locations</a></li>
                 </ul>
             </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-square"></i>
+                    <span>Sizes</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('size/create')}}"><i class="fa fa-plus"></i> Add Size</a></li>
+                    <li><a href="{{adminUrl('size')}}"><i class="fa fa-edit"></i> Show / Edit Size</a></li>
+                </ul>
+            </li>
+
 
             <li class="treeview">
                 <a href="#">

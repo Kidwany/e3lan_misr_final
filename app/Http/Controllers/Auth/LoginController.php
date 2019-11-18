@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/crop-media-admin';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
