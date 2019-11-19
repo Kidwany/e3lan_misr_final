@@ -19,7 +19,7 @@ class ChildOfChildLocationController extends Controller
     public function index()
     {
         $locations = Child_of_child_location::with('childOfChildLocation_en')->get();
-        return view('dashboard.ChildOfChildLocation.index', compact('locations'));
+        return view('dashboard.childOfChildLocation.index', compact('locations'));
     }
 
     /**
@@ -32,7 +32,7 @@ class ChildOfChildLocationController extends Controller
         $childLocations = Child_location::with('childLocation_en')->get();
         //$parent_locations = Parent_location::with('parentLocation_en')->get();
 
-        return view('dashboard.ChildOfChildLocation.create', compact('childLocations'));
+        return view('dashboard.childOfChildLocation.create', compact('childLocations'));
     }
 
     /**
@@ -77,7 +77,7 @@ class ChildOfChildLocationController extends Controller
     {
         $location = Child_of_child_location::with('childOfChildLocation_en')->find($id);
         $childLocations = Child_location::with('childLocation_en')->get();
-        return view('dashboard.ChildOfChildLocation.edit', compact('location', 'childLocations'));
+        return view('dashboard.childOfChildLocation.edit', compact('location', 'childLocations'));
     }
 
     /**

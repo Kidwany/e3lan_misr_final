@@ -24,8 +24,8 @@
 
     <section class="content-header">
         <h1>
-            Request Details
-            <small><strong>{{$request->campaignDetails->name}} </strong>Request</small>
+            Billboard Details
+            <small><strong>{{$billboard->billboard_en->name}} </strong>Details</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -36,58 +36,6 @@
 
 
     <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary" style="padding: 15px">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">All Requests Items</h3>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
-                        <table id="example2" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Code</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Code</th>
-                                <th>From</th>
-                                <th>To</th>
-                                <th>Action</th>
-                            </tr>
-                            </tfoot>
-                            <tbody>
-
-                            @if($campaignItems)
-                                @foreach($campaignItems as $campaignItem)
-                                    <tr>
-                                        <td>{{$campaignItem->billboard_id}}</td>
-                                        <td>{{$campaignItem->requestedBillboard->code}}</td>
-                                        <td>{{$campaignItem->starts->format('M Y')}}</td>
-                                        <td>{{$campaignItem->end->format('M Y')}}</td>
-                                        <td><a href="{{adminUrl('billboard/' . $campaignItem->billboard_id)}}"><i class="fa fa-eye"></i> </a> </td>
-                                    </tr>
-                                @endforeach
-                            @endif
-
-
-                            </tbody>
-                        </table>
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-primary" style="padding: 15px">
@@ -108,28 +56,52 @@
                                             <th class="text-center">Details</th>
                                         </tr>
                                         <tr>
-                                            <td><strong>User Name</strong> </td>
-                                            <td>{{$request->user->name}}</td>
+                                            <td><strong>ID</strong> </td>
+                                            <td>{{$billboard->id}}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Company</strong> </td>
-                                            <td>{{$request->campaignDetails->company}}</td>
+                                            <td><strong>Name</strong> </td>
+                                            <td>{{$billboard->billboard_en->name}}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Phone</strong> </td>
-                                            <td>{{$request->campaignDetails->phone}}</td>
+                                            <td><strong>Description</strong> </td>
+                                            <td>{{$billboard->billboard_en->name}}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Position</strong> </td>
-                                            <td>{{$request->campaignDetails->position}}</td>
+                                            <td><strong>Main Service</strong> </td>
+                                            <td>{{$billboard->service_id ? $billboard->service->service_en->title : ''}}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong>Campaign Name</strong> </td>
-                                            <td>{{$request->campaignDetails->name}}</td>
+                                            <td><strong>Sub Service</strong> </td>
+                                            <td>{{$billboard->sub_service_id ? $billboard->subService->service_en->title : ''}}</td>
                                         </tr>
                                         <tr>
-                                            <td><strong> Requested at</strong></td>
-                                            <td>{{$request->created_at->diffForHumans()}}</td>
+                                            <td><strong>Area</strong> </td>
+                                            <td>{{$billboard->parentLocation->parentLocation_en->location}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Zone</strong> </td>
+                                            <td>{{$billboard->child_location_id ? $billboard->childLocation->childLocation_en->location : ''}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Location</strong></td>
+                                            <td>{{$billboard->child_of_child_location_id ? $billboard->childOfChildLocation->childOfChildLocation_en->location : ''}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Size</strong></td>
+                                            <td>{{$billboard->billboardSize->size}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Dimensions</strong></td>
+                                            <td>{{$billboard->dimension}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Created By</strong></td>
+                                            <td>{{$billboard->createdBy->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Created At</strong></td>
+                                            <td>{{$billboard->created_at->diffForHumans()}}</td>
                                         </tr>
                                         </tbody>
                                     </table>

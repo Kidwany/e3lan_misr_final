@@ -71,7 +71,6 @@ class Billboard extends Model  {
         return $this->belongsTo(Child_location::class, 'child_location_id', 'id')->withDefault();
     }
 
-
     public function childOfChildLocation()
     {
         return $this->belongsTo(Child_of_child_location::class, 'child_of_child_location_id', 'id')->withDefault();
@@ -82,9 +81,19 @@ class Billboard extends Model  {
         return $this->belongsTo(Service::class, 'service_id', 'id')->withDefault();
     }
 
+    public function subService()
+    {
+        return $this->belongsTo(Service::class, 'sub_service_id', 'id')->withDefault();
+    }
+
     public function images()
     {
         return $this->belongsToMany(Image::class, 'billboard_images', 'billboard_id','image_id')->withTimestamps();
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id')->withDefault();
     }
 
 }

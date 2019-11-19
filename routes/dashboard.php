@@ -87,9 +87,8 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     Route::delete('/project/delete-image/{id}', 'ProjectController@deleteImage');
     Route::get('/project/{id}/images', 'ProjectController@projectImages');
 
-    /* --- Campaign Requests  ---*/
-    Route::get('/campaign-request', 'CampaignController@index');
-    Route::get('/campaign-request/{$id}', 'CampaignController@show');
+
+    //Route::get('campaign-request/{$id}', 'CampaignController@index');
 
     /* --- Parent Location ---*/
     Route::resource('parent-location', 'ParentLocationController');
@@ -102,12 +101,19 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
 
     /* --- Parent Location ---*/
     Route::resource('billboard', 'BillboardController');
+    Route::get('billboard/{id}/images', 'BillboardController@billboardImages');
+    Route::delete('billboard/image/{id}/destroy', 'BillboardController@deleteBillboardImage');
     Route::get('child-locations/{id}', 'BillboardController@getChildLocations');
     Route::get('child-of-child-locations/{id}', 'BillboardController@getChildOfChildLocations');
     Route::get('sub-services/{id}', 'BillboardController@getSubServices');
 
     /* --- Billboards Sizes ---*/
     Route::resource('size', 'SizeController');
+
+    /* --- Campaign Requests  ---*/
+    Route::get('/campaign-request', 'CampaignController@index');
+    Route::get('campaign-request/{id}', 'CampaignController@show');
+
 
 });
 

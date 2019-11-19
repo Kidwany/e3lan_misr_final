@@ -37,60 +37,109 @@
 
     <section class="content">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Responsive Hover Table</h3>
-
-                        <div class="box-tools">
-                            <div class="input-group input-group-sm hidden-xs" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                <div class="input-group-btn">
-                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-12">
+                <div class="box box-primary" style="padding: 15px">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">All Requests Items</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
-                            <tbody><tr>
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
                                 <th>ID</th>
-                                <th>User</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Reason</th>
+                                <th>Code</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Action</th>
                             </tr>
+                            </thead>
+                            <tfoot>
                             <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                <th>ID</th>
+                                <th>Code</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Action</th>
                             </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>Alexander Pierce</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>Bob Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-primary">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>Mike Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-danger">Denied</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            </tbody></table>
+                            </tfoot>
+                            <tbody>
+
+                            @if($campaignItems)
+                                @foreach($campaignItems as $campaignItem)
+                                    <tr>
+                                        <td>{{$campaignItem->billboard_id}}</td>
+                                        <td>{{$campaignItem->requestedBillboard->code}}</td>
+                                        <td>{{$campaignItem->starts->format('M Y')}}</td>
+                                        <td>{{$campaignItem->end->format('M Y')}}</td>
+                                        <td><a href="{{adminUrl('billboard/' . $campaignItem->billboard_id)}}"><i class="fa fa-eye"></i> </a> </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary" style="padding: 15px">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Request INFO</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <div class="col-md-12">
+                            <div class="box">
+
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table class="table table-bordered">
+                                        <tbody>
+                                        <tr>
+                                            <th class="text-center">Attribute</th>
+                                            <th class="text-center">Details</th>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>User Name</strong> </td>
+                                            <td>{{$request->user->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Company</strong> </td>
+                                            <td>{{$request->campaignDetails->company}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Phone</strong> </td>
+                                            <td>{{$request->campaignDetails->phone}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Position</strong> </td>
+                                            <td>{{$request->campaignDetails->position}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Campaign Name</strong> </td>
+                                            <td>{{$request->campaignDetails->name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong> Requested at</strong></td>
+                                            <td>{{$request->created_at->diffForHumans()}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                            <!-- /.box -->
+                        </div>
                     </div>
                     <!-- /.box-body -->
                 </div>

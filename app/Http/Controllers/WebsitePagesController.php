@@ -269,7 +269,6 @@ class WebsitePagesController extends Controller
         {
             return redirect('login/customer');
         }
-
     }
 
     /**

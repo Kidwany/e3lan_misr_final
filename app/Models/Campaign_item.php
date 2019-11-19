@@ -39,7 +39,7 @@ class Campaign_item extends Model  {
      *
      * @var array
      */
-    protected $dates = [];
+    protected $dates = ['starts', 'end'];
 
     public function requestedCampaign()
     {
