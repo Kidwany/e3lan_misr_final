@@ -77,7 +77,10 @@
                         <li><span> Location </span> {{$billboard->child_of_child_location_id ? $billboard->childOfChildLocation->childOfChildLocation_en->location : ''}}</li>
                         <li><span> Size </span> {{$billboard->billboardSize->size}}</li>
                         <li><span> Dimensions </span> {{$billboard->dimension}}</li>
-                        <li><span> Category </span><a href="{{url('services?service=' . $billboard->service->{'service_' . currentLang()}->title)}}"> {{$billboard->service->{'service_' . currentLang()}->title }}</a></li>
+                        <li><span> Faces </span> {{$billboard->faces}} Faces</li>
+                        <li><span> Light </span> {{$billboard->light}}</li>
+                        <li><span> Material </span> {{$billboard->material}}</li>
+                        <li><span> Category </span><a href="{{url('services?parentService=' . $billboard->service_id)}}"> {{$billboard->service->{'service_' . currentLang()}->title }}</a></li>
                     </ul>
                 </div>
             </div>

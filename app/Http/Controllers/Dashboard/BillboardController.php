@@ -145,6 +145,12 @@ class BillboardController extends Controller
         $billboard->size_id = $input['size'];
         $billboard->location = $input['location'];
         $billboard->dimension = $input['dimensions'];
+        $billboard->light = $input['light'];
+        $billboard->faces = $input['faces'];
+        $billboard->material = $input['material'];
+        $billboard->availability = $input['availability'];
+        $billboard->price = $input['price'];
+        $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();
 
@@ -155,7 +161,7 @@ class BillboardController extends Controller
             $billboard->images()->attach($images);
         }
 
-        return redirect(adminUrl('billboard'))->with('created', 'New Bill Board Added Successfully');
+        return redirect(adminUrl('billboard'))->with('create', 'New Bill Board Added Successfully');
 
     }
 
@@ -273,6 +279,12 @@ class BillboardController extends Controller
         $billboard->size_id = $input['size'];
         $billboard->location = $input['location'];
         $billboard->dimension = $input['dimensions'];
+        $billboard->light = $input['light'];
+        $billboard->faces = $input['faces'];
+        $billboard->material = $input['material'];
+        $billboard->availability = $input['availability'];
+        $billboard->price = $input['price'];
+        $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();
 

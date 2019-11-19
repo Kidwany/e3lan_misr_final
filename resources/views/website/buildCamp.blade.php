@@ -1,6 +1,54 @@
 @extends('website.layouts.layouts')
 @section('title', 'Campaign')
 
+@section('customizedScript')
+    <script>
+        $(document).ready(function () {
+            $('#parent_location').on('change', function () {
+                var parentId = $(this).val();
+                //alert(parentId);
+                if (parentId)
+                {
+                    $.ajax({
+                        header: '@csrf',
+                        url: 'child_location/' + parentId,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#childLocation').empty();
+                            $('#childOfChildLocation').empty();
+                            $.each(data, function (key, value) {
+                                $('#childLocation').append('<option value="' + value.id +'">'+ value.child_location_en.location +'</option>')
+
+                            })
+                        }
+                    })
+                }
+            });
+
+            $('#childLocation').on('click', function () {
+                var childId = $(this).val();
+                //alert(childId);
+                if (childId)
+                {
+                    $.ajax({
+                        header: '@csrf',
+                        url: 'child_of_child_location/' + childId,
+                        type: "GET",
+                        dataType: 'json',
+                        success: function (data) {
+                            $('#childOfChildLocation').empty();
+                            $.each(data, function (key, value) {
+                                $('#childOfChildLocation').append('<option value="' + value.id +'">'+ value.child_of_child_location_en.location +'</option>')
+
+                            })
+                        }
+                    })
+                }
+            });
+        });
+    </script>
+@endsection
 
 
 @section('content')

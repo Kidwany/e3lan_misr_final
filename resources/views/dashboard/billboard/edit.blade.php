@@ -216,6 +216,54 @@
                                 </div>
 
                                 <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Billboard Light</label>
+                                    <select name="light" class="form-control">
+                                        <option>Choose Light</option>
+                                        <option value="Front" {{$billboard->light == 'Front' ? 'selected' : ''}}>Front</option>
+                                        <option value="Back" {{$billboard->light == 'Back' ? 'selected' : ''}}>Back</option>
+                                    </select>
+                                    <p class="help-block">Choose Light Type</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Billboard Material</label>
+                                    <select name="material" class="form-control">
+                                        <option>Choose Material</option>
+                                        <option value="Flex" {{$billboard->material == 'Flex' ? 'selected' : ''}}>Flex</option>
+                                        <option value="Banner" {{$billboard->material == 'Banner' ? 'selected' : ''}}>Banner</option>
+                                    </select>
+                                    <p class="help-block">Choose Billboard Material</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Billboard Availability</label>
+                                    <select name="availability" class="form-control">
+                                        <option>Choose Availability</option>
+                                        <option value="1" {{$billboard->availability == '1' ? 'selected' : ''}}>Available</option>
+                                        <option value="0" {{$billboard->availability == '0' ? 'selected' : ''}}>Unavailable</option>
+                                    </select>
+                                    <p class="help-block">Choose Billboard Availability</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1">Faces</label>
+                                    <input type="number" class="form-control" name="faces" id="exampleInputEmail1" placeholder="Enter Number of Faces" value="{{$billboard->faces}}">
+                                    <p class="help-block">Enter Number Of Billboard Faces </p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1">Price</label>
+                                    <input type="number" class="form-control" name="price" id="exampleInputEmail1" placeholder="Enter Billboard Price" value="{{$billboard->price}}">
+                                    <p class="help-block">Enter Billboard Price </p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1">Cost of Printing</label>
+                                    <input type="number" class="form-control" name="cost_of_printing" id="exampleInputEmail1" placeholder="Enter Cost" value="{{$billboard->printing_cost}}">
+                                    <p class="help-block">Enter Cost Of Printing </p>
+                                </div>
+
+                                <div class="col-lg-4">
                                     <label for="exampleInputEmail1"> Image</label>
                                     <input type="file" class="form-control" name="image_id" id="exampleInputEmail1" placeholder="Enter Billboard text">
                                     <p class="help-block"> Upload Billboard Image </p>

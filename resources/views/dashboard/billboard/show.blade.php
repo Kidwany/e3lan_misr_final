@@ -96,6 +96,30 @@
                                             <td>{{$billboard->dimension}}</td>
                                         </tr>
                                         <tr>
+                                            <td><strong>Light</strong></td>
+                                            <td>{{$billboard->light}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Faces</strong></td>
+                                            <td>{{$billboard->faces}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Material</strong></td>
+                                            <td>{{$billboard->material}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Price</strong></td>
+                                            <td>{{$billboard->price}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Printing Cost</strong></td>
+                                            <td>{{$billboard->printing_cost}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Availability</strong></td>
+                                            <td>{{$billboard->availability == 1 ? 'Available' : 'Unavailable'}}</td>
+                                        </tr>
+                                        <tr>
                                             <td><strong>Created By</strong></td>
                                             <td>{{$billboard->createdBy->name}}</td>
                                         </tr>
