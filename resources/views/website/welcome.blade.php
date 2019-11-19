@@ -117,7 +117,7 @@
                         <h4 class="mb-0">{{@$service->service_en->title}}</h4>
                         <hr class="left-line default-bg">
                         <p>{{@$service->service_en->description}}</p>
-                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{url('services?parentService=' . $service->id)}}"><span>Read more <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
+                        <a class="btn btn-md btn-color btn-animate btn-square mt-20" href="{{url('services?parentService=' . $service->id)}}"><span>See More <i class="tr-icon icofont icofont-arrow-right"></i></span></a>
                     </div>
                 @endforeach
             </div>
@@ -160,25 +160,25 @@
                         <div class="text-center white-color">
                             <i class="icofont icofont-billboard font-40px white-icon"></i>
                             <h4 class="mt-40 font-600">Attractive Locations</h4>
-                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
+                            <h6>Premium coverage of all the hot areas in Egypt! Not a single person will miss you ad!</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="col-inner spacer dark-bg wow fadeInUp" data-wow-delay="0.2s">
                         <div class="text-center white-color">
-                            <i class="icofont icofont-idea font-40px white-icon"></i>
-                            <h4 class="mt-40 font-600">Creative Ideas</h4>
-                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
+                            <i class="icofont icofont-sand-clock font-40px white-icon"></i>
+                            <h4 class="mt-40 font-600">Monitoring Services</h4>
+                            <h6>Our team is always working around the clock to ensure that nothing is wrong with your work!</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="col-inner spacer secondary-bg wow fadeInUp" data-wow-delay="0.3s">
                         <div class="text-center white-color">
-                            <i class="icofont icofont-sand-clock font-40px white-icon"></i>
-                            <h4 class="mt-40 font-600">Time Commitment</h4>
-                            <h6>Duis aliquet ut enim nec pulvinar Nam ultrices massa sit amet ornare elementum erat lacus consectetur metus posuere.</h6>
+                            <i class="icofont icofont-diamond font-40px white-icon"></i>
+                            <h4 class="mt-40 font-600">Supreme Quality</h4>
+                            <h6>Printing & Production require an eye for details, and we have that on our dedicated team, not a single misplaced pixel shall pass.</h6>
                         </div>
                     </div>
                 </div>
@@ -195,7 +195,7 @@
             <div class="row mt-50">
                 <div class="col-sm-7 section-heading white-color">
                     <h3 class="font-600 mt-0">Sign up for newsletters</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed fermentum nibh, vel aliquet massa. Etiam in magna id risus lacinia luctus eget eu est.</p>
+                    <p>Get to know E3lan Misr better, and be from the very firsts to know of the availability of your desired spots!</p>
                     <div class="tr-form-subscribe mt-30">
                         <form class="signup-form remove-margin" method="post">
                             <div class="input-group password-input-group">

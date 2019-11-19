@@ -64,10 +64,10 @@
                         @method('post')
                         <!-- Parent Location -->
                         <div class="widget sidebar_widget">
-                            <h5 class="aside-title text-uppercase">Choose Location</h5>
+                            <h5 class="aside-title text-uppercase">Choose Area</h5>
                             <!-- <form method="get"> -->
                             <select name="parent" style="color: #333" id="parent_location">
-                                <option value="menu_order" selected="selected">All Locations </option>
+                                <option value="menu_order" selected="selected">All Areas </option>
                                 @foreach($locations as $location)
                                     <option value="{{$location->id}}">{{$location->parentLocation_en->location}}</option>
                                 @endforeach
@@ -86,9 +86,9 @@
 
                         <!-- Child of Child Location -->
                         <div class="widget sidebar_widget">
-                            <h5 class="aside-title text-uppercase">Choose Area</h5>
+                            <h5 class="aside-title text-uppercase">Choose Location</h5>
                             <select name="child_of_child" style="color: #333" id="childOfChildLocation">
-                                <option value="" selected="selected">All Areas </option>
+                                <option value="" selected="selected">All Locations </option>
                             </select>
                         </div>
 

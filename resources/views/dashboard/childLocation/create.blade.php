@@ -51,16 +51,16 @@
                             </div>
 
                             <div class="col-lg-6">
-                                <label for="exampleInputEmail1"> Choose Location</label>
+                                <label for="exampleInputEmail1"> Choose Area</label>
                                 <select name="parent_location_id" id="admin_type" class="form-control">
-                                    <option value="0">Choose Location</option>
+                                    <option value="0">Choose Area</option>
                                     @if($parent_locations)
                                         @foreach($parent_locations as $parent_location)
                                             <option value="{{$parent_location->id}}">{{$parent_location->parentLocation_en->location}}</option>
                                         @endforeach
                                     @endif
                                 </select>
-                                <p class="help-block"> Choose Location for this Zone</p>
+                                <p class="help-block"> Choose Area for this Zone</p>
                             </div>
 
                         </div>

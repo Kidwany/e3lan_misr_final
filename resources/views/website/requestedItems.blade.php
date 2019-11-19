@@ -38,7 +38,7 @@
                                 <th>Type</th>
                                 <th>Duration</th>
                                 <th>Zone</th>
-                                <th>Area</th>
+                                <th>Location</th>
                             </tr>
                             </thead>
                             <tbody>

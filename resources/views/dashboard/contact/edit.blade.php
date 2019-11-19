@@ -66,9 +66,9 @@
                                 </div>
 
                                 <div class="col-lg-12">
-                                    <label for="exampleInputEmail1"> Location</label>
-                                    <input type="url" class="form-control" name="location" id="exampleInputEmail1" placeholder="Location of Company" value="{{$info->location}}">
-                                    <p class="help-block"> Add Location Link of company from google maps </p>
+                                    <label for="exampleInputEmail1"> Area</label>
+                                    <input type="url" class="form-control" name="location" id="exampleInputEmail1" placeholder="Area of Company" value="{{$info->location}}">
+                                    <p class="help-block"> Add Area Link of company from google maps </p>
                                 </div>
 
                             </div>

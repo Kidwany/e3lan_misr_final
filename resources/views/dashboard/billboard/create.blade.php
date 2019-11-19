@@ -134,7 +134,7 @@
                             <div class="col-lg-4">
                                 <label for="exampleInputEmail1">Billboard Location Url</label>
                                 <input type="url" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Billboard Location" value="{{old('dimensions')}}">
-                                <p class="help-block">Enter Billboard Location Url on <strong>Google Maps</strong> </p>
+                                <p class="help-block">Enter Billboard Area Url on <strong>Google Maps</strong> </p>
                             </div>
 
                             <div class="col-lg-4">
@@ -159,16 +159,16 @@
                             </div>
 
                             <div class="col-lg-4">
-                                <label for="exampleInputEmail1"> Billboard Location</label>
+                                <label for="exampleInputEmail1"> Billboard Area</label>
                                 <select name="parent_location" id="parent_location" class="form-control">
-                                    <option>Choose Location</option>
+                                    <option>Choose Area</option>
                                     @if($parentLocations)
                                         @foreach($parentLocations as $parentLocation)
                                             <option value="{{$parentLocation->id}}">{{$parentLocation->parentLocation_en->location}}</option>
                                         @endforeach
                                     @endif
                                 </select>
-                                <p class="help-block"> Choose Billboard Location</p>
+                                <p class="help-block"> Choose Billboard Area</p>
                             </div>
 
                             <div class="col-lg-4">
@@ -180,11 +180,11 @@
                             </div>
 
                             <div class="col-lg-4">
-                                <label for="exampleInputEmail1"> Billboard Area</label>
+                                <label for="exampleInputEmail1"> Billboard Location</label>
                                 <select name="child_of_child_location" id="child_of_child_location" class="form-control">
-                                    <option>Choose Area</option>
+                                    <option>Choose Location</option>
                                 </select>
-                                <p class="help-block"> Choose Billboard Area</p>
+                                <p class="help-block"> Choose Billboard Location</p>
                             </div>
 
                             <div class="col-lg-4">

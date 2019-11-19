@@ -53,7 +53,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Zone</th>
-                            <th>Location</th>
+                            <th>Area</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
                             <th>Actions</th>
@@ -63,7 +63,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Zone</th>
-                            <th>Location</th>
+                            <th>Area</th>
                             <th>Created_at</th>
                             <th>Updated_at</th>
                             <th>Actions</th>

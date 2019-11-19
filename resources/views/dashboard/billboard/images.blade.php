@@ -25,13 +25,13 @@
 
     <section class="content-header">
         <h1>
-            Areas
-            <small>All Areas</small>
+            Billboards
+            <small>All Billboards</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/parent-location')}}">Areas</a></li>
-            <li class="active">All Areas</li>
+            <li><a href="{{adminUrl('/billboard')}}">Billboard</a></li>
+            <li class="active">All Billboards</li>
         </ol>
     </section>
 
@@ -42,8 +42,8 @@
             <div class="col-md-12">
                 <div class="box box-primary" style="padding: 15px">
                     <div class="box-header with-border">
-                        <h3 class="box-title">All Areas Info</h3>
-                        <a href="{{adminUrl('parent-location/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Area </a>
+                        <h3 class="box-title">All Billboards Info</h3>
+                        <a href="{{adminUrl('service/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard </a>
                     </div>
                     @include('dashboard.layouts.messages')
                     <!-- /.box-header -->
@@ -51,33 +51,43 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Area</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
+                            <th>id</th>
+                            <th>Image</th>
+                            <th>Code</th>
+                            <th>Location</th>
+                            <th>Size</th>
+                            <th>Created at</th>
+                            <th>Updated at</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tfoot>
                         <tr>
-                            <th>ID</th>
-                            <th>Area</th>
-                            <th>Created_at</th>
-                            <th>Updated_at</th>
+                            <th>id</th>
+                            <th>Image</th>
+                            <th>Code</th>
+                            <th>Location</th>
+                            <th>Size</th>
+                            <th>Created at</th>
+                            <th>Updated at</th>
                             <th>Actions</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        @if($locations)
-                            @foreach($locations as $location)
+                        @if($billboards)
+                            @foreach($billboards as $billboard)
                                 <tr>
-                                    <td>{{$location->id}}</td>
-                                    <td>{{$location->parentLocation_en->location}}</td>
-                                    <td>{{$location->created_at ? $location->created_at->diffForHumans() : ''}}</td>
-                                    <td>{{$location->updated_at ? $location->updated_at->diffForHumans() : ''}}</td>
+                                    <td>{{$billboard->id}}</td>
+                                    <td><img src="{{$billboard->image_id ? asset($billboard->image->path) : asset('dashboard/img/picture.png')}}" style="width: 50px" alt="slide image" > </td>
+                                    <td>{{$billboard->code}}</td>
+                                    <td>{{$billboard->parentLocation->parentLocation_en->location}}</td>
+                                    <td>{{$billboard->billboardSize->size}}</td>
+                                    <td>{{$billboard->created_at ? $billboard->created_at->diffForHumans() : ''}}</td>
+                                    <td>{{$billboard->updated_at ? $billboard->updated_at->diffForHumans() : ''}}</td>
                                     <td>
-                                        <a href="{{route('parent-location.edit', $location->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
-                                        <button type="button" class data-toggle="modal" data-target="#delete{{$location->id}}" style="font-size: 20px">
+                                        <a href="{{route('billboard.edit', $billboard->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
+                                        <a href="#." class style="font-size: 20px"><i class="fa fa-image" title="Show Billboard Images"></i> </a>
+                                        <button type="button" class data-toggle="modal" data-target="#delete{{$billboard->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </td>
@@ -87,21 +97,21 @@
                         </tbody>
                     </table>
 
-                    @if($locations)
-                        @foreach($locations as $location)
-                            <div class="modal modal-danger fade" id="delete{{$location->id}}">
+                    @if($billboards)
+                        @foreach($billboards as $billboard)
+                            <div class="modal modal-danger fade" id="delete{{$billboard->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span></button>
-                                            <h4 class="modal-title">Delete Area</h4>
+                                            <h4 class="modal-title">Delete User</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Are You Sure You Want To Delete Project <strong>{{$location->parentLocation_en->location}}</strong></p>
+                                            <p>Are You Sure You Want To Delete Billboard <strong>{{$billboard->billboard_en->name}}</strong></p>
                                         </div>
                                         <div class="modal-footer">
-                                            <form action="{{route('parent-location.destroy', $location->id)}}" method="post">
+                                            <form action="{{route('billboard.destroy', $billboard->id)}}" method="post">
                                                 @method('delete')
                                                 @csrf
                                                 <div class="d-flex flex-row">

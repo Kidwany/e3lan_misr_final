@@ -54,7 +54,7 @@
                             <th>id</th>
                             <th>Image</th>
                             <th>Code</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Size</th>
                             <th>Created at</th>
                             <th>Updated at</th>
@@ -66,7 +66,7 @@
                             <th>id</th>
                             <th>Image</th>
                             <th>Code</th>
-                            <th>Area</th>
+                            <th>Location</th>
                             <th>Size</th>
                             <th>Created at</th>
                             <th>Updated at</th>

@@ -118,20 +118,6 @@
                 </ul>
             </li>
 
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-square"></i>
-                    <span>Sizes</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{adminUrl('size/create')}}"><i class="fa fa-plus"></i> Add Size</a></li>
-                    <li><a href="{{adminUrl('size')}}"><i class="fa fa-edit"></i> Show / Edit Size</a></li>
-                </ul>
-            </li>
-
-
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-microphone"></i>
