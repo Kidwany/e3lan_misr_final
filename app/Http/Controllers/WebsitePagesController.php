@@ -45,19 +45,19 @@ class WebsitePagesController extends Controller
     {
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
-        $cl = \App\Models\English\Child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
-        $cl1 = \App\Models\English\Child_of_child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
+        $Child_location = \App\Models\English\Child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
+        $Child_of_child_location = \App\Models\English\Child_of_child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
         $billboards = array();
-        foreach ($cl as $c ){
+        foreach ($Child_location as $c ){
             $billboard = Billboard::with('billboard_en', 'image')->where('child_location_id', '=', $c->child_location_id)->get();
-            foreach ($billboard as $p){
-                array_push($billboards, $p);
+            foreach ($billboard as $b){
+                array_push($billboards, $b);
             }
         }
-        foreach ($cl1 as $c ){
+        foreach ($Child_of_child_location as $c ){
             $billboard = Billboard::with('billboard_en', 'image')->where('child_of_child_location_id', '=', $c->child_of_child_location_id)->get();
-            foreach ($billboard as $p){
-                array_push($billboards, $p);
+            foreach ($billboard as $b){
+                array_push($billboards, $b);
             }
 
         }
