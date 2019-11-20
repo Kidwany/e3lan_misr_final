@@ -18,7 +18,7 @@ class ChildLocationController extends Controller
     public function index()
     {
         $locations = Child_location::with('childLocation_en')->get();
-        return view('dashboard.ChildLocation.index', compact('locations'));
+        return view('dashboard.childLocation.index', compact('locations'));
     }
 
     /**
@@ -29,7 +29,7 @@ class ChildLocationController extends Controller
     public function create()
     {
         $parent_locations = Parent_location::with('parentLocation_en')->get();
-        return view('dashboard.ChildLocation.create', compact('parent_locations'));
+        return view('dashboard.childLocation.create', compact('parent_locations'));
     }
 
     /**
@@ -74,7 +74,7 @@ class ChildLocationController extends Controller
     {
         $location = Child_location::with('childLocation_en')->find($id);
         $parent_locations = Parent_location::with('parentLocation_en')->get();
-        return view('dashboard.ChildLocation.edit', compact('location', 'parent_locations'));
+        return view('dashboard.childLocation.edit', compact('location', 'parent_locations'));
     }
 
     /**

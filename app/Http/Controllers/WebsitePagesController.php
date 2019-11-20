@@ -111,7 +111,7 @@ class WebsitePagesController extends Controller
 
     public function add_buildCamp($id, Request $request)
     {
-        
+        dd($request);
         $services = Service::with('service_en', 'createdBy', 'image')->where('id', $id)->first();
         return view('website.services_details', compact('services'));
     }
@@ -120,6 +120,25 @@ class WebsitePagesController extends Controller
     public function buildCamp()
     {
 
+        /*$parentLocationId = Input::get('parentLocation');
+        $childLocationId = Input::get('childLocation');
+        $childOfChildLocation = Input::get('childOfChildLocation');
+        $sizeId = Input::get('size');
+
+        $mainQuery = Billboard::with('billboard_en');
+        $parentQuery = '';
+        if (!empty($parentLocationId))
+        {
+            $parentQuery .= 'where(\'parent_location_id\', $parentLocationId)->get()';
+            $billboards = $mainQuery->{$parentQuery};
+        }
+        elseif (!empty($childLocationId))
+
+        $billboards = Billboard::with('billboard_en')
+            ->where('parent_location_id', $parentLocationId)
+            ->where('child_location_id', $childLocationId)
+            ->where('child_of_child_location_id', '=', '*')
+            ->get();*/
 
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
@@ -250,7 +269,6 @@ class WebsitePagesController extends Controller
         {
             return redirect('login/customer');
         }
-
     }
 
     /**

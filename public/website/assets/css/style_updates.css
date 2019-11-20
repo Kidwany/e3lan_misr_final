@@ -1,6 +1,6 @@
 input[type=checkbox]
 {
-    width: auto;
+    width: auto !important;
 }
 
 .tr-products .tr-product-thumbnail>a img

@@ -33,7 +33,7 @@
 
                     <div id="details-popup" class="white-bg all-padding-30 mfp-with-anim mfp-hide centerize-col col-lg-4 col-md-6 col-sm-7 col-xs-11 text-center">
                         <span class="text-uppercase font-25px font-600 mb-10 display-block dark-color">Enter Duration</span>
-                       
+
                         <!-- -------------------- Tabs --------------------------- -->
                         <div class="row mt-30 tabs-style-01">
                             <div class="col-md-12">
@@ -73,16 +73,53 @@
                 <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30">
                     <ul class="portfolio-meta">
                         <li><span> Area </span> {{$billboard->parentLocation->parentLocation_en->location}}</li>
-                        <li><span> Zone </span> {{$billboard->childLocation->childLocation_en->location}}</li>
-                        <li><span> Location </span> {{$billboard->childOfChildLocation->childOfChildLocation_en->location}}</li>
+                        <li><span> Zone </span> {{$billboard->child_location_id ? $billboard->childLocation->childLocation_en->location : ''}}</li>
+                        <li><span> Location </span> {{$billboard->child_of_child_location_id ? $billboard->childOfChildLocation->childOfChildLocation_en->location : ''}}</li>
                         <li><span> Size </span> {{$billboard->billboardSize->size}}</li>
                         <li><span> Dimensions </span> {{$billboard->dimension}}</li>
-                        <li><span> Category </span><a href="{{url('services?service=' . $billboard->service->{'service_' . currentLang()}->title)}}"> {{$billboard->service->{'service_' . currentLang()}->title }}</a></li>
+                        <li><span> Faces </span> {{$billboard->faces}} Faces</li>
+                        <li><span> Light </span> {{$billboard->light}}</li>
+                        <li><span> Material </span> {{$billboard->material}}</li>
+                        <li><span> Category </span><a href="{{url('services?parentService=' . $billboard->service_id)}}"> {{$billboard->service->{'service_' . currentLang()}->title }}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
+    @if(count($billboard->images) > 0)
+        <!--== Related Projects Start ==-->
+        <section class="white-bg bordered-bg dark-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-12 centerize-col wow fadeInUp text-center" data-wow-delay="0.1s">
+                        <h2 class="mt-0 font-300 roboto-font mb-0">Billboard Images</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="portfolio-gallery" class="cbp mt-50">
+                            @foreach($billboard->images as $image)
+                                <div class="cbp-item col-md-4 col-sm-4 with-spacing">
+                                    <div class="portfolio gallery-image-hover text-center">
+                                        <div class="folio-overlay"></div>
+                                        <img src="{{asset($image->path)}}" alt="">
+                                        <div class="portfolio-wrap">
+                                            <ul class="portfolio-details top-80">
+                                                <li><a class="cbp-lightbox" href="{{asset($image->path)}}"><i class="icofont icofont-search"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--== Related Projects End ==-->
+    @endif
+
 
     <section class="white-bg mt-10">
         <div class="container">
@@ -96,6 +133,6 @@
 
     <iframe src="{{$billboard->location}}" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 
-  
+
 
 @endsection

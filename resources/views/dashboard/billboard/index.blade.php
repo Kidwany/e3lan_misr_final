@@ -30,7 +30,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/service')}}">Billboard</a></li>
+            <li><a href="{{adminUrl('/billboard')}}">Billboard</a></li>
             <li class="active">All Billboards</li>
         </ol>
     </section>
@@ -43,7 +43,7 @@
                 <div class="box box-primary" style="padding: 15px">
                     <div class="box-header with-border">
                         <h3 class="box-title">All Billboards Info</h3>
-                        <a href="{{adminUrl('service/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard </a>
+                        <a href="{{adminUrl('billboard/create')}}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Add New Billboard </a>
                     </div>
                     @include('dashboard.layouts.messages')
                     <!-- /.box-header -->
@@ -86,7 +86,8 @@
                                     <td>{{$billboard->updated_at ? $billboard->updated_at->diffForHumans() : ''}}</td>
                                     <td>
                                         <a href="{{route('billboard.edit', $billboard->id)}}" class style="font-size: 20px"><i class="fa fa-pencil-square-o"></i> </a>
-                                        <a href="#." class style="font-size: 20px"><i class="fa fa-image" title="Show Billboard Images"></i> </a>
+                                        <a href="{{adminUrl('billboard/'. $billboard->id .'/images')}}" class style="font-size: 20px"><i class="fa fa-image" title="Show Billboard Images"></i> </a>
+                                        <a href="{{adminUrl('billboard/'. $billboard->id)}}" class style="font-size: 20px"><i class="fa fa-eye" title="Show Billboard"></i> </a>
                                         <button type="button" class data-toggle="modal" data-target="#delete{{$billboard->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
                                         </button>

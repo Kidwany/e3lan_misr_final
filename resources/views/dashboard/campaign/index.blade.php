@@ -83,9 +83,9 @@
                                     <td>{{$request->created_at ? $request->created_at->diffForHumans() : ''}}</td>
                                     <td>
                                         <a href="{{adminUrl('campaign-request/' . $request->id)}}" class style="font-size: 20px"><i class="fa fa-eye"></i> </a>
-                                        <button type="button" class data-toggle="modal" data-target="#delete{{$request->id}}" style="font-size: 20px">
+                                        {{--<button type="button" class data-toggle="modal" data-target="#delete{{$request->id}}" style="font-size: 20px">
                                             <i class="fa fa-trash"></i>
-                                        </button>
+                                        </button>--}}
                                     </td>
                                 </tr>
                             @endforeach

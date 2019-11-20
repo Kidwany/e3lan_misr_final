@@ -20,7 +20,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::with('client_en', 'createdBy', 'image')->get();
-        return view('dashboard.client.campaign', compact('clients'));
+        return view('dashboard.client.index', compact('clients'));
     }
 
     /**
@@ -124,9 +124,9 @@ class ClientController extends Controller
             $filePath = 'dashboardImages/client/'.$fileName;
             $image = Image::create(['name' => $fileName, 'path' => $filePath]);
             $input['image_id'] = $image->id;
+            $client->image_id = $input['image_id'];
         }
 
-        $client->image_id = $input['image_id'];
         $client->created_by = $input['created_by'];
         $client->save();
 

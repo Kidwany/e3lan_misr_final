@@ -212,7 +212,7 @@
 			}
 			o.language = lang;
 
-			// Retrieve view index from any aliases
+			// Retrieve view campaign from any aliases
 			o.startView = this._resolveViewName(o.startView);
 			o.minViewMode = this._resolveViewName(o.minViewMode);
 			o.maxViewMode = this._resolveViewName(o.maxViewMode);
