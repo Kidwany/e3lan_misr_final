@@ -17,6 +17,7 @@ use App\Models\Product;
 use App\Models\Parent_location;
 use App\Models\About;
 use App\Models\Project;
+use App\Models\Setting;
 use App\Models\Size;
 use App\Models\Slider;
 use App\Models\Campaign;
@@ -37,6 +38,48 @@ class WebsitePagesController extends Controller
         $services = Service::all();
         $slides = Slider::with('image')->get();
         return view('website.welcome', compact('services','clients', 'slides'));
+    }
+
+    /* Return search Page */
+    public function search(Request $request)
+    {
+        $locations = Parent_location::with('parentLocation_en')->get();
+        $sizes = Size::all();
+        $cl = \App\Models\English\Child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
+        $cl1 = \App\Models\English\Child_of_child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
+        $billboards = array();
+        foreach ($cl as $c ){
+            $billboard = Billboard::with('billboard_en', 'image')->where('child_location_id', '=', $c->child_location_id)->get();
+            foreach ($billboard as $p){
+                array_push($billboards, $p);
+            }
+        }
+        foreach ($cl1 as $c ){
+            $billboard = Billboard::with('billboard_en', 'image')->where('child_of_child_location_id', '=', $c->child_of_child_location_id)->get();
+            foreach ($billboard as $p){
+                array_push($billboards, $p);
+            }
+
+        }
+
+//        $billboards = Billboard::with('billboard_en', 'image')->whereHas('childLocation', function ($query) use ($request) {
+//            $query->whereHas('childLocation_en', function ($query) use ($request) {
+//                $query->where('location','LIKE' ,$request['search']);
+//            });
+//        })->orwhereHas('childOfChildLocation', function ($query) use ($request) {
+//            $query->whereHas('childOfChildLocation_en', function ($query) use ($request) {
+//                $query->where('location','LIKE' ,$request['search']);
+//            });
+//        })->get();
+        $authUser = Auth::user();
+        if ($authUser)
+        {
+            return view('website.search', compact('billboards','locations', 'sizes'));
+        }
+        else
+        {
+            return redirect('login/customer');
+        }
     }
 
     /* Return About Page */

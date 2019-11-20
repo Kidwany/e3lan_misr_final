@@ -28,6 +28,8 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     /*=======   Return Home     ========*/
     Route::get('/', 'WebsitePagesController@index')->name('home');
 
+    Route::get('/search', 'WebsitePagesController@search')->name('search');
+
     /*=======   Return about    ========*/
     Route::get('/about', 'WebsitePagesController@about');
     Route::get('/team', 'WebsitePagesController@team');

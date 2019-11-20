@@ -3,8 +3,9 @@
     <!--== Start Top Search ==-->
     <div class="fullscreen-search-overlay" id="search-overlay"> <a href="#" class="fullscreen-close" id="fullscreen-close-button"><i class="icofont icofont-close"></i></a>
         <div id="fullscreen-search-wrapper">
-            <form method="get" id="fullscreen-searchform">
-                <input type="text" value="" placeholder="Search..." id="fullscreen-search-input" class="search-bar-top">
+            <form method="get" action="{{route('search')}}" id="fullscreen-searchform">
+                @csrf
+                <input type="text" value="" name="search" placeholder="Search..." id="fullscreen-search-input" class="search-bar-top">
                 <i class="fullscreen-search-icon icofont icofont-search">
                     <input value="" type="submit">
                 </i>

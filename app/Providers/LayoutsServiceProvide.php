@@ -34,6 +34,7 @@ class LayoutsServiceProvide extends ServiceProvider
                 'website.portfolio',
                 'website.project',
                 'website.buildCamp',
+                'website.search',
                 'website.services_details',
                 'website.requestedItems',
                 'website.myCampaigns',
