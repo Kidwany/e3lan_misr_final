@@ -213,7 +213,7 @@
     <!--== Subscribe End ==-->
 
     <!--== Clients Start ==-->
-    <section class="grey-bg pt-80 pb-80">
+    <section class="grey-bg pt-40 pb-40">
         <div class="container">
             <div class="row">
                 <div class="client-slider slick">
