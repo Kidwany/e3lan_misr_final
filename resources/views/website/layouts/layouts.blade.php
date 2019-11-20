@@ -1,5 +1,4 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{app()->getLocale() == 'ar' ? 'rtl' : 'ltr'}}">
 <head>
     <meta charset="utf-8">
@@ -22,7 +21,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{@$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
+    <title>{{$setting->{'setting_'.currentLang()}->website_name }} - @yield('title')</title>
 
     <!-- CSS ============================================ -->
 
@@ -86,7 +85,6 @@
 
             @include('website.layouts.header')
             @yield('content')
-
             @include('website.layouts.footer')
         </div>
 
