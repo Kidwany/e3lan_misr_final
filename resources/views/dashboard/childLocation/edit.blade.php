@@ -44,13 +44,13 @@
                         <!-- form start -->
                         <div class="box-body">
                             <div class="form-group">
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <label for="exampleInputEmail1"> Zone Name</label>
                                     <input type="text" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Zone Name" value="{{$location->childLocation_en->location}}">
                                     <p class="help-block">Enter Zone Name</p>
                                 </div>
 
-                                <div class="col-lg-6">
+                                <div class="col-lg-5">
                                     <label for="exampleInputEmail1"> Choose Area</label>
                                     <select name="parent_location_id" id="admin_type" class="form-control">
                                         <option value="0">Choose Area</option>
@@ -62,6 +62,13 @@
                                     </select>
                                     <p class="help-block"> Choose Area for this Zone</p>
                                 </div>
+
+                                <div class="col-lg-2">
+                                    <label for="exampleInputEmail1"> Zone Letter</label>
+                                    <input type="text" class="form-control" name="letter" id="exampleInputEmail1" placeholder="Enter Letter" value="{{$location->letter}}">
+                                    <p class="help-block">Enter letter</p>
+                                </div>
+
                             </div>
                         </div>
                         <div class="box-footer">

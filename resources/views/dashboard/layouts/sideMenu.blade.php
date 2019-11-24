@@ -84,6 +84,18 @@
 
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-hospital-o"></i>
+                    <span>Suppliers</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('supplier/create')}}"><i class="fa fa-plus"></i> Add Supplier</a></li>
+                    <li><a href="{{adminUrl('supplier')}}"><i class="fa fa-edit"></i> Show / Edit Supplier</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-map-pin"></i>
                     <span>Locations</span>
                     <i class="fa fa-angle-left pull-right"></i>

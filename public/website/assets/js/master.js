@@ -43,8 +43,8 @@
 
 		/* ===== PRELOADER  ===== */
 
-		      $("#loader-overlay").delay(500).fadeOut();
-	        $(".loader").delay(1000).fadeOut("slow");
+		      $("#loader-overlay").delay(1500).fadeOut();
+	        $(".loader").delay(2000).fadeOut("slow");
 
 	        $(window).trigger("scroll");
 	        $(window).trigger("resize");
@@ -966,7 +966,7 @@
 							origo:"slidercenter",
 							speed:2000,
 							levels:[2,3,4,5,6,7,12,16,10,50,47,48,49,50,51,55],
-							
+
 						},
 						shadow:0,
 						spinner:"off",
@@ -1516,7 +1516,7 @@ if(tpj("#rev_slider_1164_1").revolution == undefined){
 				type:"scroll",
 				origo:"slidercenter",
 				speed:2000,
-				levels:[2,3,4,5,6,7,12,16,10,50,46,47,48,49,50,55],				
+				levels:[2,3,4,5,6,7,12,16,10,50,46,47,48,49,50,55],
 			},
 			shadow:0,
 			spinner:"off",
@@ -1562,7 +1562,7 @@ if(tpj("#rev_slider_1164_1").revolution == undefined){
 				origo:"slidercenter",
 				speed:2000,
 				levels:[2,3,4,5,6,7,12,16,10,50,46,47,48,49,50,55],
-				
+
 			},
 			shadow:0,
 			spinner:"off",
@@ -1619,7 +1619,7 @@ if(tpj("#rev_slider_1164_1").revolution == undefined){
 								origo:"slidercenter",
 								speed:300,
 								levels:[2,4,6,8,10,12,14,16,18,20,22,24,49,50,51,55],
-								
+
 						},
 						shadow:0,
 						spinner:"",
