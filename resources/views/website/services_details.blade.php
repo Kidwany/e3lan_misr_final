@@ -1,8 +1,6 @@
 @extends('website.layouts.layouts')
 @section('title', 'Campaign')
-
 @section('content')
-
     <!--== Project Banner Start ==-->
     <section class="remove-padding cover-bg" style="background-image: url({{asset($billboard->image->path)}}); height: 80vh">
         <div class="container-fluid">
@@ -65,10 +63,7 @@
                                 </form>
                             </div>
                         </div>
-
                     </div>
-
-
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-12 xs-mb-30">
                     <ul class="portfolio-meta">
