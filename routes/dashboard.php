@@ -110,13 +110,15 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     /* --- Billboards Sizes ---*/
     Route::resource('size', 'SizeController');
 
+    /* --- Suppliers ---*/
+    Route::resource('supplier', 'SuppliersController');
+
     /* --- Campaign Requests  ---*/
     Route::get('/campaign-request', 'CampaignController@index');
     Route::get('campaign-request/{id}', 'CampaignController@show');
 
 
 });
-
 
 
 
