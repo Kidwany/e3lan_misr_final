@@ -5,7 +5,7 @@ input[type=checkbox]
 
 .tr-products .tr-product-thumbnail>a img
 {
-    height: 300px;
+    height: 260px;
     object-position: center center;
     object-fit: cover;
 }

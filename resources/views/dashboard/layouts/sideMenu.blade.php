@@ -72,6 +72,18 @@
 
             <li class="treeview">
                 <a href="#">
+                    <i class="fa fa-flag"></i>
+                    <span>Billboards Types</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('billboard-type/create')}}"><i class="fa fa-plus"></i> Add Billboard Type</a></li>
+                    <li><a href="{{adminUrl('billboard-type')}}"><i class="fa fa-edit"></i> Show / Edit Billboard Type</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
                     <i class="fa fa-money"></i>
                     <span>Client</span>
                     <i class="fa fa-angle-left pull-right"></i>

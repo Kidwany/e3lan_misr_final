@@ -123,7 +123,7 @@
                                 <div class="col-lg-4">
                                     <label for="exampleInputEmail1">Billboard Code</label>
                                     <input type="text" class="form-control" name="code" id="exampleInputEmail1" placeholder="Enter Billboard Code" value="{{old('code')}}">
-                                    <p class="help-block">Enter Billboard Code Ex: #E52S48</p>
+                                    <p class="help-block">Enter Billboard Code Ex: 001</p>
                                 </div>
 
                                 <div class="col-lg-4">
@@ -136,6 +136,32 @@
                                     <label for="exampleInputEmail1">Billboard Location Url</label>
                                     <input type="url" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Billboard Location" value="{{old('dimensions')}}">
                                     <p class="help-block">Enter Billboard Area Url on <strong>Google Maps</strong> </p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Billboard Type</label>
+                                    <select name="type" class="form-control">
+                                        <option value="0">Choose Billboard Type</option>
+                                        @if($types)
+                                            @foreach($types as $type)
+                                                <option value="{{$type->id}}">{{$type->type}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p class="help-block"> Choose Billboard Type</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Billboard Supplier</label>
+                                    <select name="supplier" class="form-control">
+                                        <option value="0">Choose Billboard Supplier</option>
+                                        @if($suppliers)
+                                            @foreach($suppliers as $supplier)
+                                                <option value="{{$supplier->id}}">{{$supplier->supplier}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <p class="help-block"> Choose Billboard Type</p>
                                 </div>
 
                                 <div class="col-lg-4">

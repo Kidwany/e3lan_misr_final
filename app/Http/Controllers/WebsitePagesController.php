@@ -112,15 +112,15 @@ class WebsitePagesController extends Controller
         $childService = Input::get('childService');
         if (!empty($parentService))
         {
-            $billboards = Billboard::with('billboard_en', 'image')->where('service_id', $parentService)->get();
+            $billboards = Billboard::with('billboard_en', 'image')->where('service_id', $parentService)->orderBy('created_at', 'desc')->paginate(9);
         }
         elseif (!empty($childService))
         {
-            $billboards = Billboard::with('billboard_en', 'image')->where('sub_service_id', $childService)->get();
+            $billboards = Billboard::with('billboard_en', 'image')->where('sub_service_id', $childService)->orderBy('created_at', 'desc')->paginate(9);
         }
         else
         {
-            $billboards = Billboard::with('billboard_en', 'image')->get();
+            $billboards = Billboard::with('billboard_en', 'image')->orderBy('created_at', 'desc')->paginate(9);
         }
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();

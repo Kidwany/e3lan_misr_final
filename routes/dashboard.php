@@ -113,6 +113,9 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     /* --- Suppliers ---*/
     Route::resource('supplier', 'SuppliersController');
 
+    /* --- Billboard Type ---*/
+    Route::resource('billboard-type', 'BillboardTypeController');
+
     /* --- Campaign Requests  ---*/
     Route::get('/campaign-request', 'CampaignController@index');
     Route::get('campaign-request/{id}', 'CampaignController@show');

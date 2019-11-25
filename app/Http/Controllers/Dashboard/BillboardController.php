@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Billboard;
+use App\Models\Billboard_type;
 use App\Models\Child_location;
 use App\Models\Child_of_child_location;
 use App\Models\Image;
 use App\Models\Parent_location;
 use App\Models\Service;
 use App\Models\Size;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,7 +41,9 @@ class BillboardController extends Controller
         $services = Service::with('service_en')->where('parent_service_id', null)->get();
         $parentLocations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
-        return view('dashboard.billboard.create', compact('services', 'parentLocations', 'sizes'));
+        $types = Billboard_type::all();
+        $suppliers = Supplier::all();
+        return view('dashboard.billboard.create', compact('services', 'parentLocations', 'sizes', 'suppliers', 'types'));
     }
 
 
@@ -84,6 +88,8 @@ class BillboardController extends Controller
             'sub_service'                => 'int|nullable',
             'size'                       => 'int',
             'description'                => 'required',
+            'type'                       => 'required',
+            'supplier'                   => 'required',
             'parent_location'            => 'required|int',
             'child_location'             => 'int|nullable',
             'child_of_child_location'    => 'int|nullable',
@@ -134,8 +140,15 @@ class BillboardController extends Controller
             return redirect(adminUrl('gallery'));
         }
 
+        $type = Billboard_type::find($input['type']);
+        $supplier = Supplier::find($input['supplier']);
+        $zone = Child_location::find(request('child_location'));
+        $code = $input['code'];
+
+        $generatedCode = '#' . $zone->letter . $type->letter . $supplier->letter . $code;
+
         $billboard = new Billboard();
-        $billboard->code = $input['code'];
+        $billboard->code = $generatedCode;
         $billboard->image_id = $input['image_id'];
         $billboard->service_id = $input['service_id'];
         $billboard->sub_service_id = \request('sub_service');
@@ -150,6 +163,8 @@ class BillboardController extends Controller
         $billboard->material = $input['material'];
         $billboard->availability = $input['availability'];
         $billboard->price = $input['price'];
+        $billboard->type_id = $input['type'];
+        $billboard->supplier_id = $input['supplier'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();
@@ -192,7 +207,9 @@ class BillboardController extends Controller
         $childOfChildLocations = Child_of_child_location::with('childOfChildLocation_en')->get();
         $sizes = Size::all();
         $billboard = Billboard::with('image')->find($id);
-        return view('dashboard.billboard.edit', compact('billboard', 'services', 'subServices', 'parentLocations', 'sizes', 'childLocations', 'childOfChildLocations'));
+        $types = Billboard_type::all();
+        $suppliers = Supplier::all();
+        return view('dashboard.billboard.edit', compact('types', 'suppliers', 'billboard', 'services', 'subServices', 'parentLocations', 'sizes', 'childLocations', 'childOfChildLocations'));
     }
 
     /**
@@ -210,10 +227,11 @@ class BillboardController extends Controller
             'image_id'                   => 'mimes:jpeg,jpg,png,gif',
             'images.*'                   => 'mimes:jpeg,jpg,png,gif',
             'name'                       => 'required',
-            'code'                       => 'required|max:7',
             'dimensions'                 => 'required',
             'location'                   => 'required|url',
             'service_id'                 => 'required|int',
+            'type'                       => 'required',
+            'supplier'                   => 'required',
             'sub_service'                => 'int|nullable',
             'size'                       => 'int',
             'description'                => 'required',
@@ -270,7 +288,14 @@ class BillboardController extends Controller
             return redirect(adminUrl('gallery'));
         }
 
-        $billboard->code = $input['code'];
+        $type = Billboard_type::find($input['type']);
+        $supplier = Supplier::find($input['supplier']);
+        $zone = Child_location::find(request('child_location'));
+        $code = substr($billboard->code, -3);
+
+        $generatedCode = '#' . $zone->letter . $type->letter . $supplier->letter . $code;
+
+        $billboard->code = $generatedCode;
         $billboard->service_id = $input['service_id'];
         $billboard->sub_service_id = \request('sub_service');
         $billboard->parent_location_id = $input['parent_location'];
@@ -284,6 +309,8 @@ class BillboardController extends Controller
         $billboard->material = $input['material'];
         $billboard->availability = $input['availability'];
         $billboard->price = $input['price'];
+        $billboard->type_id = $input['type'];
+        $billboard->supplier_id = $input['supplier'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();

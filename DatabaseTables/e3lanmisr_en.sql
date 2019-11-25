@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2019 at 07:19 AM
+-- Generation Time: Nov 25, 2019 at 02:33 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -68,7 +68,11 @@ CREATE TABLE `billboard` (
 --
 
 INSERT INTO `billboard` (`id`, `billboard_id`, `name`, `client`, `description`, `created_at`, `updated_at`) VALUES
-(5, 12, 'Maverick Project', 'Ahmed Sayed', 'Maverick ProjectMaverick  ProjectMaverick Project', '2019-10-26 20:25:15', '2019-10-26 18:25:15');
+(5, 12, 'Maverick Project', 'Ahmed Sayed', 'Consectetur adipisicing elit. Officia rerum inventore illo, tempora. Tenetur cumque sit quasi, cupiditate eveniet magni non suscipit accusamus aspernatur, cum architecto nemo aliquam iste aliquid. Adipisicing elit. Magni harum voluptas esse, laboriosam nemo quae, neque temporibus facere laborum voluptatem nostrum, omnis praesentium, sequi minus quod maiores tempore error quasi?????', '2019-11-18 20:53:43', '2019-11-18 18:53:43'),
+(6, 13, 'hukesyzuse@mailinator.com', NULL, 'Eligendi anim eius uacascasc', '2019-11-16 13:05:27', '2019-11-16 13:05:27'),
+(8, 15, 'hupamumowu@mailinator.com', NULL, 'Eos obcaecati ut ist', '2019-11-19 00:05:59', '2019-11-18 22:05:59'),
+(12, 19, 'xyxesene@mailinator.com', NULL, 'Consequat Quae fugi', '2019-11-19 22:44:11', '2019-11-19 20:44:11'),
+(13, 20, 'nibery@mailinator.com', NULL, 'Optio nostrum dolor gshsstdeh', '2019-11-25 01:23:36', '2019-11-24 23:23:36');
 
 -- --------------------------------------------------------
 
@@ -89,7 +93,8 @@ CREATE TABLE `child_location` (
 --
 
 INSERT INTO `child_location` (`id`, `child_location_id`, `location`, `created_at`, `updated_at`) VALUES
-(2, 2, 'New Cairo', '2019-11-14 02:47:11', '2019-11-14 02:47:11');
+(2, 2, 'New Cairo', '2019-11-14 02:47:11', '2019-11-24 22:18:04'),
+(3, 3, 'Maadi', '2019-11-15 13:12:12', '2019-11-24 22:18:10');
 
 -- --------------------------------------------------------
 
@@ -131,7 +136,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `client_id`, `name`, `created_at`, `updated_at`) VALUES
-(7, 8, 'Rawag', '2019-10-26 08:29:06', '2019-10-26 08:29:06');
+(7, 8, 'Rawagg', '2019-10-26 08:29:06', '2019-11-18 22:02:10');
 
 -- --------------------------------------------------------
 
@@ -218,7 +223,12 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `service_id`, `slug`, `title`, `description`, `second_title`, `second_description`, `third_title`, `third_description`, `created_at`, `updated_at`) VALUES
-(18, 23, NULL, 'Marketing Services', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-10-26 08:11:04', '2019-10-26 16:40:01');
+(18, 23, NULL, 'OOH Media', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-10-26 08:11:04', '2019-11-15 15:58:50'),
+(19, 24, NULL, 'Production', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-11-15 15:59:19', '2019-11-15 15:59:19'),
+(20, 25, NULL, 'Other Services', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-11-15 15:59:36', '2019-11-15 15:59:36'),
+(21, 26, NULL, 'Landmarks', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-11-15 15:59:56', '2019-11-15 15:59:56'),
+(22, 27, NULL, 'Street Signage', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-11-15 16:00:57', '2019-11-15 16:00:57'),
+(23, 28, NULL, 'Directional Signs', 'As we offer you online campaigns using different social media channels also offline campaigns if needed.', NULL, NULL, NULL, NULL, '2019-11-15 16:01:36', '2019-11-15 16:01:36');
 
 -- --------------------------------------------------------
 
@@ -240,7 +250,7 @@ CREATE TABLE `setting` (
 --
 
 INSERT INTO `setting` (`id`, `setting_id`, `website_name`, `website_description`, `created_at`, `updated_at`) VALUES
-(1, 1, 'E3lan Misr', '\"E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors’ advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium & Small formats.', '2019-08-07 22:00:00', '2019-11-12 18:37:20');
+(1, 1, 'E3lan Misr', '\"E3lan Misr for OOH Media Solutions, an agency mainly specified in outdoors’ advertisement based in Egypt since 2005, owning very large portfolio of locations among main roads and areas in Egypt, Large, Medium & Small formats.', '2019-08-07 22:00:00', '2019-11-15 15:10:36');
 
 -- --------------------------------------------------------
 
@@ -264,7 +274,7 @@ CREATE TABLE `slider` (
 --
 
 INSERT INTO `slider` (`id`, `slide_id`, `title`, `sub_title`, `description`, `button`, `created_at`, `updated_at`) VALUES
-(11, 2, 'Unique & Creative <br> Designs', 'Awesome Designs', NULL, 'Explore Work', '2019-10-26 07:48:17', '2019-10-26 14:53:45'),
+(11, 2, 'Unique & Creative <br> Designs', 'Awesome Designs', 'Production for any branding/advertising items (Landmarks – Mockups – Exhibitions’ Booths )', 'Explore Work', '2019-10-26 07:48:17', '2019-11-16 16:45:13'),
 (13, 4, 'Business Consultant', 'Talented Team', NULL, NULL, '2019-10-26 14:53:09', '2019-10-26 14:53:09'),
 (14, 5, 'Videography<br> & Photography', 'Photography Services', NULL, 'Explore Work', '2019-10-26 14:55:20', '2019-10-26 14:55:20');
 
@@ -385,19 +395,19 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `billboard`
 --
 ALTER TABLE `billboard`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `child_location`
 --
 ALTER TABLE `child_location`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `child_of_child_location`
 --
 ALTER TABLE `child_of_child_location`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `client`
@@ -421,13 +431,13 @@ ALTER TABLE `parent`
 -- AUTO_INCREMENT for table `parent_location`
 --
 ALTER TABLE `parent_location`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `setting`
