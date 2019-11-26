@@ -96,6 +96,9 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     /* --- Child Location ---*/
     Route::resource('child-location', 'ChildLocationController');
 
+    /* --- letter Location ---*/
+    Route::resource('letter-location', 'LetterLocationController');
+
     /* --- Child of Child Location ---*/
     Route::resource('child-of-child-location', 'ChildOfChildLocationController');
 

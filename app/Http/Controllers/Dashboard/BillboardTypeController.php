@@ -40,7 +40,7 @@ class BillboardTypeController extends Controller
     {
         $request->validate([
             'type'            => 'required',
-            'letter'               => 'required',
+            'letter'               => 'required|unique:billboard_type',
         ], [], [
         ]);
 

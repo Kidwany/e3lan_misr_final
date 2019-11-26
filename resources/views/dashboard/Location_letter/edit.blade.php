@@ -20,7 +20,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{adminUrl('/')}}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="{{adminUrl('/child-location')}}">Zones</a></li>
+            <li><a href="{{adminUrl('/letter-location')}}">Zones</a></li>
             <li class="active">Update Zone</li>
         </ol>
     </section>
@@ -29,7 +29,7 @@
 
     <section class="content">
         @include('dashboard.layouts.messages')
-        <form role="form" action="{{route('child-location.update', $location->id)}}" enctype="multipart/form-data" method="post">
+        <form role="form" action="{{route('letter-location.update', $location->id)}}" enctype="multipart/form-data" method="post">
             @csrf
             @method('patch')
             <input type="hidden" name="created_by">
@@ -45,29 +45,16 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <div class="col-lg-5">
-                                    <label for="exampleInputEmail1"> Zone Name</label>
-                                    <input type="text" class="form-control" name="location" id="exampleInputEmail1" placeholder="Enter Zone Name" value="{{$location->childLocation_en->location}}">
+                                    <label for="exampleInputEmail1"> letter Name</label>
+                                    <input type="text" class="form-control" name="lettername" id="exampleInputEmail1" placeholder="Enter letter Name" value="{{$location->title_location}}">
                                     <p class="help-block">Enter Zone Name</p>
                                 </div>
 
-                                <div class="col-lg-5">
-                                    <label for="exampleInputEmail1"> Choose Area</label>
-                                    <select name="parent_location_id" id="admin_type" class="form-control">
-                                        <option value="0">Choose Area</option>
-                                        @if($parent_locations)
-                                            @foreach($parent_locations as $parent_location)
-                                                <option value="{{$parent_location->id}}" {{$parent_location->id == $location->parent_location_id ? 'selected' : ''}}>{{$parent_location->parentLocation_en->location}}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    <p class="help-block"> Choose Area for this Zone</p>
-                                </div>
-
-                                <!-- <div class="col-lg-2">
-                                    <label for="exampleInputEmail1"> Zone Letter</label>
+                                <div class="col-lg-2">
+                                    <label for="exampleInputEmail1"> Letter</label>
                                     <input type="text" class="form-control" name="letter" id="exampleInputEmail1" placeholder="Enter Letter" value="{{$location->letter}}">
                                     <p class="help-block">Enter letter</p>
-                                </div> -->
+                                </div>
 
                             </div>
                         </div>
