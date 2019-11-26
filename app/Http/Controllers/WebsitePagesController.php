@@ -8,6 +8,7 @@ use App\Models\Campaign_item;
 use App\Models\Child_location;
 use App\Models\Child_of_child_location;
 use App\Models\Client;
+use App\Models\English\ServiceEnglish;
 use App\Models\Feature;
 use App\Models\Gallery;
 use App\Models\Contact;
@@ -45,24 +46,63 @@ class WebsitePagesController extends Controller
     {
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
-        $Child_location = \App\Models\English\Child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
-        $Child_of_child_location = \App\Models\English\Child_of_child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get();
         $billboards = array();
+        $Child_location = \App\Models\English\Child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get(['child_location_id']);
         foreach ($Child_location as $c ){
-            $billboard = Billboard::with('billboard_en', 'image')->where('child_location_id', '=', $c->child_location_id)->get();
+            $billboard = Billboard::with('billboard_en', 'type', 'image')->where('child_location_id', '=', $c->child_location_id)->get();
             foreach ($billboard as $b){
                 array_push($billboards, $b);
             }
         }
+        $Child_of_child_location = \App\Models\English\Child_of_child_location::where('location','LIKE' ,'%'.$request['search'].'%')->get(['child_of_child_location_id']);
         foreach ($Child_of_child_location as $c ){
-            $billboard = Billboard::with('billboard_en', 'image')->where('child_of_child_location_id', '=', $c->child_of_child_location_id)->get();
+            $billboard = Billboard::with('billboard_en', 'type', 'image')->where('child_of_child_location_id', '=', $c->child_of_child_location_id)->get();
             foreach ($billboard as $b){
                 array_push($billboards, $b);
             }
-
         }
 
-//        $billboards = Billboard::with('billboard_en', 'image')->whereHas('childLocation', function ($query) use ($request) {
+        $name = \App\Models\English\Billboard::where('name', 'LIKE' ,'%'.$request['search'].'%')->get(['billboard_id']);
+        foreach ($name as $n ){
+            $billboard = Billboard::with('billboard_en', 'type', 'image')->where('id', '=', $n->billboard_id)->get();
+            foreach ($billboard as $b){
+                array_push($billboards, $b);
+            }
+        }
+
+        $billboard = Billboard::with('billboard_en', 'type', 'image')->where('material','LIKE' ,'%'.$request['search'].'%' )
+            ->orwhere('light','LIKE' ,'%'.$request['search'].'%')
+            ->orwhere('faces','LIKE' ,'%'.$request['search'].'%')
+            ->orwhere('code','LIKE' ,'%'.$request['search'].'%')->get();
+        foreach ($billboard as $b){
+            array_push($billboards, $b);
+        }
+
+        $billboard = Billboard::with('billboard_en', 'type', 'image')->whereHas('type', function ($query) use ($request) {
+                $query->where('type','LIKE' ,'%'.$request['search'].'%');
+            })->get();
+        foreach ($billboard as $b){
+            array_push($billboards, $b);
+        }
+
+        $billboard = Billboard::with('billboard_en', 'type', 'image')->whereHas('size', function ($query) use ($request) {
+            $query->where('size','LIKE' ,'%'.$request['search'].'%');
+        })->get();
+        foreach ($billboard as $b){
+            array_push($billboards, $b);
+        }
+
+        $service = ServiceEnglish::where('title','LIKE' ,'%'.$request['search'].'%')->get();
+        foreach ($service as $s ){
+            $billboard = Billboard::with('billboard_en', 'type', 'image')->where('service_id', '=', $s->service_id)->get();
+            foreach ($billboard as $b){
+                array_push($billboards, $b);
+            }
+        }
+        $billboards = array_unique($billboards);
+
+
+//        $billboards = Billboard::with('billboard_en', 'type', 'image')->whereHas('childLocation', function ($query) use ($request) {
 //            $query->whereHas('childLocation_en', function ($query) use ($request) {
 //                $query->where('location','LIKE' ,$request['search']);
 //            });
@@ -112,15 +152,15 @@ class WebsitePagesController extends Controller
         $childService = Input::get('childService');
         if (!empty($parentService))
         {
-            $billboards = Billboard::with('billboard_en', 'image')->where('service_id', $parentService)->orderBy('created_at', 'desc')->paginate(9);
+            $billboards = Billboard::with('billboard_en', 'type', 'image')->where('service_id', $parentService)->orderBy('created_at', 'desc')->paginate(9);
         }
         elseif (!empty($childService))
         {
-            $billboards = Billboard::with('billboard_en', 'image')->where('sub_service_id', $childService)->orderBy('created_at', 'desc')->paginate(9);
+            $billboards = Billboard::with('billboard_en', 'type', 'image')->where('sub_service_id', $childService)->orderBy('created_at', 'desc')->paginate(9);
         }
         else
         {
-            $billboards = Billboard::with('billboard_en', 'image')->orderBy('created_at', 'desc')->paginate(9);
+            $billboards = Billboard::with('billboard_en', 'type', 'image')->orderBy('created_at', 'desc')->paginate(9);
         }
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
@@ -130,7 +170,7 @@ class WebsitePagesController extends Controller
     /* Return Service Details Page */
     public function service_details($id)
     {
-        $billboard = Billboard::with('billboard_en', 'image')->find($id);
+        $billboard = Billboard::with('billboard_en', 'type', 'image')->find($id);
         return view('website.services_details', compact('billboard'));
     }
 
@@ -185,7 +225,7 @@ class WebsitePagesController extends Controller
 
         $locations = Parent_location::with('parentLocation_en')->get();
         $sizes = Size::all();
-        $billboards = Billboard::with('billboard_en', 'image')->get();
+        $billboards = Billboard::with('billboard_en', 'type', 'image')->get();
         $authUser = Auth::user();
         if ($authUser)
         {

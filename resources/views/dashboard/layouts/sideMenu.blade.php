@@ -105,6 +105,17 @@
                     <li><a href="{{adminUrl('supplier')}}"><i class="fa fa-edit"></i> Show / Edit Supplier</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-hospital-o"></i>
+                    <span>Letter Location</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{adminUrl('letter-location/create')}}"><i class="fa fa-plus"></i> Add Letter Location</a></li>
+                    <li><a href="{{adminUrl('letter-location')}}"><i class="fa fa-edit"></i> Show / Edit Letter Location</a></li>
+                </ul>
+            </li>
 
             <li class="treeview">
                 <a href="#">
