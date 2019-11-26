@@ -4,21 +4,21 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model  {
+class Sub_category extends Model  {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'sub_categories';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'custom_id', 'role_id', 'image_id', 'email_verified_at', 'password', 'remember_token'];
+    protected $fillable = ['name', 'image', 'category_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -39,6 +39,6 @@ class User extends Model  {
      *
      * @var array
      */
-    protected $dates = ['start_at', 'end_at', 'starts', 'end', 'email_verified_at'];
+    protected $dates = ['start_at', 'end_at', 'starts', 'end'];
 
 }

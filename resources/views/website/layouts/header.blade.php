@@ -177,6 +177,7 @@
                         @endif
                     </ul>
                 </li>
+                <li><a href="{{url('portfolio')}}" class="dropdown-toggle" data-toggle="dropdown">Portfolio</a></li>
                 <li><a href="{{url('client')}}" class="dropdown-toggle" data-toggle="dropdown">Our Clients</a></li>
                 <li><a href="{{url('buildCamp')}}" class="dropdown-toggle" data-toggle="dropdown">Build Your Campaign</a></li>
                 <li><a href="{{url('contact')}}" class="dropdown-toggle" data-toggle="dropdown">Contact</a></li>

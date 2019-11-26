@@ -79,6 +79,13 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     /*======== My Campaigns ========*/
     Route::get('my-campaigns', 'WebsitePagesController@myCampaigns');
 
+     /*=======   Return portofolio with categories    ========*/
+     Route::get('/portfolio', 'CategoryController@index');
+/*=======   Return subcategories of category    ========*/
+     Route::get('/getSubCategoryByid/{id}','CategoryController@getsubbyid')->name('getSubCategoryByid');
+
+     Route::get('/product/{id}/{cat_id}','CategoryController@getProduct')->name('product');
+
 });
 
 

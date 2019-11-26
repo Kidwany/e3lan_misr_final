@@ -1,24 +1,24 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model  {
+class Service_Product extends Model  {
 
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'service_products';
 
     /**
      * Attributes that should be mass-assignable.
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'custom_id', 'role_id', 'image_id', 'email_verified_at', 'password', 'remember_token'];
+    protected $fillable = ['name', 'client', 'url', 'service_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -39,6 +39,12 @@ class User extends Model  {
      *
      * @var array
      */
-    protected $dates = ['start_at', 'end_at', 'starts', 'end', 'email_verified_at'];
+    protected $dates = ['start_at', 'end_at', 'starts', 'end'];
+
+
+    public function service_id()
+    {
+        return $this->hasOne(Service::class, 'id', 'id');
+    }
 
 }
