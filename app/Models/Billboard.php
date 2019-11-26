@@ -119,5 +119,9 @@ class Billboard extends Model  {
     {
         return $this->belongsTo(Billboard_type::class, 'type_id', 'id');
     }
+    public function size()
+    {
+        return $this->belongsTo(Size::class, 'size_id', 'id');
+    }
 
 }
