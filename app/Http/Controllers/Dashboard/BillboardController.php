@@ -10,6 +10,7 @@ use App\Models\Child_of_child_location;
 use App\Models\Image;
 use App\Models\Parent_location;
 use App\Models\Service;
+use App\Models\LetterLocation;
 use App\Models\Size;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Session;
 
 class BillboardController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +45,8 @@ class BillboardController extends Controller
         $sizes = Size::all();
         $types = Billboard_type::all();
         $suppliers = Supplier::all();
-        return view('dashboard.billboard.create', compact('services', 'parentLocations', 'sizes', 'suppliers', 'types'));
+        $letters = LetterLocation::all();
+        return view('dashboard.billboard.create', compact('services', 'parentLocations', 'sizes', 'suppliers', 'types','letters'));
     }
 
 
@@ -74,14 +77,13 @@ class BillboardController extends Controller
      */
     public function store(Request $request)
     {
-
         $input = $request->all();
+
         $this->validate($request,[
             'image_id.*'                 => 'mimes:jpeg,jpg,png,gif',
             'images.*'                   => 'mimes:jpeg,jpg,png,gif',
             'image_id'                   => 'required',
             'name'                       => 'required',
-            'code'                       => 'required|max:7',
             'dimensions'                 => 'required',
             'location'                   => 'required|url',
             'service_id'                 => 'required|int',
@@ -90,6 +92,7 @@ class BillboardController extends Controller
             'description'                => 'required',
             'type'                       => 'required',
             'supplier'                   => 'required',
+            // 'letter'                     => 'letter',
             'parent_location'            => 'required|int',
             'child_location'             => 'int|nullable',
             'child_of_child_location'    => 'int|nullable',
@@ -140,12 +143,27 @@ class BillboardController extends Controller
             return redirect(adminUrl('gallery'));
         }
 
+        $billboard_letter = Billboard::where('letter_id',$request->letter)->get();
         $type = Billboard_type::find($input['type']);
+        $LetterLocation = LetterLocation::find($input['letter']);
         $supplier = Supplier::find($input['supplier']);
-        $zone = Child_location::find(request('child_location'));
-        $code = $input['code'];
+        $latest_id_add =$billboard_letter->max('id');
+        $billboard_letter_latest = Billboard::find($latest_id_add);
 
-        $generatedCode = '#' . $zone->letter . $type->letter . $supplier->letter . $code;
+        $str = $billboard_letter_latest->code;
+        //Extract the numbers using the preg_match_all function.
+        preg_match_all('!\d+!', $str, $matches);
+        //Any matches will be in our $matches array
+        $number =$matches[0][0];
+
+        $code = $LetterLocation->letter.$type->letter.$supplier->letter.++$number;
+        // dd($code);
+
+        // $type = Billboard_type::find($input['type']);
+        // $supplier = Supplier::find($input['supplier']);
+        $zone = Child_location::find(request('child_location'));
+
+        $generatedCode = $code;
 
         $billboard = new Billboard();
         $billboard->code = $generatedCode;
@@ -165,6 +183,7 @@ class BillboardController extends Controller
         $billboard->price = $input['price'];
         $billboard->type_id = $input['type'];
         $billboard->supplier_id = $input['supplier'];
+        $billboard->letter_id = $input['letter'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();
@@ -209,7 +228,8 @@ class BillboardController extends Controller
         $billboard = Billboard::with('image')->find($id);
         $types = Billboard_type::all();
         $suppliers = Supplier::all();
-        return view('dashboard.billboard.edit', compact('types', 'suppliers', 'billboard', 'services', 'subServices', 'parentLocations', 'sizes', 'childLocations', 'childOfChildLocations'));
+        $letters = LetterLocation::all();
+        return view('dashboard.billboard.edit', compact('types', 'suppliers','letters', 'billboard', 'services', 'subServices', 'parentLocations', 'sizes', 'childLocations', 'childOfChildLocations'));
     }
 
     /**
@@ -291,11 +311,8 @@ class BillboardController extends Controller
         $type = Billboard_type::find($input['type']);
         $supplier = Supplier::find($input['supplier']);
         $zone = Child_location::find(request('child_location'));
-        $code = substr($billboard->code, -3);
 
-        $generatedCode = '#' . $zone->letter . $type->letter . $supplier->letter . $code;
 
-        $billboard->code = $generatedCode;
         $billboard->service_id = $input['service_id'];
         $billboard->sub_service_id = \request('sub_service');
         $billboard->parent_location_id = $input['parent_location'];
@@ -311,6 +328,7 @@ class BillboardController extends Controller
         $billboard->price = $input['price'];
         $billboard->type_id = $input['type'];
         $billboard->supplier_id = $input['supplier'];
+        $billboard->letter_id = $input['letter_id'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();

@@ -143,7 +143,7 @@
                                         <option value="0">Choose Billboard Type</option>
                                         @if($types)
                                             @foreach($types as $type)
-                                                <option value="{{$type->id}}" {{$type->id == $billboard->type_id ? 'selected' : ''}}>{{$type->type}}</option>
+                                                <option value="{{$type->id}}" {{$type->id == $billboard->type_id ? 'selected' : ''}}>{{$type->letter}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -156,11 +156,23 @@
                                         <option value="0">Choose Billboard Supplier</option>
                                         @if($suppliers)
                                             @foreach($suppliers as $supplier)
-                                                <option value="{{$supplier->id}}" {{$supplier->id == $billboard->supplier_id ? 'selected' : ''}}>{{$supplier->supplier}}</option>
+                                                <option value="{{$supplier->id}}" {{$supplier->id == $billboard->supplier_id ? 'selected' : ''}}>{{$supplier->letter}}</option>
                                             @endforeach
                                         @endif
                                     </select>
                                     <p class="help-block"> Choose Billboard Type</p>
+                                </div>
+
+                                <div class="col-lg-4">
+                                    <label for="exampleInputEmail1"> Letter Location</label>
+                                    <select name="letter_id" class="form-control">
+                                        <option value="0">Choose Letter Location</option>
+                                        @if(@$letters)
+                                            @foreach(@$letters as $letter)
+                                                <option value="{{$letter->id}}" {{$letter->id == $billboard->letter_id ? 'selected' : ''}}>{{@$letter->letter}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                 </div>
 
                                 <div class="col-lg-4">

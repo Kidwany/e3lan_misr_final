@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
-use App\Models\Child_location;
-use App\Models\Parent_location;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use App\Models\LetterLocation;
 
-class ChildLocationController extends Controller
+class LetterLocationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,9 @@ class ChildLocationController extends Controller
      */
     public function index()
     {
-        $locations = Child_location::with('childLocation_en')->get();
-        return view('dashboard.childLocation.index', compact('locations'));
+        $locations = LetterLocation::get();
+        return view('dashboard.Location_letter.index', compact('locations'));
+
     }
 
     /**
@@ -28,8 +28,9 @@ class ChildLocationController extends Controller
      */
     public function create()
     {
-        $parent_locations = Parent_location::with('parentLocation_en')->get();
-        return view('dashboard.childLocation.create', compact('parent_locations'));
+        $parent_locations = LetterLocation::get();
+        return view('dashboard.Location_letter.create', compact('parent_locations'));
+
     }
 
     /**
@@ -41,18 +42,17 @@ class ChildLocationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'location'               => 'required',
-            // 'letter'               => 'required',
+            'lettername'               => 'required',
+            'letter'               => 'required|unique:letter_locations',
         ], [], [
         ]);
 
-        $location = new Child_location();
-        $location->parent_location_id =  \request('parent_location_id');
+        $location = new LetterLocation();
+        $location->title_location =  \request('lettername');
         $location->letter =  \request('letter');
         $location->save();
 
-        $location->childLocation_en()->create(['location' => \request('location')]);
-        return redirect(adminUrl('child-location'))->with('create', 'Zone Created Successfully');
+        return redirect(adminUrl('letter-location'))->with('create', 'Zone Created Successfully');
     }
 
     /**
@@ -74,9 +74,10 @@ class ChildLocationController extends Controller
      */
     public function edit($id)
     {
-        $location = Child_location::with('childLocation_en')->find($id);
-        $parent_locations = Parent_location::with('parentLocation_en')->get();
-        return view('dashboard.childLocation.edit', compact('location', 'parent_locations'));
+        $location = LetterLocation::find($id);
+        // $parent_locations = LetterLocation::with('parentLocation_en')->get();
+        return view('dashboard.Location_letter.edit', compact('location'));
+
     }
 
     /**
@@ -88,20 +89,19 @@ class ChildLocationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $location = Child_location::with('childLocation_en')->find($id);
+        $location = LetterLocation::find($id);
 
         $request->validate([
-            'location'               => 'required',
-            // 'letter'                 => 'required',
+            'lettername'               => 'required',
+            'letter'               => 'required',
         ], [], [
         ]);
-        $location->parent_location_id = \request('parent_location_id');
+        $location->title_location = \request('lettername');
         $location->letter = \request('letter');
         $location->save();
 
-        $location->childLocation_en()->update(['location' => \request('location')]);
 
-        return redirect(adminUrl('child-location'))->with('update', 'Zone Updated Successfully');
+        return redirect(adminUrl('letter-location'))->with('update', 'letter Updated Successfully');
 
 
     }
@@ -114,16 +114,17 @@ class ChildLocationController extends Controller
      */
     public function destroy($id)
     {
-        $location = Child_location::with('childLocation_en')->find($id);
+        $location = LetterLocation::find($id);
         try{
             $location->delete();
         }
         catch (\Exception $e)
         {
-            Session::flash('exception', 'Error, Can\'t Delete Zone Because There are related Zones');
+            Session::flash('exception', 'Error, Can\'t Delete letter Because There are related Zones');
             return redirect()->back();
         }
 
-        return redirect(adminUrl('child-location'))->with('delete', 'Zone Deleted Successfully');
+        return redirect(adminUrl('letter-location'))->with('delete', 'letter Deleted Successfully');
     }
+
 }
