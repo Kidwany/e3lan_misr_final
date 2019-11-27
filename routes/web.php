@@ -91,8 +91,9 @@ Route::get('maintenance', function () {
 
 Route::post('register/customer','UserController@register')->name('register');
 Route::post('login/customer','UserController@login')->name('login');
-Route::get('login/customer','UserController@loginPage')->name('login');
+Route::get('login/customer','UserController@loginPage')->name('login/customer');
 Route::get('logout/customer','UserController@logout')->name('logout');
+Route::get('/verify/{activation_code?}', 'UserController@verify')->name('verify');
 
 
 
