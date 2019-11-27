@@ -355,6 +355,38 @@ class WebsitePagesController extends Controller
     }
 
     /**
+     * Show My Last Campaigns
+     */
+    public function myCampaigns_details()
+    {
+        $authUser = Auth::user();
+        if ($authUser)
+        {
+            $campaigns = Campaign::with('campaignDetails','billboard')->where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+            
+                 $list_array=[];
+            foreach($campaigns as $campaign ){
+
+            foreach($campaign->billboard as $key=> $billboard){
+    
+                    $list_array[$key]['address']=$billboard->searchmab;
+                    $list_array[$key]['lat']=$billboard->lat;
+                    $list_array[$key]['lng']=$billboard->lng;
+               
+            }
+
+            }
+           
+
+    
+            return view('website.myCampaigns_details', compact('campaigns','list_array'));        }
+        else
+        {
+            return redirect('login/customer');
+        }
+    }
+
+    /**
      * Return Child Locations Based on Parent Location Returned from Ajax Request Page
      */
     public function child_location($id)

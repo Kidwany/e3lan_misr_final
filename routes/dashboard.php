@@ -103,6 +103,8 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     Route::resource('child-of-child-location', 'ChildOfChildLocationController');
 
     /* --- Parent Location ---*/
+    Route::get('billboard/map', 'BillboardController@billboardmap');
+
     Route::resource('billboard', 'BillboardController');
     Route::get('billboard/{id}/images', 'BillboardController@billboardImages');
     Route::delete('billboard/image/{id}/destroy', 'BillboardController@deleteBillboardImage');

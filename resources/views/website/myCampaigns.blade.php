@@ -68,8 +68,10 @@
                         </div>
 
                         <div class="check-btns">
-                            <div class="tr-modal-popup">
-                                <a href="#camp-details{{$campaign->id}}" class="btn btn-color btn-md btn-animate" data-effect="mfp-zoom-in"><span>Campaign Items <i class="ion-checkmark"></i></span></a>
+                            <div >
+                                <a href="{{url('my-campaigns/details')}}/{{$campaign->id}}" class="btn btn-color btn-md btn-animate" data-effect="mfp-zoom-in">
+                                <span>Campaign Items <i class="ion-checkmark"></i></span></a>
+                                <!-- <a href="#camp-details{{$campaign->id}}" class="btn btn-color btn-md btn-animate" data-effect="mfp-zoom-in"><span>Campaign Items <i class="ion-checkmark"></i></span></a> -->
                             </div>
                         </div>
                     </div>

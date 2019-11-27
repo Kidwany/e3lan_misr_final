@@ -67,6 +67,7 @@
                 <ul class="treeview-menu">
                     <li><a href="{{adminUrl('billboard/create')}}"><i class="fa fa-plus"></i> Add Billboard</a></li>
                     <li><a href="{{adminUrl('billboard')}}"><i class="fa fa-edit"></i> Show / Edit Billboard</a></li>
+                    <li><a href="{{adminUrl('billboard/map')}}"><i class="fa fa-edit"></i> Maps Billboard</a></li>
                 </ul>
             </li>
 

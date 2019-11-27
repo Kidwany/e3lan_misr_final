@@ -34,6 +34,27 @@ class BillboardController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function billboardmap()
+    {
+        $billboards = Billboard::select('lat','lng','searchmab')->get();
+        $list_array=[];
+        foreach($billboards as $key=> $billboard){
+
+            // if($billboard->lat != "" &&  $billboard->lng != ""){
+                $list_array[$key]['address']=$billboard->searchmab;
+                $list_array[$key]['lat']=$billboard->lat;
+                $list_array[$key]['lng']=$billboard->lng;
+            // }
+        }
+        // dd($list_array);
+        return view('dashboard.billboard.map', compact('billboards','list_array'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -79,6 +100,7 @@ class BillboardController extends Controller
     {
         $input = $request->all();
 
+        // dd($input);
         $this->validate($request,[
             'image_id.*'                 => 'mimes:jpeg,jpg,png,gif',
             'images.*'                   => 'mimes:jpeg,jpg,png,gif',
@@ -92,7 +114,9 @@ class BillboardController extends Controller
             'description'                => 'required',
             'type'                       => 'required',
             'supplier'                   => 'required',
-            // 'letter'                     => 'letter',
+            // 'searchmab'                     => 'searchmab',
+            // 'lat'                     => 'lat',
+            // 'lng'                     => 'lng',
             'parent_location'            => 'required|int',
             'child_location'             => 'int|nullable',
             'child_of_child_location'    => 'int|nullable',
@@ -184,6 +208,9 @@ class BillboardController extends Controller
         $billboard->type_id = $input['type'];
         $billboard->supplier_id = $input['supplier'];
         $billboard->letter_id = $input['letter'];
+        $billboard->searchmab = $input['searchmab'];
+        $billboard->lat = $input['lat'];
+        $billboard->lng = $input['lng'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();
@@ -329,6 +356,9 @@ class BillboardController extends Controller
         $billboard->type_id = $input['type'];
         $billboard->supplier_id = $input['supplier'];
         $billboard->letter_id = $input['letter_id'];
+        $billboard->searchmab = $input['searchmab'];
+        $billboard->lat = $input['lat'];
+        $billboard->lng = $input['lng'];
         $billboard->printing_cost = $input['cost_of_printing'];
         $billboard->created_by = Auth::user()->id;
         $billboard->save();

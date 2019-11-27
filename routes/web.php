@@ -78,6 +78,7 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
 
     /*======== My Campaigns ========*/
     Route::get('my-campaigns', 'WebsitePagesController@myCampaigns');
+    Route::get('my-campaigns/details/{id}', 'WebsitePagesController@myCampaigns_details');
 
 });
 

@@ -122,7 +122,7 @@
 
                                 <div class="col-lg-4">
                                     <label for="exampleInputEmail1">Billboard Code</label>
-                                    <input type="text" class="form-control" name="code" disabled="disabled" id="exampleInputEmail1" placeholder="Enter Billboard Code" value="{{old('code')}}">
+                                    <input type="text" class="form-control" name="code" disabled="disabled"id="exampleInputEmail1" placeholder="Enter Billboard Code" value="{{old('code')}}">
                                     <p class="help-block">Enter Billboard Code Ex: 001</p>
                                 </div>
 
@@ -144,7 +144,7 @@
                                         <option value="0">Choose Billboard Type</option>
                                         @if($types)
                                             @foreach($types as $type)
-                                                <option value="{{$type->id}}">{{$type->letter}}</option>
+                                                <option value="{{$type->id}}">{{$type->type}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -157,7 +157,7 @@
                                         <option value="0">Choose Billboard Supplier</option>
                                         @if($suppliers)
                                             @foreach($suppliers as $supplier)
-                                                <option value="{{$supplier->id}}">{{$supplier->letter}}</option>
+                                                <option value="{{$supplier->id}}">{{$supplier->supplier}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -306,6 +306,27 @@
                                     <p class="help-block">Enter Description of Billboard</p>
                                 </div>
 
+                                <div class="col-lg-8">
+                                    <label for="searchMapInput" class="col-sm-2 col-form-label"> Address</label>
+                                    <input type="text" id="searchMapInput" name="searchmab" class="form-control map-input">
+                                    <div class="col-sm-10">
+                                        <div id="map" style="height: 500px;z-index:20"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <label for="lat" class="col-sm-2 col-form-label"> lat</label>
+                                    <div class="col-sm-10">
+
+                                    <input type="text" id="lat" name="lat" class="form-control map-input">
+                                </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <label for="lng" class="col-sm-2 col-form-label"> lng</label>
+                                    <div class="col-sm-10">
+
+                                    <input type="text" id="lng" name="lng" class="form-control map-input">
+                                </div>
+                                </div>
 
                             </div>
                         </div>
