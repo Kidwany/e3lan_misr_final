@@ -27,7 +27,13 @@
   </section>
 
   <section class="pt-0 pb-0 dark-block">
+  @if(count($product_images)==0)
+  <div style="text-align:center">
+   <h3 class="font-700">No Result found.</h3>
+   </div>
+    @endif
     <div class="service-slider-2 slick height-650px">
+   
     @foreach($product_images as $product_image)
       <div class="slide">
        
