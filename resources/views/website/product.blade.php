@@ -16,7 +16,7 @@
     </div>
 
  <!--== Sliders Style 02 Start ==-->
- <section class="white-bg pb-50">
+ <section class="" style="padding-top:0px !important;">
     <div class="container-fluid">
     	<div class="row">
         	<div class="col-sm-8 section-heading">
@@ -28,34 +28,48 @@
 
   <section class="pt-0 pb-0 dark-block">
   @if(count($product_images)==0)
-  <div style="text-align:center">
+  <div style="text-align:center" >
    <h3 class="font-700">No Result found.</h3>
    </div>
     @endif
-    <div class="service-slider-2 slick height-650px">
+    <div class="service-slider-2 slick height-800px" >
    
     @foreach($product_images as $product_image)
-      <div class="slide">
+      <div class="slide height-800px">
        
 @if($product_image->isimage==1)
-<div class="slide-img height-650px" style="background:url(/{{$product_image->url}}) center center / cover scroll no-repeat;"></div>
+<div class="slide-img height-800px" style="background:url(/{{$product_image->url}}) center center / cover scroll no-repeat; "></div>
+        
+        <div class="container">
+          <div class="row">
+
+
+              <div class=" default-bg all-padding-50">
+              	
+                       
+          						<!-- <h3 class="font-700">Creative & innovative digital agency.</h3>
+          						<p class="mt-30"><a class="btn btn-dark btn-lg btn-default">Buy Template</a> </p> -->
+                      </div>
+                 
+                 
+            
+                 </div>
+               </div>
+               </div>
+@else
+
+<div class="slide-img height-800px" style="background-image: url(/dashboardImages/project/bg-left-img.jpg); background-repeat: no-repeat; background-size: cover;"></div>
         
         <div class="container">
           <div class="row">
 
 
               <div class="white-color default-bg all-padding-50">
-              	
-                          <img src="/{{$product_image->url}}">
-          						<!-- <h3 class="font-700">Creative & innovative digital agency.</h3>
-          						<p class="mt-30"><a class="btn btn-dark btn-lg btn-default">Buy Template</a> </p> -->
-              	
-@else
-
                    <!--== Video Start ==-->
+
                    
-                   <section class="parallax-bg fixed-bg"  style=" background-image: url(dashboardImages/project/bg-left-img.jpg);" data-parallax-bg-image="dashboardImages/project/bg-left-img.jpg" data-parallax-speed="0.8" data-parallax-direction="up">
-  	<div class="parallax-overlay" style="background-image: url(/dashboardImages/project/bg-left-img.jpg);"></div>
+                   <section class="parallax-bg fixed-bg"   data-parallax-bg-image="dashboardImages/project/bg-left-img.jpg" data-parallax-speed="0.8" data-parallax-direction="up">
+  	<!-- <div class="parallax-overlay" ></div> -->
   	<div class="container">
   		<div class="row">
   			<div class="col-md-12 text-center parallax-content">
@@ -75,15 +89,16 @@
   	</div>
   </section>
   <!--== Video End ==-->
-
-                  @endif
-                  </div>
+  </div>
                  
                  
             
-          </div>
-        </div>
-      </div>
+                 </div>
+               </div>
+               </div>
+                  @endif
+            
+      
       @endforeach
       
 

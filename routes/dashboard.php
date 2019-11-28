@@ -131,6 +131,10 @@ Route::group(['middleware' => 'auth' ,'namespace' => 'Dashboard' , 'prefix' => '
     Route::delete('billboard/calendar/{id}/destroy', 'BillboardController@deleteAppointment');
 
 
+     /*--------  Portfolio   --------*/
+    //  Route::get('/portfolio/edit', 'PortfolioController@edit');
+    //  Route::patch('/about/update', 'AboutController@update');
+
 });
 
 
