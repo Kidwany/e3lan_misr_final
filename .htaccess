@@ -1,0 +1,42 @@
+
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+
+# First rewrite to HTTPS:
+
+# Don't put www. here. If it is already there it will be included, if not
+
+# the subsequent rule will catch it.
+
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Now, rewrite any request to the wrong domain to use www.
+
+# [NC] is a case-insensitive match
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+
+RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+
+<IfModule mod_rewrite.c>
+
+    RewriteEngine On
+
+    RewriteRule ^(.*)$ public/$1 [L]
+
+</IfModule>
+
+
+
+# END cPanel-generated php ini directives, do not edit
+
+RewriteCond %{HTTPS} off
+
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+
+RewriteCond %{HTTP_HOST} ^www\.e3lan.pbc-egy\.com$
+
+RewriteRule ^(.*)$ "https\:\/\/www\.e3lan.pbc-egy\.com\/$1" [R=301,L]
