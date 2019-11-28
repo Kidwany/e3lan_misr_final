@@ -55,6 +55,8 @@ Route::group(['middleware' => ['Maintenance', 'Lang']], function () {
     /*=======   Return buildCamp     ========*/
 
     Route::get('/buildCamp', 'WebsitePagesController@buildCamp');
+    Route::get('/campaign-date', 'WebsitePagesController@campaignDate');
+
     Route::get('/serviceDetails/{id}', 'WebsitePagesController@service_details');
     Route::post('/add/buildCamp', 'WebsitePagesController@add_buildCamp');
 

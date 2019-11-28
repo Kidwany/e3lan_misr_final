@@ -263,8 +263,8 @@ class WebsitePagesController extends Controller
                 $campaignItem = new Campaign_item();
                 $campaignItem->billboard_id = $billboardId;
                 $campaignItem->campaign_id = $campaign->id;
-                $campaignItem->starts = \request('from');
-                $campaignItem->end = \request('to');
+                // $campaignItem->starts = \request('from');
+                // $campaignItem->end = \request('to');
                 $campaignItem->save();
             }
         }
@@ -280,8 +280,8 @@ class WebsitePagesController extends Controller
             $campaignItem = new Campaign_item();
             $campaignItem->billboard_id = $billboardId;
             $campaignItem->campaign_id = $newCampaign->id;
-            $campaignItem->starts = \request('from');
-            $campaignItem->end = \request('to');
+            // $campaignItem->starts = \request('from');
+            // $campaignItem->end = \request('to');
             $campaignItem->save();
         }
 

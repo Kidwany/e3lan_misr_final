@@ -82,11 +82,12 @@
                                             <img class="img-responsive" src="{{asset($billboard->image->path)}}" alt="torneo-product"/>
                                         </a>
                                         <div class="product-action">
-                                            <div class="tr-modal-popup">
-                                                <a href="#details-popup{{$billboard->id}}" data-effect="mfp-zoom-in" class="btn-shopping btn-light btn-md btn-square btn checkauth" type="button" value="Add to Cart">
-                                                    <i class="icofont icofont-mega-phone"></i> <span>Add to Campaign </span>
-                                                </a>
-                                            </div>
+                                            <form action="{{url('add-to-campaign')}}" method="POST">
+                                                @method('POST')
+                                                @csrf
+                                                <input type="hidden" name="code" value="{{$billboard->id}}">
+                                                <button class="btn-shopping btn-light btn-md btn-square btn checkauth" value="Add to Cart"><i class="icofont icofont-mega-phone"></i><span>Add to Campaign </span></button>
+                                            </form>
                                         </div>
                                         <div class="wrap-label">
                                             <span class="label-product new-label">New</span>
