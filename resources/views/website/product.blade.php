@@ -3,7 +3,7 @@
 
 @section('content')
 
-
+<link rel="stylesheet" type="text/css" href="{{assetPath('website/assets/css/master_edit.css')}}">
 <div class="transition-none">
         <section class="title-hero-bg parallax-effect" style="background-image: url({{assetPath('website/assets/images/clients/clients_bg.jpg')}});">
             <div class="container">
